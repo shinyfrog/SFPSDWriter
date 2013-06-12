@@ -134,7 +134,7 @@ What SFPSDWriter **NOT** features:
 
 ## Example Project
 
-The example projects are a copy and paste of the code in the [Usage](https://github.com/#usage) section in:
+The example projects are a copy and paste of the code in the [Usage](https://github.com/shinyfrog/SFPSDWriter#usage) section in:
 
 ```Objective-C
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification // Mac OS X
