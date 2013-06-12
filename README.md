@@ -159,6 +159,6 @@ We will happily evaluate the possibility to accept pull requests so if you have 
 
 ## Acknowledgments
 
-This library gets inspiration from Ben Gotow's [PSDWriter](https://github.com/bengotow/PSDWriter). It was reorganized a bit in the structure to depute the writing of the informations and the channels to the layers (and adding something here and there).
+This library gets inspiration from [Ben Gotow](https://github.com/bengotow)'s [PSDWriter](https://github.com/bengotow/PSDWriter). It was reorganized a bit in the structure to depute the writing of the informations and the channels to the layers (and adding something here and there).
 
-This library would be not possible without some pro tips of [Gus Mueller](https://github.com/ccgus) about the mistery behaviour of PSD groups!
+This library would be not possible without some pro tips of [Gus Mueller](https://github.com/ccgus) ([@ccgus](https://twitter.com/ccgus)) about the misterious behaviour of PSD groups!
