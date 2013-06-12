@@ -21,22 +21,31 @@
 
 - (id)init
 {
-    self = [super init];
-    if (self){
-        self.layerChannelCount = 4;
-        self.flattenedContext = NULL;
-        self.flattenedData = nil;
-        self.layers = [[NSMutableArray alloc] init];
-    }
-    return self;    
+    return [self initWithDocumentSize:CGSizeMake(0, 0) andLayerChannelCount:4 andLayers:nil];
 }
 
-- (id)initWithDocumentSize:(CGSize)s
+- (id)initWithDocumentSize:(CGSize)size
 {
-    self = [self init];
-    if (self){
-        self.documentSize = s;
+    return [self initWithDocumentSize:size andLayerChannelCount:4 andLayers:nil];
+}
+
+- (id)initWithDocumentSize:(CGSize)size andLayerChannelCount:(int)layerChannelCount andLayers:(NSArray *)layers
+{
+    self = [super init];
+    if (!self) return nil;
+    
+    self.documentSize = size;
+    self.layerChannelCount = layerChannelCount;
+    self.flattenedContext = NULL;
+    self.flattenedData = nil;
+    
+    if (nil != layers) {
+        self.layers = [[NSMutableArray alloc] initWithArray:layers];
     }
+    else {
+        self.layers = [[NSMutableArray alloc] init];
+    }
+    
     return self;
 }
 
@@ -52,6 +61,11 @@
 }
 
 #pragma mark - Layer creation functions
+
+- (SFPSDLayer *)addLayerWithCGImage:(CGImageRef)image andName:(NSString*)name
+{
+    return [self addLayerWithCGImage:image andName:name andOpacity:1 andOffset:CGPointMake(0, 0)];
+}
 
 - (SFPSDLayer *)addLayerWithCGImage:(CGImageRef)image andName:(NSString*)name andOpacity:(float)opacity andOffset:(CGPoint)offset
 {
@@ -102,9 +116,13 @@
 
 - (SFPSDGroupOpeningLayer *)openGroupLayerWithName:(NSString *)name
 {
-    SFPSDGroupOpeningLayer *layer = [[SFPSDGroupOpeningLayer alloc] init];
+    return [self openGroupLayerWithName:name andOpacity:1 andIsOpened:NO];
+}
+
+- (SFPSDGroupOpeningLayer *)openGroupLayerWithName:(NSString *)name andOpacity:(int)opacity andIsOpened:(BOOL)isOpened
+{
+    SFPSDGroupOpeningLayer *layer = [[SFPSDGroupOpeningLayer alloc] initWithName:name andOpacity:opacity andIsOpened:isOpened];
     layer.documentSize = self.documentSize;
-    [layer setName: name];
     [self.layers addObject: layer];
     return layer;
 }

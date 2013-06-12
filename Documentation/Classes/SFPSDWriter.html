@@ -54,6 +54,8 @@
 	
 	<option value="instance_methods">Instance Methods</option>
 	
+	<option value="//api/name/addLayerWithCGImage:andName:">&nbsp;&nbsp;&nbsp;&nbsp;- addLayerWithCGImage:andName:</option>
+	
 	<option value="//api/name/addLayerWithCGImage:andName:andOpacity:andOffset:">&nbsp;&nbsp;&nbsp;&nbsp;- addLayerWithCGImage:andName:andOpacity:andOffset:</option>
 	
 	<option value="//api/name/closeCurrentGroupLayer">&nbsp;&nbsp;&nbsp;&nbsp;- closeCurrentGroupLayer</option>
@@ -66,7 +68,11 @@
 	
 	<option value="//api/name/initWithDocumentSize:">&nbsp;&nbsp;&nbsp;&nbsp;- initWithDocumentSize:</option>
 	
+	<option value="//api/name/initWithDocumentSize:andLayerChannelCount:andLayers:">&nbsp;&nbsp;&nbsp;&nbsp;- initWithDocumentSize:andLayerChannelCount:andLayers:</option>
+	
 	<option value="//api/name/openGroupLayerWithName:">&nbsp;&nbsp;&nbsp;&nbsp;- openGroupLayerWithName:</option>
+	
+	<option value="//api/name/openGroupLayerWithName:andOpacity:andIsOpened:">&nbsp;&nbsp;&nbsp;&nbsp;- openGroupLayerWithName:andOpacity:andIsOpened:</option>
 	
 	<option value="//api/name/preprocess">&nbsp;&nbsp;&nbsp;&nbsp;- preprocess</option>
 	
@@ -120,6 +126,8 @@
 
 <li role="treeitem" class="children"><span class="disclosure"></span><span class="sectionName"><a href="#instance_methods">Instance Methods</a></span><ul>
 	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/addLayerWithCGImage:andName:">addLayerWithCGImage:andName:</a></span></li>
+	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/addLayerWithCGImage:andName:andOpacity:andOffset:">addLayerWithCGImage:andName:andOpacity:andOffset:</a></span></li>
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/closeCurrentGroupLayer">closeCurrentGroupLayer</a></span></li>
@@ -132,7 +140,11 @@
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/initWithDocumentSize:">initWithDocumentSize:</a></span></li>
 	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/initWithDocumentSize:andLayerChannelCount:andLayers:">initWithDocumentSize:andLayerChannelCount:andLayers:</a></span></li>
+	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/openGroupLayerWithName:">openGroupLayerWithName:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/openGroupLayerWithName:andOpacity:andIsOpened:">openGroupLayerWithName:andOpacity:andIsOpened:</a></span></li>
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/preprocess">preprocess</a></span></li>
 	
@@ -238,6 +250,20 @@ are not transparent. At the moment, this setting applies to all <a href="#//api/
 	
 </li><li>
 	<span class="tooltip">
+		<code><a href="#//api/name/initWithDocumentSize:andLayerChannelCount:andLayers:">&ndash;&nbsp;initWithDocumentSize:andLayerChannelCount:andLayers:</a></code>
+		<span class="tooltip"><p>Designed initializer.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/addLayerWithCGImage:andName:">&ndash;&nbsp;addLayerWithCGImage:andName:</a></code>
+		<span class="tooltip"><p>Adds a new layer to the PSD image with a name. The opacity of the layer will be 1 and no offset will be applied.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
 		<code><a href="#//api/name/addLayerWithCGImage:andName:andOpacity:andOffset:">&ndash;&nbsp;addLayerWithCGImage:andName:andOpacity:andOffset:</a></code>
 		<span class="tooltip"><p>Adds a new layer to the PSD image with the provided properties.</p></span>
 	</span>
@@ -246,17 +272,21 @@ are not transparent. At the moment, this setting applies to all <a href="#//api/
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/openGroupLayerWithName:">&ndash;&nbsp;openGroupLayerWithName:</a></code>
-		<span class="tooltip"><p>Opens a new Group layer.
-The Group will contain all the <a href="#//api/name/layers">layers</a> added to the PSDWriter.<a href="#//api/name/layers">layers</a> before <a href="#//api/name/closeCurrentGroupLayer">closeCurrentGroupLayer</a> is called</p></span>
+		<span class="tooltip"><p>Opens a new PSD group.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/openGroupLayerWithName:andOpacity:andIsOpened:">&ndash;&nbsp;openGroupLayerWithName:andOpacity:andIsOpened:</a></code>
+		<span class="tooltip"><p>Opens a new PSD group.</p></span>
 	</span>
 	
 	
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/closeCurrentGroupLayer">&ndash;&nbsp;closeCurrentGroupLayer</a></code>
-		<span class="tooltip"><p>Closes the last opened Group layer.
-The layer will have the name and other data of the OpenGroupLayer that it is closing
-The function returns the newly created Group layer in order to customize it after the creation.</p></span>
+		<span class="tooltip"><p>Closes the corresponding opened PSD group.</p></span>
 	</span>
 	
 	
@@ -538,6 +568,67 @@ from memory as it builds the PSD file.</p>
 						<h2 class="subtitle subtitle-methods">Instance Methods</h2>
 						
 						<div class="section-method">
+	<a name="//api/name/addLayerWithCGImage:andName:" title="addLayerWithCGImage:andName:"></a>
+	<h3 class="subsubtitle method-title">addLayerWithCGImage:andName:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Adds a new layer to the PSD image with a name. The opacity of the layer will be 1 and no offset will be applied.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (SFPSDLayer *)addLayerWithCGImage:(CGImageRef)<em>image</em> andName:(NSString *)<em>name</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>image</em></dt>
+			<dd><p>The image to be added. Does not need to be the same size as the document, but it cannot be larger.</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>name</em></dt>
+			<dd><p>The name you&rsquo;d like to give the layer.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p>The newly created layer in order to customize it after the creation.</p>
+	</div>
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Adds a new layer to the PSD image with a name. The opacity of the layer will be 1 and no offset will be applied.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">SFPSDWriter.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
 	<a name="//api/name/addLayerWithCGImage:andName:andOpacity:andOffset:" title="addLayerWithCGImage:andName:andOpacity:andOffset:"></a>
 	<h3 class="subsubtitle method-title">addLayerWithCGImage:andName:andOpacity:andOffset:</h3>
 	
@@ -573,14 +664,17 @@ from memory as it builds the PSD file.</p>
 		
 		<dl class="argument-def parameter-def">
 			<dt><em>offset</em></dt>
-			<dd><p>The offset of the layer within the document. Use this to position <a href="#//api/name/layers">layers</a> within the PSD.</p>
-
-<p>The function returns the newly created layer in order to customize it after the creation.</p></dd>
+			<dd><p>The offset of the layer within the document. Use this to position <a href="#//api/name/layers">layers</a> within the PSD.</p></dd>
 		</dl>
 		
 	</div>
 	
 	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p>The newly created layer in order to customize it after the creation.</p>
+	</div>
 	
 	
 	
@@ -625,9 +719,7 @@ you need to provide the flattened image data yourself.</p>
 	
 	
 	<div class="method-subsection brief-description">
-		<p>Closes the last opened Group layer.
-The layer will have the name and other data of the OpenGroupLayer that it is closing
-The function returns the newly created Group layer in order to customize it after the creation.</p>
+		<p>Closes the corresponding opened PSD group.</p>
 	</div>		
 	
     
@@ -638,15 +730,20 @@ The function returns the newly created Group layer in order to customize it afte
 	
 	
 	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p>The newly created group layer in order to customize it after the creation.</p>
+	</div>
+	
 	
 	
 	
 	
 	<div class="method-subsection discussion-section">
 		<h4 class="method-subtitle">Discussion</h4>
-		<p>Closes the last opened Group layer.
-The layer will have the name and other data of the OpenGroupLayer that it is closing
-The function returns the newly created Group layer in order to customize it after the creation.</p>
+		<p>Closes the corresponding opened PSD group.</p>
+
+<p>The layer will have the name and other data of the <a href="../Classes/SFPSDGroupOpeningLayer.html">SFPSDGroupOpeningLayer</a> that it is closing</p>
 	</div>
 	
 	
@@ -751,7 +848,7 @@ called on a separate thread.</p>
 	
     
 
-	<div class="method-subsection method-declaration"><code>- (id)initWithDocumentSize:(CGSize)<em>s</em></code></div>
+	<div class="method-subsection method-declaration"><code>- (id)initWithDocumentSize:(CGSize)<em>size</em></code></div>
 
     
 	
@@ -759,8 +856,8 @@ called on a separate thread.</p>
 		<h4 class="method-subtitle parameter-title">Parameters</h4>
 		
 		<dl class="argument-def parameter-def">
-			<dt><em>s</em></dt>
-			<dd><p>The document size</p></dd>
+			<dt><em>size</em></dt>
+			<dd><p>The document size.</p></dd>
 		</dl>
 		
 	</div>
@@ -791,21 +888,40 @@ called on a separate thread.</p>
 </div>
 						
 						<div class="section-method">
-	<a name="//api/name/openGroupLayerWithName:" title="openGroupLayerWithName:"></a>
-	<h3 class="subsubtitle method-title">openGroupLayerWithName:</h3>
+	<a name="//api/name/initWithDocumentSize:andLayerChannelCount:andLayers:" title="initWithDocumentSize:andLayerChannelCount:andLayers:"></a>
+	<h3 class="subsubtitle method-title">initWithDocumentSize:andLayerChannelCount:andLayers:</h3>
 	
 	
 	
 	<div class="method-subsection brief-description">
-		<p>Opens a new Group layer.
-The Group will contain all the <a href="#//api/name/layers">layers</a> added to the PSDWriter.<a href="#//api/name/layers">layers</a> before <a href="#//api/name/closeCurrentGroupLayer">closeCurrentGroupLayer</a> is called</p>
+		<p>Designed initializer.</p>
 	</div>		
 	
     
 
-	<div class="method-subsection method-declaration"><code>- (SFPSDGroupOpeningLayer *)openGroupLayerWithName:(NSString *)<em>name</em></code></div>
+	<div class="method-subsection method-declaration"><code>- (id)initWithDocumentSize:(CGSize)<em>size</em> andLayerChannelCount:(int)<em>layerChannelCount</em> andLayers:(NSArray *)<em>layers</em></code></div>
 
     
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>size</em></dt>
+			<dd><p>The document size.</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>layerChannelCount</em></dt>
+			<dd><p>The layer&rsquo;s channel count. Default is 4.</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>layers</em></dt>
+			<dd><p>Initial <a href="#//api/name/layers">layers</a>.</p></dd>
+		</dl>
+		
+	</div>
 	
 	
 	
@@ -815,10 +931,133 @@ The Group will contain all the <a href="#//api/name/layers">layers</a> added to 
 	
 	<div class="method-subsection discussion-section">
 		<h4 class="method-subtitle">Discussion</h4>
-		<p>Opens a new Group layer.
-The Group will contain all the <a href="#//api/name/layers">layers</a> added to the PSDWriter.<a href="#//api/name/layers">layers</a> before <a href="#//api/name/closeCurrentGroupLayer">closeCurrentGroupLayer</a> is called</p>
+		<p>Designed initializer.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">SFPSDWriter.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/openGroupLayerWithName:" title="openGroupLayerWithName:"></a>
+	<h3 class="subsubtitle method-title">openGroupLayerWithName:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Opens a new PSD group.</p>
+	</div>		
+	
+    
 
-<p>The function returns the newly created Group layer in order to customize it after the creation.</p>
+	<div class="method-subsection method-declaration"><code>- (SFPSDGroupOpeningLayer *)openGroupLayerWithName:(NSString *)<em>name</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>name</em></dt>
+			<dd><p>The name of the group</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p>The newly created Group in order to customize it after the creation.</p>
+	</div>
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Opens a new PSD group.</p>
+
+<p>The group will contain all the <a href="#//api/name/layers">layers</a> and groups added to the PSDWriter&rsquo;s instance before the corresponding <a href="#//api/name/closeCurrentGroupLayer">closeCurrentGroupLayer</a> is called</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">SFPSDWriter.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/openGroupLayerWithName:andOpacity:andIsOpened:" title="openGroupLayerWithName:andOpacity:andIsOpened:"></a>
+	<h3 class="subsubtitle method-title">openGroupLayerWithName:andOpacity:andIsOpened:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Opens a new PSD group.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (SFPSDGroupOpeningLayer *)openGroupLayerWithName:(NSString *)<em>name</em> andOpacity:(int)<em>opacity</em> andIsOpened:(BOOL)<em>isOpened</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>name</em></dt>
+			<dd><p>The name of the group</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>opacity</em></dt>
+			<dd><p>The opacity of the group</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>isOpened</em></dt>
+			<dd><p>If the group should be opened inside the PSD</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p>The newly created Group in order to customize it after the creation.</p>
+	</div>
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Opens a new PSD group.</p>
+
+<p>The group will contain all the <a href="#//api/name/layers">layers</a> and groups added to the PSDWriter&rsquo;s instance before the corresponding <a href="#//api/name/closeCurrentGroupLayer">closeCurrentGroupLayer</a> is called</p>
 	</div>
 	
 	

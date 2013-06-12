@@ -15,6 +15,12 @@
 /** If the group layer is shown opened or closed. Default is NO */
 @property (nonatomic, assign) BOOL isOpened;
 
+/** Simple initializer. */
+- (id)initWithName:(NSString *)name;
+
+/** Designed initializer. */
+- (id)initWithName:(NSString *)name andOpacity:(int)opacity andIsOpened:(BOOL)isOpened;
+
 /** 
  * Copies the Group layer information from another Group layer
  * Useful if you want to setup the information on the Closing Group Layer and don't remember

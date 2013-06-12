@@ -21,7 +21,7 @@
 {
 }
 
-// TODO: THINK ABOUT IT
+// TODO: THINK ABOUT THE FLATTENED CONTEXT
 @property (nonatomic, assign) CGContextRef flattenedContext;
 
 /** 
@@ -43,8 +43,25 @@
 
 /**
  * Initializes a new PSDWriter for creating a PSD document with the specified size.
- * @param s The document size */
-- (id)initWithDocumentSize:(CGSize)s;
+ * @param size The document size. */
+- (id)initWithDocumentSize:(CGSize)size;
+
+/**
+ * Designed initializer.
+ * 
+ * @param size The document size.
+ * @param layerChannelCount The layer's channel count. Default is 4.
+ * @param layers Initial layers. */
+- (id)initWithDocumentSize:(CGSize)size andLayerChannelCount:(int)layerChannelCount andLayers:(NSArray *)layers;
+
+/**
+ * Adds a new layer to the PSD image with a name. The opacity of the layer will be 1 and no offset will be applied.
+ *
+ * @param image The image to be added. Does not need to be the same size as the document, but it cannot be larger.
+ * @param name The name you'd like to give the layer.
+ *
+ * @return The newly created layer in order to customize it after the creation. */
+- (SFPSDLayer *)addLayerWithCGImage:(CGImageRef)image andName:(NSString*)name;
 
 /**
  * Adds a new layer to the PSD image with the provided properties.
@@ -67,19 +84,37 @@
  * @param opacity The opacity of the layer, from [0-1]
  * @param offset The offset of the layer within the document. Use this to position layers within the PSD.
  * 
- * The function returns the newly created layer in order to customize it after the creation. */
+ * @return The newly created layer in order to customize it after the creation. */
 - (SFPSDLayer *)addLayerWithCGImage:(CGImageRef)image andName:(NSString*)name andOpacity:(float)opacity andOffset:(CGPoint)offset;
 
-/** Opens a new Group layer.
- * The Group will contain all the layers added to the PSDWriter.layers before -closeCurrentGroupLayer is called
+/**
+ * Opens a new PSD group.
  *
- * The function returns the newly created Group layer in order to customize it after the creation. */
+ * The group will contain all the layers and groups added to the PSDWriter's instance before the corresponding -closeCurrentGroupLayer is called
+ *
+ * @param name The name of the group
+ *
+ * @return The newly created Group in order to customize it after the creation. */
 - (SFPSDGroupOpeningLayer *)openGroupLayerWithName:(NSString *)name;
 
 /** 
- * Closes the last opened Group layer.
- * The layer will have the name and other data of the OpenGroupLayer that it is closing
- * The function returns the newly created Group layer in order to customize it after the creation. */
+ * Opens a new PSD group.
+ *
+ * The group will contain all the layers and groups added to the PSDWriter's instance before the corresponding -closeCurrentGroupLayer is called
+ *
+ * @param name The name of the group
+ * @param opacity The opacity of the group
+ * @param isOpened If the group should be opened inside the PSD
+ *
+ * @return The newly created Group in order to customize it after the creation. */
+- (SFPSDGroupOpeningLayer *)openGroupLayerWithName:(NSString *)name andOpacity:(int)opacity andIsOpened:(BOOL)isOpened;
+
+/** 
+ * Closes the corresponding opened PSD group.
+ *
+ * The layer will have the name and other data of the SFPSDGroupOpeningLayer that it is closing
+ *
+ * @return The newly created group layer in order to customize it after the creation. */
 - (SFPSDGroupClosingLayer *)closeCurrentGroupLayer;
 
 /**

@@ -59,6 +59,9 @@
 /** Layer blend mode. */
 @property (nonatomic, strong) NSString *blendMode;
 
+/** Designed initializer. */
+- (id)initWithChannelCount:(int)channelCount andOpacity:(float)opacity andShouldFlipLayerData:(BOOL)shouldFlipLayerData andShouldUnpremultiplyLayerData:(BOOL)shouldUnpremultiplyLayerData andBlendMode:(NSString *)blendMode;
+
 /**
  * Writes the Layer Information Section inside the mutable data (the first part of the "Layer info"
  * section of the "Layer and mask information section")

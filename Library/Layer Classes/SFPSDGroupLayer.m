@@ -14,6 +14,23 @@
 
 @synthesize isOpened = _isOpened;
 
+- (id)initWithName:(NSString *)name
+{
+    return [self initWithName:name andOpacity:1 andIsOpened:NO];
+}
+
+- (id)initWithName:(NSString *)name andOpacity:(int)opacity andIsOpened:(BOOL)isOpened
+{
+    self = [super init];
+    if (!self) return nil;
+    
+    self.name = name;
+    self.isOpened = isOpened;
+    self.opacity = opacity;
+    
+    return self;
+}
+
 - (void)copyGroupInformationFrom:(SFPSDGroupLayer *)layer
 {
     [self setName:layer.name];
