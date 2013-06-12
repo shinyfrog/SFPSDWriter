@@ -41,3 +41,6 @@ xcuserdata
 
 # Xcode 4 - Deprecated classes
 *.moved-aside
+
+#Development folder
+/dev/
