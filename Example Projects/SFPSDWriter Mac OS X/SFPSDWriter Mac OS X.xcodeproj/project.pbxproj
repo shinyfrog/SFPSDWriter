@@ -164,12 +164,12 @@
 			isa = PBXGroup;
 			children = (
 				9F1ED4C017686AD300DECCDC /* Constants */,
-				9F1ED4C317686AD300DECCDC /* SFPSDGroupClosingLayer.h */,
-				9F1ED4C417686AD300DECCDC /* SFPSDGroupClosingLayer.m */,
 				9F1ED4C517686AD300DECCDC /* SFPSDGroupLayer.h */,
 				9F1ED4C617686AD300DECCDC /* SFPSDGroupLayer.m */,
 				9F1ED4C717686AD300DECCDC /* SFPSDGroupOpeningLayer.h */,
 				9F1ED4C817686AD300DECCDC /* SFPSDGroupOpeningLayer.m */,
+				9F1ED4C317686AD300DECCDC /* SFPSDGroupClosingLayer.h */,
+				9F1ED4C417686AD300DECCDC /* SFPSDGroupClosingLayer.m */,
 				9F1ED4C917686AD300DECCDC /* SFPSDLayer.h */,
 				9F1ED4CA17686AD300DECCDC /* SFPSDLayer.m */,
 			);
@@ -408,6 +408,7 @@
 				9F1ED4B617686ABF00DECCDC /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

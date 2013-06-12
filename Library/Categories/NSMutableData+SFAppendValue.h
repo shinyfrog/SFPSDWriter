@@ -13,7 +13,8 @@
 
 @interface NSMutableData (SFAppendValue)
 
-/* Allows you to append a numeric value to an NSMutableData object and pad it to any length.
+/** 
+ * Allows you to append a numeric value to an NSMutableData object and pad it to any length.
  *
  * For example, we could say [data appendValue: 2 withLength: 5], and 00002 would be written
  * into the data object. Very useful for writing to file formats that have header structures
@@ -21,12 +22,10 @@
  *
  * @param value: The value to append
  * @param length: The number of bytes that should be used to store the value. The value will be padded
- * to length bytes regardless of the number of bytes required to store it.
- */
+ * to length bytes regardless of the number of bytes required to store it. */
 - (void)sfAppendValue:(long)value length:(int)length;
 
-/* Allows you to append a NSString to the NSMutableData object
- */
+/** Allows you to append a NSString to the NSMutableData object. */
 - (void)sfAppendUTF8String:(NSString *)value length:(int)length;
 
 @end

@@ -1,0 +1,1017 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="html/html; charset=utf-8" />
+		<title>SFPSDWriter Class Reference</title>
+		<meta id="xcode-display" name="xcode-display" content="render"/>
+		<link rel="stylesheet" type="text/css" href="../css/styles.css" media="all" />
+		<link rel="stylesheet" type="text/css" media="print" href="../css/stylesPrint.css" />
+		<meta name="generator" content="appledoc 2.1 (build 840)" />
+	</head>
+	<body>
+		<header id="top_header">
+			<div id="library" class="hideInXcode">
+				<h1><a id="libraryTitle" href="../index.html">SFPSDWriter </a></h1>
+				<a id="developerHome" href="../index.html">Shiny Frog</a>
+			</div>
+			
+			<div id="title" role="banner">
+				<h1 class="hideInXcode">SFPSDWriter Class Reference</h1>
+			</div>
+			<ul id="headerButtons" role="toolbar">
+				<li id="toc_button">
+					<button aria-label="Show Table of Contents" role="checkbox" class="open" id="table_of_contents"><span class="disclosure"></span>Table of Contents</button>
+				</li>
+				<li id="jumpto_button" role="navigation">
+					<select id="jumpTo">
+	<option value="top">Jump To&#133;</option>
+	
+	
+	
+	
+	<option value="tasks">Tasks</option>
+	
+	
+	
+	
+	
+	<option value="properties">Properties</option>
+	
+	<option value="//api/name/documentSize">&nbsp;&nbsp;&nbsp;&nbsp;documentSize</option>
+	
+	<option value="//api/name/flattenedContext">&nbsp;&nbsp;&nbsp;&nbsp;flattenedContext</option>
+	
+	<option value="//api/name/flattenedData">&nbsp;&nbsp;&nbsp;&nbsp;flattenedData</option>
+	
+	<option value="//api/name/layerChannelCount">&nbsp;&nbsp;&nbsp;&nbsp;layerChannelCount</option>
+	
+	<option value="//api/name/layers">&nbsp;&nbsp;&nbsp;&nbsp;layers</option>
+	
+	
+	
+	
+	
+	
+	<option value="instance_methods">Instance Methods</option>
+	
+	<option value="//api/name/addLayerWithCGImage:andName:andOpacity:andOffset:">&nbsp;&nbsp;&nbsp;&nbsp;- addLayerWithCGImage:andName:andOpacity:andOffset:</option>
+	
+	<option value="//api/name/closeCurrentGroupLayer">&nbsp;&nbsp;&nbsp;&nbsp;- closeCurrentGroupLayer</option>
+	
+	<option value="//api/name/createPSDData">&nbsp;&nbsp;&nbsp;&nbsp;- createPSDData</option>
+	
+	<option value="//api/name/dealloc">&nbsp;&nbsp;&nbsp;&nbsp;- dealloc</option>
+	
+	<option value="//api/name/init">&nbsp;&nbsp;&nbsp;&nbsp;- init</option>
+	
+	<option value="//api/name/initWithDocumentSize:">&nbsp;&nbsp;&nbsp;&nbsp;- initWithDocumentSize:</option>
+	
+	<option value="//api/name/openGroupLayerWithName:">&nbsp;&nbsp;&nbsp;&nbsp;- openGroupLayerWithName:</option>
+	
+	<option value="//api/name/preprocess">&nbsp;&nbsp;&nbsp;&nbsp;- preprocess</option>
+	
+	<option value="//api/name/writeColorModeDataSectionOn:">&nbsp;&nbsp;&nbsp;&nbsp;- writeColorModeDataSectionOn:</option>
+	
+	<option value="//api/name/writeFileHeaderSectionOn:">&nbsp;&nbsp;&nbsp;&nbsp;- writeFileHeaderSectionOn:</option>
+	
+	<option value="//api/name/writeImageDataSectionOn:">&nbsp;&nbsp;&nbsp;&nbsp;- writeImageDataSectionOn:</option>
+	
+	<option value="//api/name/writeImageResourceSectionOn:">&nbsp;&nbsp;&nbsp;&nbsp;- writeImageResourceSectionOn:</option>
+	
+	<option value="//api/name/writeLayerAndMaskInformationSectionOn:">&nbsp;&nbsp;&nbsp;&nbsp;- writeLayerAndMaskInformationSectionOn:</option>
+	
+	
+	
+</select>
+				</li>
+			</ul>
+		</header>
+		<nav id="tocContainer" class="isShowingTOC">
+			<ul id="toc" role="tree">
+				
+
+
+
+<li role="treeitem" id="task_treeitem"><span class="nodisclosure"></span><span class="sectionName"><a href="#tasks">Tasks</a></span><ul>
+	
+</ul></li>
+
+
+
+
+
+<li role="treeitem" class="children"><span class="disclosure"></span><span class="sectionName"><a href="#properties">Properties</a></span><ul>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/documentSize">documentSize</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/flattenedContext">flattenedContext</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/flattenedData">flattenedData</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/layerChannelCount">layerChannelCount</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/layers">layers</a></span></li>
+	
+</ul></li>
+
+
+
+
+
+<li role="treeitem" class="children"><span class="disclosure"></span><span class="sectionName"><a href="#instance_methods">Instance Methods</a></span><ul>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/addLayerWithCGImage:andName:andOpacity:andOffset:">addLayerWithCGImage:andName:andOpacity:andOffset:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/closeCurrentGroupLayer">closeCurrentGroupLayer</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/createPSDData">createPSDData</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/dealloc">dealloc</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/init">init</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/initWithDocumentSize:">initWithDocumentSize:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/openGroupLayerWithName:">openGroupLayerWithName:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/preprocess">preprocess</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/writeColorModeDataSectionOn:">writeColorModeDataSectionOn:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/writeFileHeaderSectionOn:">writeFileHeaderSectionOn:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/writeImageDataSectionOn:">writeImageDataSectionOn:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/writeImageResourceSectionOn:">writeImageResourceSectionOn:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/writeLayerAndMaskInformationSectionOn:">writeLayerAndMaskInformationSectionOn:</a></span></li>
+	
+</ul></li>
+
+
+			</ul>
+		</nav>
+		<article>
+			<div id="contents" class="isShowingTOC" role="main">
+				<a title="SFPSDWriter Class Reference" name="top"></a>
+				<div class="main-navigation navigation-top">
+					<ul>
+	<li><a href="../index.html">Index</a></li>
+	<li><a href="../hierarchy.html">Hierarchy</a></li>
+</ul>
+				</div>
+				<div id="header">
+					<div class="section-header">
+						<h1 class="title title-header">SFPSDWriter Class Reference</h1>
+					</div>		
+				</div>
+				<div id="container">	
+					
+					<div class="section section-specification"><table cellspacing="0"><tbody>
+						<tr>
+	<td class="specification-title">Inherits from</td>
+	<td class="specification-value">NSObject</td>
+</tr><tr>
+	<td class="specification-title">Declared in</td>
+	<td class="specification-value">SFPSDWriter.h<br />SFPSDWriter.m</td>
+</tr>
+						</tbody></table></div>
+					
+					
+					
+					
+					
+					
+					<div class="section section-tasks">
+						<a title="Tasks" name="tasks"></a>
+						<h2 class="subtitle subtitle-tasks">Tasks</h2>
+						
+						
+						
+						<h3 class="subsubtitle task-title">Other Methods</h3>
+
+						<ul class="task-list">
+							<li>
+	<span class="tooltip">
+		<code><a href="#//api/name/flattenedContext">&nbsp;&nbsp;flattenedContext</a></code>
+		
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/layers">&nbsp;&nbsp;layers</a></code>
+		<span class="tooltip"><p>The PSDLayer objects with layer data, names, etc&hellip; Note that when you call
+<a href="#//api/name/createPSDData">createPSDData</a>, this array is slowly emptied &ndash; the PSDWriter removes the individual layers
+from memory as it builds the PSD file.</p></span>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/documentSize">&nbsp;&nbsp;documentSize</a></code>
+		<span class="tooltip"><p>The size of the PSD you&rsquo;re exporting.</p></span>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/layerChannelCount">&nbsp;&nbsp;layerChannelCount</a></code>
+		<span class="tooltip"><p>The number of channels in each layer. Defaults to 4, unless <a href="#//api/name/layers">layers</a>
+are not transparent. At the moment, this setting applies to all <a href="#//api/name/layers">layers</a>.</p></span>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/flattenedData">&nbsp;&nbsp;flattenedData</a></code>
+		<span class="tooltip"><p>Optional. The RGBA data for a flattened &ldquo;preview&rdquo; of the PSD.</p></span>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/initWithDocumentSize:">&ndash;&nbsp;initWithDocumentSize:</a></code>
+		<span class="tooltip"><p>Initializes a new PSDWriter for creating a PSD document with the specified size.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/addLayerWithCGImage:andName:andOpacity:andOffset:">&ndash;&nbsp;addLayerWithCGImage:andName:andOpacity:andOffset:</a></code>
+		<span class="tooltip"><p>Adds a new layer to the PSD image with the provided properties.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/openGroupLayerWithName:">&ndash;&nbsp;openGroupLayerWithName:</a></code>
+		<span class="tooltip"><p>Opens a new Group layer.
+The Group will contain all the <a href="#//api/name/layers">layers</a> added to the PSDWriter.<a href="#//api/name/layers">layers</a> before <a href="#//api/name/closeCurrentGroupLayer">closeCurrentGroupLayer</a> is called</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/closeCurrentGroupLayer">&ndash;&nbsp;closeCurrentGroupLayer</a></code>
+		<span class="tooltip"><p>Closes the last opened Group layer.
+The layer will have the name and other data of the OpenGroupLayer that it is closing
+The function returns the newly created Group layer in order to customize it after the creation.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/createPSDData">&ndash;&nbsp;createPSDData</a></code>
+		<span class="tooltip"><p>Generates an NSData object representing a PSD image with the width and height specified by <a href="#//api/name/documentSize">documentSize</a>
+and the contents specified by the <a href="#//api/name/layers">layers</a> array. Note that this function can be (and really should be)
+called on a separate thread.</p></span>
+	</span>
+	
+	
+</li>
+						</ul>
+						
+						
+						
+						<h3 class="subsubtitle task-title">Other Methods</h3>
+
+						<ul class="task-list">
+							<li>
+	<span class="tooltip">
+		<code><a href="#//api/name/init">&ndash;&nbsp;init</a></code>
+		
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/dealloc">&ndash;&nbsp;dealloc</a></code>
+		
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/preprocess">&ndash;&nbsp;preprocess</a></code>
+		
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/writeFileHeaderSectionOn:">&ndash;&nbsp;writeFileHeaderSectionOn:</a></code>
+		
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/writeColorModeDataSectionOn:">&ndash;&nbsp;writeColorModeDataSectionOn:</a></code>
+		
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/writeImageResourceSectionOn:">&ndash;&nbsp;writeImageResourceSectionOn:</a></code>
+		
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/writeLayerAndMaskInformationSectionOn:">&ndash;&nbsp;writeLayerAndMaskInformationSectionOn:</a></code>
+		
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/writeImageDataSectionOn:">&ndash;&nbsp;writeImageDataSectionOn:</a></code>
+		
+	</span>
+	
+	
+</li>
+						</ul>
+						
+					</div>
+					
+					
+					
+					
+					
+					<div class="section section-methods">
+						<a title="Properties" name="properties"></a>
+						<h2 class="subtitle subtitle-methods">Properties</h2>
+						
+						<div class="section-method">
+	<a name="//api/name/documentSize" title="documentSize"></a>
+	<h3 class="subsubtitle method-title">documentSize</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>The size of the PSD you&rsquo;re exporting.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, assign) CGSize documentSize</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>The size of the PSD you&rsquo;re exporting.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">SFPSDWriter.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/flattenedContext" title="flattenedContext"></a>
+	<h3 class="subsubtitle method-title">flattenedContext</h3>
+	
+	
+
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, assign) CGContextRef flattenedContext</code></div>
+
+    
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/flattenedData" title="flattenedData"></a>
+	<h3 class="subsubtitle method-title">flattenedData</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Optional. The RGBA data for a flattened &ldquo;preview&rdquo; of the PSD.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, strong) NSData *flattenedData</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Optional. The RGBA data for a flattened &ldquo;preview&rdquo; of the PSD.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">SFPSDWriter.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/layerChannelCount" title="layerChannelCount"></a>
+	<h3 class="subsubtitle method-title">layerChannelCount</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>The number of channels in each layer. Defaults to 4, unless <a href="#//api/name/layers">layers</a>
+are not transparent. At the moment, this setting applies to all <a href="#//api/name/layers">layers</a>.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, assign) int layerChannelCount</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>The number of channels in each layer. Defaults to 4, unless <a href="#//api/name/layers">layers</a>
+are not transparent. At the moment, this setting applies to all <a href="#//api/name/layers">layers</a>.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">SFPSDWriter.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/layers" title="layers"></a>
+	<h3 class="subsubtitle method-title">layers</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>The PSDLayer objects with layer data, names, etc&hellip; Note that when you call
+<a href="#//api/name/createPSDData">createPSDData</a>, this array is slowly emptied &ndash; the PSDWriter removes the individual layers
+from memory as it builds the PSD file.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, strong) NSMutableArray *layers</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>The PSDLayer objects with layer data, names, etc&hellip; Note that when you call
+<a href="#//api/name/createPSDData">createPSDData</a>, this array is slowly emptied &ndash; the PSDWriter removes the individual layers
+from memory as it builds the PSD file.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">SFPSDWriter.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+					</div>
+					
+					
+					
+					
+					
+					<div class="section section-methods">
+						<a title="Instance Methods" name="instance_methods"></a>
+						<h2 class="subtitle subtitle-methods">Instance Methods</h2>
+						
+						<div class="section-method">
+	<a name="//api/name/addLayerWithCGImage:andName:andOpacity:andOffset:" title="addLayerWithCGImage:andName:andOpacity:andOffset:"></a>
+	<h3 class="subsubtitle method-title">addLayerWithCGImage:andName:andOpacity:andOffset:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Adds a new layer to the PSD image with the provided properties.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (SFPSDLayer *)addLayerWithCGImage:(CGImageRef)<em>image</em> andName:(NSString *)<em>name</em> andOpacity:(float)<em>opacity</em> andOffset:(CGPoint)<em>offset</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>image</em></dt>
+			<dd><p>The image to be added. Does not need to be the same size as the document, but it cannot be larger.</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>name</em></dt>
+			<dd><p>The name you&rsquo;d like to give the layer.</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>opacity</em></dt>
+			<dd><p>The opacity of the layer, from [0-1]</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>offset</em></dt>
+			<dd><p>The offset of the layer within the document. Use this to position <a href="#//api/name/layers">layers</a> within the PSD.</p>
+
+<p>The function returns the newly created layer in order to customize it after the creation.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Adds a new layer to the PSD image with the provided properties.</p>
+
+<p>If you are using NSImages and not CGImages, use the following code to convert to CGImageRefs:</p>
+
+<p>NSImage* yourImage;
+CGImageSourceRef source = CGImageSourceCreateWithData((CFDataRef)[yourImage TIFFRepresentation], NULL);
+CGImageRef imageRef = CGImageSourceCreateImageAtIndex(source, 0, NULL);</p>
+
+<p>If you prefer, you can setup PSDLayers by yourself
+and put them in the PSDWriter.<a href="#//api/name/layers">layers</a> array, but this method automatically creates the <a href="#//api/name/flattenedData">flattenedData</a>,
+an image that is a flattened preview of the layered PSD. If you populate the layer objects yourself,
+you need to provide the flattened image data yourself.</p>
+
+<p>Note: Having <a href="#//api/name/layers">layers</a> partially off the edge of the canvas is not currently supported.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">SFPSDWriter.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/closeCurrentGroupLayer" title="closeCurrentGroupLayer"></a>
+	<h3 class="subsubtitle method-title">closeCurrentGroupLayer</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Closes the last opened Group layer.
+The layer will have the name and other data of the OpenGroupLayer that it is closing
+The function returns the newly created Group layer in order to customize it after the creation.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (SFPSDGroupClosingLayer *)closeCurrentGroupLayer</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Closes the last opened Group layer.
+The layer will have the name and other data of the OpenGroupLayer that it is closing
+The function returns the newly created Group layer in order to customize it after the creation.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">SFPSDWriter.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/createPSDData" title="createPSDData"></a>
+	<h3 class="subsubtitle method-title">createPSDData</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Generates an NSData object representing a PSD image with the width and height specified by <a href="#//api/name/documentSize">documentSize</a>
+and the contents specified by the <a href="#//api/name/layers">layers</a> array. Note that this function can be (and really should be)
+called on a separate thread.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (NSData *)createPSDData</code></div>
+
+    
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p>PSD data. Write this data to a file or attach it to an email, etc&hellip;</p>
+
+<p>Note: You cannot call this function multiple times. After calling createPSDData and getting the document data,
+you should discard the PSDWriter object. This function is destructive and deletes the information you provided
+in the <a href="#//api/name/layers">layers</a> array to conserve memory as it writes the PSD data.</p>
+	</div>
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Generates an NSData object representing a PSD image with the width and height specified by <a href="#//api/name/documentSize">documentSize</a>
+and the contents specified by the <a href="#//api/name/layers">layers</a> array. Note that this function can be (and really should be)
+called on a separate thread.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">SFPSDWriter.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/dealloc" title="dealloc"></a>
+	<h3 class="subsubtitle method-title">dealloc</h3>
+	
+	
+
+	<div class="method-subsection method-declaration"><code>- (void)dealloc</code></div>
+
+    
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/init" title="init"></a>
+	<h3 class="subsubtitle method-title">init</h3>
+	
+	
+
+	<div class="method-subsection method-declaration"><code>- (id)init</code></div>
+
+    
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/initWithDocumentSize:" title="initWithDocumentSize:"></a>
+	<h3 class="subsubtitle method-title">initWithDocumentSize:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Initializes a new PSDWriter for creating a PSD document with the specified size.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (id)initWithDocumentSize:(CGSize)<em>s</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>s</em></dt>
+			<dd><p>The document size</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Initializes a new PSDWriter for creating a PSD document with the specified size.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">SFPSDWriter.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/openGroupLayerWithName:" title="openGroupLayerWithName:"></a>
+	<h3 class="subsubtitle method-title">openGroupLayerWithName:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Opens a new Group layer.
+The Group will contain all the <a href="#//api/name/layers">layers</a> added to the PSDWriter.<a href="#//api/name/layers">layers</a> before <a href="#//api/name/closeCurrentGroupLayer">closeCurrentGroupLayer</a> is called</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (SFPSDGroupOpeningLayer *)openGroupLayerWithName:(NSString *)<em>name</em></code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Opens a new Group layer.
+The Group will contain all the <a href="#//api/name/layers">layers</a> added to the PSDWriter.<a href="#//api/name/layers">layers</a> before <a href="#//api/name/closeCurrentGroupLayer">closeCurrentGroupLayer</a> is called</p>
+
+<p>The function returns the newly created Group layer in order to customize it after the creation.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">SFPSDWriter.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/preprocess" title="preprocess"></a>
+	<h3 class="subsubtitle method-title">preprocess</h3>
+	
+	
+
+	<div class="method-subsection method-declaration"><code>- (void)preprocess</code></div>
+
+    
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/writeColorModeDataSectionOn:" title="writeColorModeDataSectionOn:"></a>
+	<h3 class="subsubtitle method-title">writeColorModeDataSectionOn:</h3>
+	
+	
+
+	<div class="method-subsection method-declaration"><code>- (void)writeColorModeDataSectionOn:(NSMutableData *)<em>result</em></code></div>
+
+    
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/writeFileHeaderSectionOn:" title="writeFileHeaderSectionOn:"></a>
+	<h3 class="subsubtitle method-title">writeFileHeaderSectionOn:</h3>
+	
+	
+
+	<div class="method-subsection method-declaration"><code>- (void)writeFileHeaderSectionOn:(NSMutableData *)<em>result</em></code></div>
+
+    
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/writeImageDataSectionOn:" title="writeImageDataSectionOn:"></a>
+	<h3 class="subsubtitle method-title">writeImageDataSectionOn:</h3>
+	
+	
+
+	<div class="method-subsection method-declaration"><code>- (void)writeImageDataSectionOn:(NSMutableData *)<em>result</em></code></div>
+
+    
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/writeImageResourceSectionOn:" title="writeImageResourceSectionOn:"></a>
+	<h3 class="subsubtitle method-title">writeImageResourceSectionOn:</h3>
+	
+	
+
+	<div class="method-subsection method-declaration"><code>- (void)writeImageResourceSectionOn:(NSMutableData *)<em>result</em></code></div>
+
+    
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/writeLayerAndMaskInformationSectionOn:" title="writeLayerAndMaskInformationSectionOn:"></a>
+	<h3 class="subsubtitle method-title">writeLayerAndMaskInformationSectionOn:</h3>
+	
+	
+
+	<div class="method-subsection method-declaration"><code>- (void)writeLayerAndMaskInformationSectionOn:(NSMutableData *)<em>result</em></code></div>
+
+    
+</div>
+						
+					</div>
+					
+					
+				</div>
+				<div class="main-navigation navigation-bottom">
+					<ul>
+	<li><a href="../index.html">Index</a></li>
+	<li><a href="../hierarchy.html">Hierarchy</a></li>
+</ul>
+				</div>
+				<div id="footer">
+					<hr />
+					<div class="footer-copyright">
+						<p><span class="copyright">&copy; 2013 Shiny Frog. All rights reserved. (Last updated: 2013-06-12)</span><br />
+						
+						<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.1 (build 840)</a>.</span></p>
+						
+					</div>
+				</div>
+			</div>
+		</article>
+		<script type="text/javascript">
+			function jumpToChange()
+			{
+				window.location.hash = this.options[this.selectedIndex].value;
+			}
+			
+			function toggleTOC()
+			{
+				var contents = document.getElementById('contents');
+				var tocContainer = document.getElementById('tocContainer');
+				
+				if (this.getAttribute('class') == 'open')
+				{
+					this.setAttribute('class', '');
+					contents.setAttribute('class', '');
+					tocContainer.setAttribute('class', '');
+					
+					window.name = "hideTOC";
+				}
+				else
+				{
+					this.setAttribute('class', 'open');
+					contents.setAttribute('class', 'isShowingTOC');
+					tocContainer.setAttribute('class', 'isShowingTOC');
+					
+					window.name = "";
+				}
+				return false;
+			}
+			
+			function toggleTOCEntryChildren(e)
+			{
+				e.stopPropagation();
+				var currentClass = this.getAttribute('class');
+				if (currentClass == 'children') {
+					this.setAttribute('class', 'children open');
+				}
+				else if (currentClass == 'children open') {
+					this.setAttribute('class', 'children');
+				}
+				return false;
+			}
+			
+			function tocEntryClick(e)
+			{
+				e.stopPropagation();
+				return true;
+			}
+			
+			function init()
+			{
+				var selectElement = document.getElementById('jumpTo');
+				selectElement.addEventListener('change', jumpToChange, false);
+				
+				var tocButton = document.getElementById('table_of_contents');
+				tocButton.addEventListener('click', toggleTOC, false);
+				
+				var taskTreeItem = document.getElementById('task_treeitem');
+				if (taskTreeItem.getElementsByTagName('li').length > 0)
+				{
+					taskTreeItem.setAttribute('class', 'children');
+					taskTreeItem.firstChild.setAttribute('class', 'disclosure');
+				}
+				
+				var tocList = document.getElementById('toc');
+				
+				var tocEntries = tocList.getElementsByTagName('li');
+				for (var i = 0; i < tocEntries.length; i++) {
+					tocEntries[i].addEventListener('click', toggleTOCEntryChildren, false);
+				}
+				
+				var tocLinks = tocList.getElementsByTagName('a');
+				for (var i = 0; i < tocLinks.length; i++) {
+					tocLinks[i].addEventListener('click', tocEntryClick, false);
+				}
+				
+				if (window.name == "hideTOC") {
+					toggleTOC.call(tocButton);
+				}
+			}
+			
+			window.onload = init;
+			
+			// If showing in Xcode, hide the TOC and Header
+			if (navigator.userAgent.match(/xcode/i)) {
+				document.getElementById("contents").className = "hideInXcode"
+				document.getElementById("tocContainer").className = "hideInXcode"
+				document.getElementById("top_header").className = "hideInXcode"
+			}
+			
+		</script>
+	</body>
+</html>

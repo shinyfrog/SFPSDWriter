@@ -40,7 +40,7 @@
     self.name = nil;
 }
 
--(NSArray *)layerChannels {
+- (NSArray *)layerChannels {
     
     NSMutableArray *channels = [NSMutableArray array];
     
@@ -137,7 +137,7 @@
     return channels;
 }
 
--(void)writeNameOn:(NSMutableData *)data withPadding:(int)padding
+- (void)writeNameOn:(NSMutableData *)data withPadding:(int)padding
 {
     NSString *layerName = [self.name stringByAppendingString:@" "]; // The white space is there to simulate the space reserved by the leading length
     const char *pascalName = [layerName sfPascalStringPaddedTo:4];
@@ -146,7 +146,7 @@
     [data appendBytes:pascalName length:pascalNameLength - 1]; // -1 because it was the space reserved for writing the heading length of the string
 }
 
--(void)writeUnicodeNameOn:(NSMutableData *)data
+- (void)writeUnicodeNameOn:(NSMutableData *)data
 {
     [data sfAppendUTF8String:@"8BIM" length:4];
     [data sfAppendUTF8String:@"luni" length:4]; // Unicode layer name (Photoshop 5.0)
@@ -165,7 +165,7 @@
     free(buffer);
 }
 
--(NSData *)extraLayerInformation
+- (NSData *)extraLayerInformation
 {
     // new stream of data for the extra information
     NSMutableData *extraDataStream = [[NSMutableData alloc] init];
@@ -184,7 +184,7 @@
 
 #pragma mark - Public writing functions
 
--(void)writeLayerInformationOn:(NSMutableData *)layerInformation
+- (void)writeLayerInformationOn:(NSMutableData *)layerInformation
 {
     // print out top left bottom right 4x4
     [layerInformation sfAppendValue:0 length:4];
@@ -239,7 +239,7 @@
     [layerInformation appendData:extraData];
 }
 
--(void)writeLayerChannelsOn:(NSMutableData *)layerInformation
+- (void)writeLayerChannelsOn:(NSMutableData *)layerInformation
 {
     NSArray *layerChannels = [self layerChannels];
     for (int i = 0; i < [layerChannels count]; i++) {

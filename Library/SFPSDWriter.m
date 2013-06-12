@@ -230,7 +230,7 @@
 
 // FILE HEADER SECTION
 // -----------------------------------------------------------------------------------------------
--(void)writeFileHeaderSectionOn:(NSMutableData *)result
+- (void)writeFileHeaderSectionOn:(NSMutableData *)result
 {
 	// write the signature
 	[result sfAppendUTF8String:@"8BPS" length:4];
@@ -257,7 +257,7 @@
 
 // COLOR MODE DATA SECTION
 // -----------------------------------------------------------------------------------------------
--(void)writeColorModeDataSectionOn:(NSMutableData *)result
+- (void)writeColorModeDataSectionOn:(NSMutableData *)result
 {
 	// write color mode data section
 	[result sfAppendValue:0 length:4];
@@ -265,7 +265,7 @@
 
 // IMAGE RESOURCES SECTION
 // -----------------------------------------------------------------------------------------------
--(void)writeImageResourceSectionOn:(NSMutableData *)result
+- (void)writeImageResourceSectionOn:(NSMutableData *)result
 {
 	// write images resources section. This is used to store things like current layer.
 	NSMutableData *imageResources = [[NSMutableData alloc] init];
@@ -292,7 +292,7 @@
 
 // LAYER AND MASK INFORMATION SECTION
 // -----------------------------------------------------------------------------------------------
--(void)writeLayerAndMaskInformationSectionOn:(NSMutableData *)result
+- (void)writeLayerAndMaskInformationSectionOn:(NSMutableData *)result
 {
 	// layer and mask information section. contains basic data about each layer (its mask, its channels,
 	// its layer effects, its annotations, transparency layers, wtf tons of shit.) We need to actually
@@ -330,7 +330,7 @@
 
 // IMAGE DATA SECTION
 // -----------------------------------------------------------------------------------------------
--(void)writeImageDataSectionOn:(NSMutableData *)result
+- (void)writeImageDataSectionOn:(NSMutableData *)result
 {
 	// write compression format = 1 = RLE
 	[result sfAppendValue:1 length:2];

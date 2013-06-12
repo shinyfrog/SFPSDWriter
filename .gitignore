@@ -11,12 +11,8 @@
 #    from source-control, but YMMV
 *.lock
 
-# profile - REMOVED temporarily (on double-checking, this seems incorrect; I can't find it in OS X docs?)
-#profile
-
 # Xcode temporary files that should never be committed
 *~.nib
-
 
 # Xcode build files -
 DerivedData/
@@ -39,7 +35,6 @@ build/
 !default.mode1v3
 !default.mode2v3
 !default.perspectivev3
-
 
 # Xcode 4 - semi-personal settings
 xcuserdata

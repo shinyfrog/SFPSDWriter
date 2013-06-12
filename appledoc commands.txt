@@ -1,0 +1,5 @@
+# Creates the docset
+appledoc --project-name SFPSDWriter --project-company "Shiny Frog" --company-id com.shinyfrog --output . --keep-undocumented-objects --keep-undocumented-members --search-undocumented-doc Library/.
+
+# Creates the html files only
+appledoc --project-name SFPSDWriter --project-company "Shiny Frog" --company-id com.shinyfrog --output . --keep-undocumented-objects --keep-undocumented-members --search-undocumented-doc --no-create-docset Library/.

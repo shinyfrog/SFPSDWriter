@@ -12,16 +12,13 @@
 
 @interface NSString (SFPascalString)
 
-/* Pascal string padded to multiples of the paddind interval
- */
+/** Pascal string padded to multiples of the paddind interval. */
 - (const char *)sfPascalStringPaddedTo:(int)paddingInterval withPaddingString:(NSString *)paddingString;
 
-/* Pascal string padded to multiples of the paddind interval using as padding the unicode char 0x00
- */
+/** Pascal string padded to multiples of the paddind interval using as padding the unicode char 0x00. */
 - (const char *)sfPascalStringPaddedTo:(int)paddingInterval;
 
-/* The length of the string padded to the multiples of the padding interval
- */
+/** The length of the string padded to the multiples of the padding interval. */
 - (int)sfPascalStringLengthPaddedTo:(int)paddingInterval;
 
 @end

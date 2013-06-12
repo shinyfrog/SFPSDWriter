@@ -14,21 +14,9 @@
 
 @implementation SFPSDGroupClosingLayer
 
--(NSArray *)layerChannels
-{
-    // Creating empty channels for the Group Layer with only compression formats
-    NSMutableArray *layerChannels = [NSMutableArray array];
-    for (int channel = 0; channel < self.channelCount; channel++) {
-        NSMutableData *channelData = [[NSMutableData alloc] init];
-        // write channel compression format
-        [channelData sfAppendValue:0 length:2];
-        // add completed channel data to channels array
-        [layerChannels addObject:channelData];
-    }
-    return layerChannels;
-}
+#pragma mark - Overrides of SFPSDLayer functions
 
--(NSData *)extraLayerInformation
+- (NSData *)extraLayerInformation
 {
     NSMutableData *extraDataStream = [[NSMutableData alloc] init];
     
