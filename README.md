@@ -1,7 +1,6 @@
 # SFPSDWriter
 
 SFPSDWriter is an Objective-C library for writing PSD files. Here at Shiny Frog we needed a way to write **multilayer** **PSDs** with **groups** and this library is the result after days of headaches.
-This library gets inspiration from Ben Gotow's [PSDWriter](https://github.com/bengotow/PSDWriter). It was reorganized a bit in the structure to depute the writing of the informations and the channels to the layers (and adding something here and there).
 
 It features:
 
@@ -150,10 +149,16 @@ and
 
 The library is functionally complete for our needs so there is no planning on working on it. Obviously there will be bugfixes or speedups if we'll found some while using it.
 
-There is no plan to make this library able to read PSDs. Or lets make it this way: there is a concrete plan to **not** make the library read PSD files.
+There is no plan to make this library able to read PSDs. Or let's make it this way: there is a concrete plan to **not** make the library read PSD files.
 
 At this point I'd like to invite you to read this [famous comment](https://code.google.com/p/xee/source/browse/XeePhotoshopLoader.m#108) to let you understand what does it mean to work with PSD files. Have to admit that I found that comment motivational but I'm a pervert. Don't play with PSD files if you can. :)
 
 ## Contributing
 
 We will happily evaluate the possibility to accept pull requests so if you have suggestions - you are welcome to let us know.
+
+## Acknowledgments
+
+This library gets inspiration from Ben Gotow's [PSDWriter](https://github.com/bengotow/PSDWriter). It was reorganized a bit in the structure to depute the writing of the informations and the channels to the layers (and adding something here and there).
+
+This library would be not possible without some pro tips of [Gus Mueller](https://github.com/ccgus) about the mistery behaviour of PSD groups!

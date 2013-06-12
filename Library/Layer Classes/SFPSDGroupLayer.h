@@ -17,11 +17,9 @@
 @property (nonatomic, assign) BOOL isOpened;
 
 /* Copies the Group layer information from another Group layer
- * Useful if you want to setup the information while opening the Group and forget it while closing
- * it and magically have the information back
+ * Useful if you want to setup the information on the Closing Group Layer and don't remember
+ * the information you've put in the Opening one
  */
-
-// TODO: fix the comment
 -(void)copyGroupInformationFrom:(SFPSDGroupLayer *)layer;
 
 @end
