@@ -26,19 +26,23 @@
 /** The name of the layer. */
 @property (nonatomic, strong) NSString *name;
 
+/** The image reference */
+@property (nonatomic, assign) CGImageRef image;
+
 /** 
- * The image data in RGBA or RGB format, depending on whether the PSDWriter.layerChannelCount
- * is set to 4 or 3, respectively. */
+ * The image data in RGBA format.
+ *
+ * The data is kept as property because of the massive use in the PSD generation phase. The 
+ * data is created on first usage and niled every time the image changes. */
 @property (nonatomic, strong) NSData *imageData;
+
+//@property (nonatomic, assign) CGRect imageRegion;
 
 /** The opacity of the layer between 0 and 1. */
 @property (nonatomic, assign) float opacity;
 
-/**
- * The rectangle the layer should be placed within in the PSD. Note that scaling is not currently
- * supported, so you should really only adjust the origin of this rect to move the imageData around
- * within the PSD. */
-@property (nonatomic, assign) CGRect rect;
+/** Layer offset */
+@property (nonatomic, assign) CGPoint offset;
 
 /** Number of channels of the layer. Defaults to 4. */
 @property (nonatomic, assign) NSInteger channelCount;
@@ -62,6 +66,9 @@
 /** Designed initializer. */
 - (id)initWithChannelCount:(int)channelCount andOpacity:(float)opacity andShouldFlipLayerData:(BOOL)shouldFlipLayerData andShouldUnpremultiplyLayerData:(BOOL)shouldUnpremultiplyLayerData andBlendMode:(NSString *)blendMode;
 
+/**  */
+- (CGRect) imageRegion;
+
 /**
  * Writes the Layer Information Section inside the mutable data (the first part of the "Layer info"
  * section of the "Layer and mask information section")
@@ -83,6 +90,9 @@
 
 @interface SFPSDLayer (Protected)
 
+/**  */
+- (CGRect) screenRegion;
+
 /** Returns an array of the channels composing the layer. */
 - (NSArray *)layerChannels;
 
@@ -97,3 +107,8 @@
 - (NSData *)extraLayerInformation;
 
 @end
+
+/** 
+ * A convenience function for getting RGBA NSData from a CGImageRef.
+ */
+NSData *CGImageGetData(CGImageRef image, CGRect region);

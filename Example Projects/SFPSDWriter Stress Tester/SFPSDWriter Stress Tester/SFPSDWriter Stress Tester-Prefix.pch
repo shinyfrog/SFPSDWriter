@@ -1,0 +1,7 @@
+//
+// Prefix header for all source files of the 'SFPSDWriter Stress Tester' target in the 'SFPSDWriter Stress Tester' project
+//
+
+#ifdef __OBJC__
+    #import <Cocoa/Cocoa.h>
+#endif

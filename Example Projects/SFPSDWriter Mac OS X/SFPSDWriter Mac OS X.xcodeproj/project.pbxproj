@@ -7,26 +7,44 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9F084AD7176F25A000C5F37B /* NSData+SFPackedBits.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F084AC4176F25A000C5F37B /* NSData+SFPackedBits.m */; };
+		9F084AD8176F25A000C5F37B /* NSMutableData+SFAppendValue.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F084AC6176F25A000C5F37B /* NSMutableData+SFAppendValue.m */; };
+		9F084AD9176F25A000C5F37B /* NSString+SFPascalString.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F084AC8176F25A000C5F37B /* NSString+SFPascalString.m */; };
+		9F084ADA176F25A000C5F37B /* SFPSDLayerBlendModes.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F084ACC176F25A000C5F37B /* SFPSDLayerBlendModes.m */; };
+		9F084ADB176F25A000C5F37B /* SFPSDGroupClosingLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F084ACE176F25A000C5F37B /* SFPSDGroupClosingLayer.m */; };
+		9F084ADC176F25A000C5F37B /* SFPSDGroupLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F084AD0176F25A000C5F37B /* SFPSDGroupLayer.m */; };
+		9F084ADD176F25A000C5F37B /* SFPSDGroupOpeningLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F084AD2176F25A000C5F37B /* SFPSDGroupOpeningLayer.m */; };
+		9F084ADE176F25A000C5F37B /* SFPSDLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F084AD4176F25A000C5F37B /* SFPSDLayer.m */; };
+		9F084ADF176F25A000C5F37B /* SFPSDWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F084AD6176F25A000C5F37B /* SFPSDWriter.m */; };
 		9F1ED49B17686ABE00DECCDC /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9F1ED49A17686ABE00DECCDC /* Cocoa.framework */; };
 		9F1ED4A517686ABE00DECCDC /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 9F1ED4A317686ABE00DECCDC /* InfoPlist.strings */; };
 		9F1ED4A717686ABE00DECCDC /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F1ED4A617686ABE00DECCDC /* main.m */; };
 		9F1ED4AB17686ABE00DECCDC /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 9F1ED4A917686ABE00DECCDC /* Credits.rtf */; };
 		9F1ED4AE17686ABE00DECCDC /* SFAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F1ED4AD17686ABE00DECCDC /* SFAppDelegate.m */; };
 		9F1ED4B117686ABF00DECCDC /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9F1ED4AF17686ABF00DECCDC /* MainMenu.xib */; };
-		9F1ED4CD17686AD300DECCDC /* NSData+SFPackedBits.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F1ED4BA17686AD300DECCDC /* NSData+SFPackedBits.m */; };
-		9F1ED4CE17686AD300DECCDC /* NSMutableData+SFAppendValue.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F1ED4BC17686AD300DECCDC /* NSMutableData+SFAppendValue.m */; };
-		9F1ED4CF17686AD300DECCDC /* NSString+SFPascalString.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F1ED4BE17686AD300DECCDC /* NSString+SFPascalString.m */; };
-		9F1ED4D017686AD300DECCDC /* SFPSDLayerBlendModes.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F1ED4C217686AD300DECCDC /* SFPSDLayerBlendModes.m */; };
-		9F1ED4D117686AD300DECCDC /* SFPSDGroupClosingLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F1ED4C417686AD300DECCDC /* SFPSDGroupClosingLayer.m */; };
-		9F1ED4D217686AD300DECCDC /* SFPSDGroupLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F1ED4C617686AD300DECCDC /* SFPSDGroupLayer.m */; };
-		9F1ED4D317686AD300DECCDC /* SFPSDGroupOpeningLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F1ED4C817686AD300DECCDC /* SFPSDGroupOpeningLayer.m */; };
-		9F1ED4D417686AD300DECCDC /* SFPSDLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F1ED4CA17686AD300DECCDC /* SFPSDLayer.m */; };
-		9F1ED4D517686AD300DECCDC /* SFPSDWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F1ED4CC17686AD300DECCDC /* SFPSDWriter.m */; };
 		9F1ED4D917686BD800DECCDC /* firstImage.png in Resources */ = {isa = PBXBuildFile; fileRef = 9F1ED4D717686BD800DECCDC /* firstImage.png */; };
 		9F1ED4DA17686BD800DECCDC /* secondImage.png in Resources */ = {isa = PBXBuildFile; fileRef = 9F1ED4D817686BD800DECCDC /* secondImage.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		9F084AC3176F25A000C5F37B /* NSData+SFPackedBits.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+SFPackedBits.h"; sourceTree = "<group>"; };
+		9F084AC4176F25A000C5F37B /* NSData+SFPackedBits.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+SFPackedBits.m"; sourceTree = "<group>"; };
+		9F084AC5176F25A000C5F37B /* NSMutableData+SFAppendValue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSMutableData+SFAppendValue.h"; sourceTree = "<group>"; };
+		9F084AC6176F25A000C5F37B /* NSMutableData+SFAppendValue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSMutableData+SFAppendValue.m"; sourceTree = "<group>"; };
+		9F084AC7176F25A000C5F37B /* NSString+SFPascalString.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+SFPascalString.h"; sourceTree = "<group>"; };
+		9F084AC8176F25A000C5F37B /* NSString+SFPascalString.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+SFPascalString.m"; sourceTree = "<group>"; };
+		9F084ACB176F25A000C5F37B /* SFPSDLayerBlendModes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFPSDLayerBlendModes.h; sourceTree = "<group>"; };
+		9F084ACC176F25A000C5F37B /* SFPSDLayerBlendModes.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFPSDLayerBlendModes.m; sourceTree = "<group>"; };
+		9F084ACD176F25A000C5F37B /* SFPSDGroupClosingLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFPSDGroupClosingLayer.h; sourceTree = "<group>"; };
+		9F084ACE176F25A000C5F37B /* SFPSDGroupClosingLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFPSDGroupClosingLayer.m; sourceTree = "<group>"; };
+		9F084ACF176F25A000C5F37B /* SFPSDGroupLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFPSDGroupLayer.h; sourceTree = "<group>"; };
+		9F084AD0176F25A000C5F37B /* SFPSDGroupLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFPSDGroupLayer.m; sourceTree = "<group>"; };
+		9F084AD1176F25A000C5F37B /* SFPSDGroupOpeningLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFPSDGroupOpeningLayer.h; sourceTree = "<group>"; };
+		9F084AD2176F25A000C5F37B /* SFPSDGroupOpeningLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFPSDGroupOpeningLayer.m; sourceTree = "<group>"; };
+		9F084AD3176F25A000C5F37B /* SFPSDLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFPSDLayer.h; sourceTree = "<group>"; };
+		9F084AD4176F25A000C5F37B /* SFPSDLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFPSDLayer.m; sourceTree = "<group>"; };
+		9F084AD5176F25A000C5F37B /* SFPSDWriter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFPSDWriter.h; sourceTree = "<group>"; };
+		9F084AD6176F25A000C5F37B /* SFPSDWriter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFPSDWriter.m; sourceTree = "<group>"; };
 		9F1ED49717686ABE00DECCDC /* SFPSDWriter Mac OS X.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "SFPSDWriter Mac OS X.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9F1ED49A17686ABE00DECCDC /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		9F1ED49D17686ABE00DECCDC /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -40,24 +58,6 @@
 		9F1ED4AC17686ABE00DECCDC /* SFAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SFAppDelegate.h; sourceTree = "<group>"; };
 		9F1ED4AD17686ABE00DECCDC /* SFAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SFAppDelegate.m; sourceTree = "<group>"; };
 		9F1ED4B017686ABF00DECCDC /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainMenu.xib; sourceTree = "<group>"; };
-		9F1ED4B917686AD300DECCDC /* NSData+SFPackedBits.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+SFPackedBits.h"; sourceTree = "<group>"; };
-		9F1ED4BA17686AD300DECCDC /* NSData+SFPackedBits.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+SFPackedBits.m"; sourceTree = "<group>"; };
-		9F1ED4BB17686AD300DECCDC /* NSMutableData+SFAppendValue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSMutableData+SFAppendValue.h"; sourceTree = "<group>"; };
-		9F1ED4BC17686AD300DECCDC /* NSMutableData+SFAppendValue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSMutableData+SFAppendValue.m"; sourceTree = "<group>"; };
-		9F1ED4BD17686AD300DECCDC /* NSString+SFPascalString.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+SFPascalString.h"; sourceTree = "<group>"; };
-		9F1ED4BE17686AD300DECCDC /* NSString+SFPascalString.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+SFPascalString.m"; sourceTree = "<group>"; };
-		9F1ED4C117686AD300DECCDC /* SFPSDLayerBlendModes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFPSDLayerBlendModes.h; sourceTree = "<group>"; };
-		9F1ED4C217686AD300DECCDC /* SFPSDLayerBlendModes.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFPSDLayerBlendModes.m; sourceTree = "<group>"; };
-		9F1ED4C317686AD300DECCDC /* SFPSDGroupClosingLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFPSDGroupClosingLayer.h; sourceTree = "<group>"; };
-		9F1ED4C417686AD300DECCDC /* SFPSDGroupClosingLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFPSDGroupClosingLayer.m; sourceTree = "<group>"; };
-		9F1ED4C517686AD300DECCDC /* SFPSDGroupLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFPSDGroupLayer.h; sourceTree = "<group>"; };
-		9F1ED4C617686AD300DECCDC /* SFPSDGroupLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFPSDGroupLayer.m; sourceTree = "<group>"; };
-		9F1ED4C717686AD300DECCDC /* SFPSDGroupOpeningLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFPSDGroupOpeningLayer.h; sourceTree = "<group>"; };
-		9F1ED4C817686AD300DECCDC /* SFPSDGroupOpeningLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFPSDGroupOpeningLayer.m; sourceTree = "<group>"; };
-		9F1ED4C917686AD300DECCDC /* SFPSDLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFPSDLayer.h; sourceTree = "<group>"; };
-		9F1ED4CA17686AD300DECCDC /* SFPSDLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFPSDLayer.m; sourceTree = "<group>"; };
-		9F1ED4CB17686AD300DECCDC /* SFPSDWriter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFPSDWriter.h; sourceTree = "<group>"; };
-		9F1ED4CC17686AD300DECCDC /* SFPSDWriter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFPSDWriter.m; sourceTree = "<group>"; };
 		9F1ED4D717686BD800DECCDC /* firstImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = firstImage.png; sourceTree = "<group>"; };
 		9F1ED4D817686BD800DECCDC /* secondImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = secondImage.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -74,12 +74,62 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		9F084AC1176F25A000C5F37B /* SFPSDWriter */ = {
+			isa = PBXGroup;
+			children = (
+				9F084AC2176F25A000C5F37B /* Categories */,
+				9F084AC9176F25A000C5F37B /* Layer Classes */,
+				9F084AD5176F25A000C5F37B /* SFPSDWriter.h */,
+				9F084AD6176F25A000C5F37B /* SFPSDWriter.m */,
+			);
+			name = SFPSDWriter;
+			path = ../../Library/SFPSDWriter;
+			sourceTree = "<group>";
+		};
+		9F084AC2176F25A000C5F37B /* Categories */ = {
+			isa = PBXGroup;
+			children = (
+				9F084AC3176F25A000C5F37B /* NSData+SFPackedBits.h */,
+				9F084AC4176F25A000C5F37B /* NSData+SFPackedBits.m */,
+				9F084AC5176F25A000C5F37B /* NSMutableData+SFAppendValue.h */,
+				9F084AC6176F25A000C5F37B /* NSMutableData+SFAppendValue.m */,
+				9F084AC7176F25A000C5F37B /* NSString+SFPascalString.h */,
+				9F084AC8176F25A000C5F37B /* NSString+SFPascalString.m */,
+			);
+			path = Categories;
+			sourceTree = "<group>";
+		};
+		9F084AC9176F25A000C5F37B /* Layer Classes */ = {
+			isa = PBXGroup;
+			children = (
+				9F084ACA176F25A000C5F37B /* Constants */,
+				9F084ACD176F25A000C5F37B /* SFPSDGroupClosingLayer.h */,
+				9F084ACE176F25A000C5F37B /* SFPSDGroupClosingLayer.m */,
+				9F084ACF176F25A000C5F37B /* SFPSDGroupLayer.h */,
+				9F084AD0176F25A000C5F37B /* SFPSDGroupLayer.m */,
+				9F084AD1176F25A000C5F37B /* SFPSDGroupOpeningLayer.h */,
+				9F084AD2176F25A000C5F37B /* SFPSDGroupOpeningLayer.m */,
+				9F084AD3176F25A000C5F37B /* SFPSDLayer.h */,
+				9F084AD4176F25A000C5F37B /* SFPSDLayer.m */,
+			);
+			path = "Layer Classes";
+			sourceTree = "<group>";
+		};
+		9F084ACA176F25A000C5F37B /* Constants */ = {
+			isa = PBXGroup;
+			children = (
+				9F084ACB176F25A000C5F37B /* SFPSDLayerBlendModes.h */,
+				9F084ACC176F25A000C5F37B /* SFPSDLayerBlendModes.m */,
+			);
+			path = Constants;
+			sourceTree = "<group>";
+		};
 		9F1ED48E17686ABE00DECCDC = {
 			isa = PBXGroup;
 			children = (
 				9F1ED4A017686ABE00DECCDC /* SFPSDWriter Mac OS X */,
 				9F1ED4D617686BD800DECCDC /* Resources */,
-				9F1ED4B717686AD300DECCDC /* Library */,
+				9F084AC1176F25A000C5F37B /* SFPSDWriter */,
 				9F1ED49917686ABE00DECCDC /* Frameworks */,
 				9F1ED49817686ABE00DECCDC /* Products */,
 			);
@@ -133,56 +183,6 @@
 				9F1ED4A917686ABE00DECCDC /* Credits.rtf */,
 			);
 			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		9F1ED4B717686AD300DECCDC /* Library */ = {
-			isa = PBXGroup;
-			children = (
-				9F1ED4B817686AD300DECCDC /* Categories */,
-				9F1ED4BF17686AD300DECCDC /* Layer Classes */,
-				9F1ED4CB17686AD300DECCDC /* SFPSDWriter.h */,
-				9F1ED4CC17686AD300DECCDC /* SFPSDWriter.m */,
-			);
-			name = Library;
-			path = ../../Library;
-			sourceTree = "<group>";
-		};
-		9F1ED4B817686AD300DECCDC /* Categories */ = {
-			isa = PBXGroup;
-			children = (
-				9F1ED4B917686AD300DECCDC /* NSData+SFPackedBits.h */,
-				9F1ED4BA17686AD300DECCDC /* NSData+SFPackedBits.m */,
-				9F1ED4BB17686AD300DECCDC /* NSMutableData+SFAppendValue.h */,
-				9F1ED4BC17686AD300DECCDC /* NSMutableData+SFAppendValue.m */,
-				9F1ED4BD17686AD300DECCDC /* NSString+SFPascalString.h */,
-				9F1ED4BE17686AD300DECCDC /* NSString+SFPascalString.m */,
-			);
-			path = Categories;
-			sourceTree = "<group>";
-		};
-		9F1ED4BF17686AD300DECCDC /* Layer Classes */ = {
-			isa = PBXGroup;
-			children = (
-				9F1ED4C017686AD300DECCDC /* Constants */,
-				9F1ED4C517686AD300DECCDC /* SFPSDGroupLayer.h */,
-				9F1ED4C617686AD300DECCDC /* SFPSDGroupLayer.m */,
-				9F1ED4C717686AD300DECCDC /* SFPSDGroupOpeningLayer.h */,
-				9F1ED4C817686AD300DECCDC /* SFPSDGroupOpeningLayer.m */,
-				9F1ED4C317686AD300DECCDC /* SFPSDGroupClosingLayer.h */,
-				9F1ED4C417686AD300DECCDC /* SFPSDGroupClosingLayer.m */,
-				9F1ED4C917686AD300DECCDC /* SFPSDLayer.h */,
-				9F1ED4CA17686AD300DECCDC /* SFPSDLayer.m */,
-			);
-			path = "Layer Classes";
-			sourceTree = "<group>";
-		};
-		9F1ED4C017686AD300DECCDC /* Constants */ = {
-			isa = PBXGroup;
-			children = (
-				9F1ED4C117686AD300DECCDC /* SFPSDLayerBlendModes.h */,
-				9F1ED4C217686AD300DECCDC /* SFPSDLayerBlendModes.m */,
-			);
-			path = Constants;
 			sourceTree = "<group>";
 		};
 		9F1ED4D617686BD800DECCDC /* Resources */ = {
@@ -264,15 +264,15 @@
 			files = (
 				9F1ED4A717686ABE00DECCDC /* main.m in Sources */,
 				9F1ED4AE17686ABE00DECCDC /* SFAppDelegate.m in Sources */,
-				9F1ED4CD17686AD300DECCDC /* NSData+SFPackedBits.m in Sources */,
-				9F1ED4CE17686AD300DECCDC /* NSMutableData+SFAppendValue.m in Sources */,
-				9F1ED4CF17686AD300DECCDC /* NSString+SFPascalString.m in Sources */,
-				9F1ED4D017686AD300DECCDC /* SFPSDLayerBlendModes.m in Sources */,
-				9F1ED4D117686AD300DECCDC /* SFPSDGroupClosingLayer.m in Sources */,
-				9F1ED4D217686AD300DECCDC /* SFPSDGroupLayer.m in Sources */,
-				9F1ED4D317686AD300DECCDC /* SFPSDGroupOpeningLayer.m in Sources */,
-				9F1ED4D417686AD300DECCDC /* SFPSDLayer.m in Sources */,
-				9F1ED4D517686AD300DECCDC /* SFPSDWriter.m in Sources */,
+				9F084AD7176F25A000C5F37B /* NSData+SFPackedBits.m in Sources */,
+				9F084AD8176F25A000C5F37B /* NSMutableData+SFAppendValue.m in Sources */,
+				9F084AD9176F25A000C5F37B /* NSString+SFPascalString.m in Sources */,
+				9F084ADA176F25A000C5F37B /* SFPSDLayerBlendModes.m in Sources */,
+				9F084ADB176F25A000C5F37B /* SFPSDGroupClosingLayer.m in Sources */,
+				9F084ADC176F25A000C5F37B /* SFPSDGroupLayer.m in Sources */,
+				9F084ADD176F25A000C5F37B /* SFPSDGroupOpeningLayer.m in Sources */,
+				9F084ADE176F25A000C5F37B /* SFPSDLayer.m in Sources */,
+				9F084ADF176F25A000C5F37B /* SFPSDWriter.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

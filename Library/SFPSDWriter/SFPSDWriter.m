@@ -34,10 +34,12 @@
     self = [super init];
     if (!self) return nil;
     
-    self.documentSize = size;
-    self.layerChannelCount = layerChannelCount;
-    self.flattenedContext = NULL;
+
+    self.flattenedContext = nil;
     self.flattenedData = nil;
+
+    [self setDocumentSize:size];
+    [self setLayerChannelCount:layerChannelCount];
     
     if (nil != layers) {
         self.layers = [[NSMutableArray alloc] initWithArray:layers];
@@ -51,16 +53,49 @@
 
 - (void)dealloc
 {
-    if (self.flattenedContext != NULL) {
-        CGContextRelease(self.flattenedContext);
-        self.flattenedContext = nil;
+	[self setLayers:nil];
+	[self setFlattenedData:nil];
+
+    // If the flatten context is set it surely must be released
+    if (_flattenedContext != nil) {
+        CGContextRelease(_flattenedContext);
+        _flattenedContext = nil;
     }
-    
-	self.layers = nil;
-	self.flattenedData = nil;
 }
 
-#pragma mark - Layer creation functions
+#pragma mark - Setters
+
+- (void)setDocumentSize:(CGSize)documentSize
+{
+    if (_documentSize.width == documentSize.width && _documentSize.height == documentSize.height) {
+        return;
+    }
+    
+    _documentSize = documentSize;
+    
+    // If flattened context already exists it will be recreated
+    if (_flattenedContext != nil) {
+        CGContextRelease(_flattenedContext);
+        _flattenedContext = nil;
+    }
+    
+    // Recreating the context
+    CGColorSpaceRef colorSpaceRGB = CGColorSpaceCreateDeviceRGB();
+    _flattenedContext = CGBitmapContextCreate(NULL, _documentSize.width, _documentSize.height, 8, 0, colorSpaceRGB, kCGBitmapByteOrder32Host|kCGImageAlphaPremultipliedLast);
+    CGColorSpaceRelease(colorSpaceRGB);
+    CGContextSetRGBFillColor(_flattenedContext, 1, 1, 1, 0);
+    CGContextFillRect(_flattenedContext, CGRectMake(0, 0, documentSize.width, documentSize.height));
+    
+    // Adding the image of each existing layer
+    if ([self.layers count]) {
+        for (int i = 0; i < [self.layers count]; i++) {
+            [[self.layers objectAtIndex:i] setDocumentSize:documentSize];
+            [self addLayerToflattenedContext:[self.layers objectAtIndex:i]];
+        }
+    }
+}
+
+#pragma mark - Layer creation
 
 - (SFPSDLayer *)addLayerWithCGImage:(CGImageRef)image andName:(NSString*)name
 {
@@ -70,46 +105,17 @@
 - (SFPSDLayer *)addLayerWithCGImage:(CGImageRef)image andName:(NSString*)name andOpacity:(float)opacity andOffset:(CGPoint)offset
 {
     SFPSDLayer * layer = [[SFPSDLayer alloc] init];
-    layer.documentSize = self.documentSize;
-    CGRect imageRegion = CGRectMake(0, 0, CGImageGetWidth(image), CGImageGetHeight(image));
-    CGRect screenRegion = CGRectMake(offset.x, offset.y, imageRegion.size.width, imageRegion.size.height);
-    CGRect drawRegion = CGRectMake(offset.x, offset.y, imageRegion.size.width, imageRegion.size.height);
     
-    if (screenRegion.origin.x + screenRegion.size.width > self.documentSize.width)
-        imageRegion.size.width = screenRegion.size.width = self.documentSize.width - screenRegion.origin.x;
-    if (screenRegion.origin.y + screenRegion.size.height > self.documentSize.height)
-        imageRegion.size.height = screenRegion.size.height = self.documentSize.height - screenRegion.origin.y;
-    if (screenRegion.origin.x < 0) {
-        imageRegion.origin.x = abs(screenRegion.origin.x);
-        screenRegion.origin.x = 0;
-        screenRegion.size.width = imageRegion.size.width = imageRegion.size.width - imageRegion.origin.x;
-    }
-    if (screenRegion.origin.y < 0) {
-        imageRegion.origin.y = abs(screenRegion.origin.y);
-        screenRegion.origin.y = 0;
-        screenRegion.size.height = imageRegion.size.height = imageRegion.size.height - imageRegion.origin.y;
-    }
+    [layer setDocumentSize:self.documentSize];
     
-    [layer setImageData: CGImageGetData(image, imageRegion)];
+    [layer setImage:image];
     [layer setOpacity: opacity];
-    [layer setRect: screenRegion];
     [layer setName: name];
-    [self.layers addObject: layer];
+    [layer setOffset:offset];
     
-    if (self.flattenedData == nil) {
-        if ((self.documentSize.width == 0) || (self.documentSize.height == 0))
-            @throw [NSException exceptionWithName:NSGenericException reason:@"You must specify a non-zero documentSize before calling addLayer:" userInfo:nil];
-        
-        if (self.flattenedContext == NULL) {
-            self.flattenedContext = CGBitmapContextCreate(NULL, self.documentSize.width, self.documentSize.height, 8, 0, CGImageGetColorSpace(image), kCGBitmapByteOrder32Host|kCGImageAlphaPremultipliedLast);
-            CGContextSetRGBFillColor(self.flattenedContext, 1, 1, 1, 1);
-            CGContextFillRect(self.flattenedContext, CGRectMake(0, 0, self.documentSize.width, self.documentSize.height));
-        }
-        drawRegion.origin.y = self.documentSize.height - (drawRegion.origin.y + drawRegion.size.height);
-        CGContextSetAlpha(self.flattenedContext, opacity);
-        CGContextDrawImage(self.flattenedContext, drawRegion, image);
-        CGContextSetAlpha(self.flattenedContext, opacity);
-    }
+    [[self layers] addObject:layer];
+    
+    [self addLayerToflattenedContext:layer];
     
     return layer;
 }
@@ -155,26 +161,34 @@
     return layer;
 }
 
-#pragma mark - Layer preprocessing functions
+#pragma mark - Flattened content handling
+
+- (void)addLayerToflattenedContext:(SFPSDLayer *)layer {
+    
+    CGRect drawRegion = CGRectMake([layer offset].x, [layer offset].y, [layer imageRegion].size.width, [layer imageRegion].size.height);
+    
+    if ((self.documentSize.width == 0) || (self.documentSize.height == 0)) {
+        @throw [NSException exceptionWithName:NSGenericException reason:@"You must specify a non-zero documentSize before calling addLayer:" userInfo:nil];
+    }
+    
+    drawRegion.origin.y = self.documentSize.height - (drawRegion.origin.y + drawRegion.size.height);
+    CGContextSetAlpha(self.flattenedContext, [layer opacity]);
+    CGContextDrawImage(self.flattenedContext, drawRegion, [layer image]);
+    CGContextSetAlpha(self.flattenedContext, [layer opacity]);
+}
+
+#pragma mark - Layer preprocessing
 
 - (void)preprocess
 {	
     // do we have a flattenedContext that needs to become flattenedData?
-    if (self.flattenedData == nil) {
-        if (self.flattenedContext) {
-            CGImageRef i = CGBitmapContextCreateImage(self.flattenedContext);
-            self.flattenedData = CGImageGetData(i, CGRectMake(0, 0, self.documentSize.width, self.documentSize.height));
-            CGImageRelease(i);
-        }
-    }
-    if (self.flattenedContext) {
-        CGContextRelease(self.flattenedContext);
-        self.flattenedContext = nil;
-
+    if (self.flattenedContext != nil) {
+        CGImageRef i = CGBitmapContextCreateImage(self.flattenedContext);
+        self.flattenedData = CGImageGetData(i, CGRectMake(0, 0, self.documentSize.width, self.documentSize.height));
+        CGImageRelease(i);
     }
     
-    for (SFPSDLayer * layer in self.layers)
-	{
+    for (SFPSDLayer * layer in self.layers) {
         
         if ((layer.shouldFlipLayerData == NO) && (layer.shouldUnpremultiplyLayerData == NO)) {
             return;
@@ -286,7 +300,7 @@
 - (void)writeImageResourceSectionOn:(NSMutableData *)result
 {
 	// write images resources section. This is used to store things like current layer.
-	NSMutableData *imageResources = [[NSMutableData alloc] init];
+	NSMutableData *imageResources = [NSMutableData data];
 	
 	// write the resolutionInfo structure. Don't have the definition for this, so we
 	// have to just paste in the right bytes.
@@ -316,7 +330,7 @@
 	// its layer effects, its annotations, transparency layers, wtf tons of shit.) We need to actually
 	// create this.
 	
-	NSMutableData *layerInfo = [[NSMutableData alloc] init];
+	NSMutableData *layerInfo = [NSMutableData data];
 	NSUInteger layerCount = [self.layers count];
 	
 	// write the layer count
@@ -380,76 +394,3 @@
 }
 
 @end
-
-#pragma mark - Convenience functions
-
-NSData *CGImageGetData(CGImageRef image, CGRect region)
-{
-	// Create the bitmap context
-	CGContextRef	context = NULL;
-	void *			bitmapData;
-	int				bitmapByteCount;
-	int				bitmapBytesPerRow;
-	
-	// Get image width, height. We'll use the entire image.
-	int width = region.size.width;
-	int height = region.size.height;
-	
-	// Declare the number of bytes per row. Each pixel in the bitmap in this
-	// example is represented by 4 bytes; 8 bits each of red, green, blue, and
-	// alpha.
-	bitmapBytesPerRow = (width * 4);
-	bitmapByteCount	= (bitmapBytesPerRow * height);
-	
-	// Allocate memory for image data. This is the destination in memory
-	// where any drawing to the bitmap context will be rendered.
-	//	bitmapData = malloc(bitmapByteCount);
-	bitmapData = calloc(width * height * 4, sizeof(Byte));
-	if (bitmapData == NULL)
-	{
-		return nil;
-	}
-	
-	// Create the bitmap context. We want pre-multiplied ARGB, 8-bits
-	// per component. Regardless of what the source image format is
-	// (CMYK, Grayscale, and so on) it will be converted over to the format
-	// specified here by CGBitmapContextCreate.
-	//	CGColorSpaceRef colorspace = CGColorSpaceCreateDeviceRGB();
-	CGColorSpaceRef colorspace = CGImageGetColorSpace(image);
-	context = CGBitmapContextCreate(bitmapData, width, height, 8, bitmapBytesPerRow,
-									colorspace, kCGImageAlphaPremultipliedLast);
-	//	CGColorSpaceRelease(colorspace);
-	
-	if (context == NULL)
-		// error creating context
-		return nil;
-	
-	// Draw the image to the bitmap context. Once we draw, the memory
-	// allocated for the context for rendering will then contain the
-	// raw image data in the specified color space.
-	CGContextSaveGState(context);
-	
-	//	CGContextTranslateCTM(context, -region.origin.x, -region.origin.y);
-	//	CGContextDrawImage(context, region, image);
-	
-	// Draw the image without scaling it to fit the region
-	CGRect drawRegion;
-	drawRegion.origin = CGPointZero;
-	drawRegion.size.width = CGImageGetWidth(image);
-	drawRegion.size.height = CGImageGetHeight(image);
-	CGContextTranslateCTM(context,
-						  -region.origin.x + (drawRegion.size.width - region.size.width),
-						  -region.origin.y - (drawRegion.size.height - region.size.height));
-	CGContextDrawImage(context, drawRegion, image);
-	CGContextRestoreGState(context);
-	
-	// When finished, release the context
-	CGContextRelease(context);
-	
-	// Now we can get a pointer to the image data associated with the bitmap context.
-	
-	NSData *data = [NSData dataWithBytes:bitmapData length:bitmapByteCount];
-	free(bitmapData);
-	
-	return data;
-}

@@ -50,13 +50,13 @@
 {
 	const char * bytesIn = [self bytes];
 	unsigned long bytesLength = range.location + range.length;
-	unsigned long	bytesOffset = range.location;
+	unsigned long bytesOffset = range.location;
 	NSMutableData * dataOut = [NSMutableData data];
     
 	BOOL currIsEOF = NO;
-	unsigned char currChar;			/* current character */
+	unsigned char currChar;			    /* current character */
 	unsigned char charBuf[MAX_READ];	/* buffer of already read characters */
-	int count;						 /* number of characters in a run */
+	int count;						    /* number of characters in a run */
     
 	/* prime the read loop */
 	currChar = bytesIn[bytesOffset];
@@ -176,8 +176,7 @@
 	}
     
 	return dataOut;
+
 }
-
-
 
 @end

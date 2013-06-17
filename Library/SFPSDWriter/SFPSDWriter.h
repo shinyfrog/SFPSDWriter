@@ -21,7 +21,7 @@
 {
 }
 
-// TODO: THINK ABOUT THE FLATTENED CONTEXT
+/**  Context used to hold the flattened image for the PSD preview */
 @property (nonatomic, assign) CGContextRef flattenedContext;
 
 /** 
@@ -130,6 +130,3 @@
 - (NSData *)createPSDData;
 
 @end
-
-/** A convenience function for getting RGBA NSData from a CGImageRef. */
-NSData *CGImageGetData(CGImageRef image, CGRect region);

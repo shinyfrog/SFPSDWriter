@@ -18,7 +18,7 @@
 
 @implementation SFPSDLayer
 
-@synthesize imageData = _imageData, name = _name, opacity = _opacity, rect = _rect, documentSize = _documentSize, channelCount = _channelCount;
+@synthesize image = _image, name = _name, opacity = _opacity, offset = _offset, documentSize = _documentSize, channelCount = _channelCount;
 @synthesize shouldFlipLayerData = _shouldFlipLayerData, shouldUnpremultiplyLayerData = _shouldUnpremultiplyLayerData;
 
 #pragma mark - Init and dealloc
@@ -44,8 +44,69 @@
 
 - (void)dealloc
 {
+    self.blendMode = nil;
     self.imageData = nil;
     self.name = nil;
+    
+    if (_image != nil) {
+        CGImageRelease(_image);
+        _image = nil;
+    }
+}
+
+#pragma mark - Setters
+
+- (void)setImage:(CGImageRef)image
+{
+    // The image is the same
+    if (image == _image) {
+        return;
+    }
+    
+    // If the image was previously assigned - it is surely a copy and we have to clean it
+    if (_image != nil) {
+        CGImageRelease(_image);
+        _image = nil;
+    }
+    
+    // Assigning
+    CGImageRef imageCopy = nil;
+    if (image != nil) {
+        imageCopy = CGImageCreateCopy(image);
+    }
+    _image = imageCopy;
+    
+    // The previously cached imageData is invalid
+    self.imageData = nil;
+}
+
+#pragma mark - Getters
+
+- (NSData *)imageData
+{
+    if (_imageData == nil) {
+        _imageData = CGImageGetData([self image], [self imageRegion]);
+    }
+    return _imageData;
+}
+
+#pragma mark - Size retrieving functions
+
+- (CGRect)imageRegion
+{
+    CGRect imageRegion = CGRectMake(0, 0, CGImageGetWidth(self.image), CGImageGetHeight(self.image));
+    CGRect screenRegion = CGRectMake(self.offset.x, self.offset.y, imageRegion.size.width, imageRegion.size.height);
+    
+    if (screenRegion.origin.x + screenRegion.size.width > self.documentSize.width)
+        imageRegion.size.width = self.documentSize.width - screenRegion.origin.x;
+    if (screenRegion.origin.y + screenRegion.size.height > self.documentSize.height)
+        imageRegion.size.height = self.documentSize.height - screenRegion.origin.y;
+    if (screenRegion.origin.x < 0)
+        imageRegion.origin.x = abs(screenRegion.origin.x);
+    if (screenRegion.origin.y < 0)
+        imageRegion.origin.y = abs(screenRegion.origin.y);
+    
+    return  imageRegion;
 }
 
 #pragma mark - Public writing functions
@@ -61,19 +122,25 @@
     // print out number of channels in the layer
     [layerInformation sfAppendValue:self.channelCount length:2];
     
-    NSArray *layerChannels = [self layerChannels];
-    
-    // print out data about each channel
-    for (int c = 0; c < 3; c++) {
-        [layerInformation sfAppendValue:c length:2];
-        [layerInformation sfAppendValue:[[layerChannels objectAtIndex:c] length] length:4];
-    }
-    
-    // The alpha channel is number -1
-    Byte b[2] = {0xFF, 0xFF};
-    [layerInformation appendBytes:&b length:2];
-    [layerInformation sfAppendValue:[[layerChannels objectAtIndex:3] length] length:4];
-    
+    // ARC in this case not cleans the memory used for layerChannels even after the SFPSDWriter is cleared.
+    // With an autoreleasepool we force the clean of the memory.
+    @autoreleasepool {
+        NSArray *layerChannels = [self layerChannels];
+        
+        // print out data about each channel
+        for (int c = 0; c < 3; c++) {
+            [layerInformation sfAppendValue:c length:2];
+            NSUInteger channelInformationLength = [[layerChannels objectAtIndex:c] length];
+            [layerInformation sfAppendValue:channelInformationLength length:4];
+        }
+        
+        // The alpha channel is number -1
+        Byte b[2] = {0xFF, 0xFF};
+        [layerInformation appendBytes:&b length:2];
+        NSUInteger channelInformationLength = [[layerChannels objectAtIndex:3] length];
+        [layerInformation sfAppendValue:channelInformationLength length:4];
+    } // autoreleasepool
+
     // print out blend mode
     [layerInformation sfAppendUTF8String:@"8BIM" length:4];
     [layerInformation sfAppendUTF8String:[self blendMode] length:4];
@@ -107,13 +174,40 @@
 
 - (void)writeLayerChannelsOn:(NSMutableData *)layerInformation
 {
-    NSArray *layerChannels = [self layerChannels];
-    for (int i = 0; i < [layerChannels count]; i++) {
-        [layerInformation appendData:[layerChannels objectAtIndex:i]];
-    }
+    // ARC in this case not cleans the memory used for layerChannels even after the SFPSDWriter is cleared.
+    // With an autoreleasepool we force the clean of the memory.
+    @autoreleasepool {
+        NSArray *layerChannels = [self layerChannels];
+        for (int i = 0; i < [layerChannels count]; i++) {
+            [layerInformation appendData:[layerChannels objectAtIndex:i]];
+        }
+    } // autoreleasepool
 }
 
 #pragma mark - Protecred functions [should never be used from outside the class]
+
+- (CGRect)screenRegion
+{
+    CGRect imageRegion = CGRectMake(0, 0, CGImageGetWidth(self.image), CGImageGetHeight(self.image));
+    CGRect screenRegion = CGRectMake(self.offset.x, self.offset.y, imageRegion.size.width, imageRegion.size.height);
+    
+    if (screenRegion.origin.x + screenRegion.size.width > self.documentSize.width)
+        imageRegion.size.width = screenRegion.size.width = self.documentSize.width - screenRegion.origin.x;
+    if (screenRegion.origin.y + screenRegion.size.height > self.documentSize.height)
+        imageRegion.size.height = screenRegion.size.height = self.documentSize.height - screenRegion.origin.y;
+    if (screenRegion.origin.x < 0) {
+        imageRegion.origin.x = abs(screenRegion.origin.x);
+        screenRegion.origin.x = 0;
+        screenRegion.size.width = imageRegion.size.width - imageRegion.origin.x;
+    }
+    if (screenRegion.origin.y < 0) {
+        imageRegion.origin.y = abs(screenRegion.origin.y);
+        screenRegion.origin.y = 0;
+        screenRegion.size.height = imageRegion.size.height - imageRegion.origin.y;
+    }
+    
+    return screenRegion;
+}
 
 - (NSArray *)layerChannels {
     
@@ -127,7 +221,7 @@
 	NSData *transparentRowData = [NSData dataWithBytesNoCopy:transparentRow length:transparentRowSize freeWhenDone:NO];
 	NSData *packedTransparentRowData = [transparentRowData sfPackedBitsForRange:NSMakeRange(0, transparentRowSize) skip:4];
     
-    CGRect bounds = self.rect;
+    CGRect bounds = [self screenRegion];
     bounds.origin.x = floorf(bounds.origin.x);
     bounds.origin.y = floorf(bounds.origin.y);
     bounds.size.width = floorf(bounds.size.width);
@@ -185,6 +279,8 @@
                 }
                 
                 [byteCounts sfAppendValue:byteCount length:2];
+                
+                packed = nil;
             }
         }
         
@@ -199,7 +295,12 @@
         
         // add completed channel data to channels array
         [channels addObject:channelData];
+
+        byteCounts = scanlines = nil;
     }
+    
+    packedLeftOfShape = packedRightOfShape = nil;
+    transparentRowData = packedTransparentRowData = nil;
     
     free(transparentRow);
     
@@ -225,9 +326,10 @@
     [data sfAppendValue:(r.length * 2) + 4 length:4]; // length of the next bit of data
     [data sfAppendValue:r.length length:4]; // length of the unicode string data
     
-    unichar *buffer = malloc(sizeof(unichar) * ([self.name length] + 1));
+    int bufferSize = sizeof(unichar) * ((int)[self.name length] + 1);
+    unichar *buffer = malloc(bufferSize);
     [self.name getCharacters:buffer range:r];
-    buffer[([self.name length] + 1)] = 0;
+    buffer[([self.name length])] = 0;
     for (NSUInteger i = 0; i < [self.name length]; i++) {
         [data sfAppendValue:buffer[i] length:2];
     }
@@ -251,4 +353,88 @@
     return extraDataStream;
 }
 
+#pragma mark - Class description
+
+-(NSString *)description
+{
+    return [NSString stringWithFormat:@"(super: %@): Layer named '%@' (opacity: %f)",
+            [super description],
+            self.name,
+            self.opacity];
+}
+
 @end
+
+#pragma mark - Convenience functions
+
+NSData *CGImageGetData(CGImageRef image, CGRect region)
+{
+	// Create the bitmap context
+	CGContextRef	context = NULL;
+	void *			bitmapData;
+	int				bitmapByteCount;
+	int				bitmapBytesPerRow;
+	
+	// Get image width, height. We'll use the entire image.
+	int width = region.size.width;
+	int height = region.size.height;
+	
+	// Declare the number of bytes per row. Each pixel in the bitmap in this
+	// example is represented by 4 bytes; 8 bits each of red, green, blue, and
+	// alpha.
+	bitmapBytesPerRow = (width * 4);
+	bitmapByteCount	= (bitmapBytesPerRow * height);
+	
+	// Allocate memory for image data. This is the destination in memory
+	// where any drawing to the bitmap context will be rendered.
+	//	bitmapData = malloc(bitmapByteCount);
+	bitmapData = calloc(width * height * 4, sizeof(Byte));
+	if (bitmapData == NULL)
+	{
+		return nil;
+	}
+	
+	// Create the bitmap context. We want pre-multiplied ARGB, 8-bits
+	// per component. Regardless of what the source image format is
+	// (CMYK, Grayscale, and so on) it will be converted over to the format
+	// specified here by CGBitmapContextCreate.
+	//	CGColorSpaceRef colorspace = CGColorSpaceCreateDeviceRGB();
+	CGColorSpaceRef colorspace = CGImageGetColorSpace(image);
+	context = CGBitmapContextCreate(bitmapData, width, height, 8, bitmapBytesPerRow,
+									colorspace, kCGImageAlphaPremultipliedLast);
+	//	CGColorSpaceRelease(colorspace);
+	
+	if (context == NULL)
+		// error creating context
+		return nil;
+	
+	// Draw the image to the bitmap context. Once we draw, the memory
+	// allocated for the context for rendering will then contain the
+	// raw image data in the specified color space.
+	CGContextSaveGState(context);
+	
+	//	CGContextTranslateCTM(context, -region.origin.x, -region.origin.y);
+	//	CGContextDrawImage(context, region, image);
+	
+	// Draw the image without scaling it to fit the region
+	CGRect drawRegion;
+	drawRegion.origin = CGPointZero;
+	drawRegion.size.width = CGImageGetWidth(image);
+	drawRegion.size.height = CGImageGetHeight(image);
+	CGContextTranslateCTM(context,
+						  -region.origin.x + (drawRegion.size.width - region.size.width),
+						  -region.origin.y - (drawRegion.size.height - region.size.height));
+	CGContextDrawImage(context, drawRegion, image);
+	CGContextRestoreGState(context);
+	
+	// When finished, release the context
+	CGContextRelease(context);
+	
+	// Now we can get a pointer to the image data associated with the bitmap context.
+	
+	NSData *data = [NSData dataWithBytes:bitmapData length:bitmapByteCount];
+	free(bitmapData);
+	
+	return data;
+}
+

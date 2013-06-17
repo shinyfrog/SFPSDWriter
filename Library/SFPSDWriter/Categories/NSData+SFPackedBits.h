@@ -34,5 +34,4 @@
  * encode every byte, skip = 4 will encode every fourth byte, and so on. */
 - (NSData *)sfPackedBitsForRange:(NSRange)range skip:(int)skip;
 
-
 @end
