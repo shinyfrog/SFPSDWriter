@@ -15,21 +15,21 @@
 
 @implementation SFPSDWriter
 
-@synthesize documentSize = _documentSize, layers = _layers, layerChannelCount = _layerChannelCount, flattenedData = _flattenedData, flattenedContext = _flattenedContext;
+@synthesize documentSize = _documentSize, layers = _layers, hasTransparentLayers = _hasTransparentLayers, flattenedData = _flattenedData, flattenedContext = _flattenedContext;
 
 #pragma mark - Init and dealloc
 
 - (id)init
 {
-    return [self initWithDocumentSize:CGSizeMake(0, 0) andLayerChannelCount:4 andLayers:nil];
+    return [self initWithDocumentSize:CGSizeMake(0, 0) andHasTransparentLayers:YES andLayers:nil];
 }
 
-- (id)initWithDocumentSize:(CGSize)size
+- (id)initWithDocumentSize:(CGSize)documentSize
 {
-    return [self initWithDocumentSize:size andLayerChannelCount:4 andLayers:nil];
+    return [self initWithDocumentSize:documentSize andHasTransparentLayers:YES andLayers:nil];
 }
 
-- (id)initWithDocumentSize:(CGSize)size andLayerChannelCount:(int)layerChannelCount andLayers:(NSArray *)layers
+- (id)initWithDocumentSize:(CGSize)documentSize andHasTransparentLayers:(BOOL)hasTransparentLayers andLayers:(NSArray *)layers
 {
     self = [super init];
     if (!self) return nil;
@@ -38,8 +38,9 @@
     self.flattenedContext = nil;
     self.flattenedData = nil;
 
-    [self setDocumentSize:size];
-    [self setLayerChannelCount:layerChannelCount];
+    [self setHasTransparentLayers:hasTransparentLayers];    
+    [self setDocumentSize:documentSize];
+
     
     if (nil != layers) {
         self.layers = [[NSMutableArray alloc] initWithArray:layers];
@@ -73,26 +74,31 @@
     
     _documentSize = documentSize;
     
-    // If flattened context already exists it will be recreated
-    if (_flattenedContext != nil) {
-        CGContextRelease(_flattenedContext);
-        _flattenedContext = nil;
+    // Changing the document size of each layer
+    for (int i = 0; i < [[self layers] count]; i++) {
+        [[[self layers] objectAtIndex:i] setDocumentSize:documentSize];
     }
     
-    // Recreating the context
-    CGColorSpaceRef colorSpaceRGB = CGColorSpaceCreateDeviceRGB();
-    _flattenedContext = CGBitmapContextCreate(NULL, _documentSize.width, _documentSize.height, 8, 0, colorSpaceRGB, kCGBitmapByteOrder32Host|kCGImageAlphaPremultipliedLast);
-    CGColorSpaceRelease(colorSpaceRGB);
-    CGContextSetRGBFillColor(_flattenedContext, 1, 1, 1, 0);
-    CGContextFillRect(_flattenedContext, CGRectMake(0, 0, documentSize.width, documentSize.height));
-    
-    // Adding the image of each existing layer
-    if ([self.layers count]) {
-        for (int i = 0; i < [self.layers count]; i++) {
-            [[self.layers objectAtIndex:i] setDocumentSize:documentSize];
-            [self addLayerToflattenedContext:[self.layers objectAtIndex:i]];
-        }
+    [self resetFlattenedContext];
+}
+
+#pragma mark - Getters
+
+- (int)numberOfChannels
+{
+    if ([self hasTransparentLayers]) {
+        return 4;
     }
+    
+    return 3;
+}
+
+- (NSArray *)visibleLayers
+{
+    NSPredicate *predicate = [NSPredicate predicateWithBlock:^BOOL(id evaluatedObject, NSDictionary *bindings) {
+        return [evaluatedObject hasValidSize];
+    }];
+    return [[self layers] filteredArrayUsingPredicate:predicate];
 }
 
 #pragma mark - Layer creation
@@ -112,10 +118,12 @@
     [layer setOpacity: opacity];
     [layer setName: name];
     [layer setOffset:offset];
+    [layer setNumberOfChannels:[self numberOfChannels]];
     
     [[self layers] addObject:layer];
     
-    [self addLayerToflattenedContext:layer];
+    NSError *error = nil;
+    [self addLayerToFlattenedContext:layer error:&error];
     
     return layer;
 }
@@ -163,18 +171,59 @@
 
 #pragma mark - Flattened content handling
 
-- (void)addLayerToflattenedContext:(SFPSDLayer *)layer {
-    
-    CGRect drawRegion = CGRectMake([layer offset].x, [layer offset].y, [layer imageRegion].size.width, [layer imageRegion].size.height);
-    
-    if ((self.documentSize.width == 0) || (self.documentSize.height == 0)) {
-        @throw [NSException exceptionWithName:NSGenericException reason:@"You must specify a non-zero documentSize before calling addLayer:" userInfo:nil];
+- (void)resetFlattenedContext
+{
+    // If flattened context already exists it will be recreated
+    if (_flattenedContext != nil) {
+        CGContextRelease(_flattenedContext);
+        _flattenedContext = nil;
     }
     
+    if ([self documentSize].height <= 0 && [self documentSize].width <= 0) {
+        return;
+    }
+    
+    // Recreating the context
+    CGColorSpaceRef colorSpaceRGB = CGColorSpaceCreateDeviceRGB();
+    _flattenedContext = CGBitmapContextCreate(NULL, _documentSize.width, _documentSize.height, 8, 0, colorSpaceRGB, kCGBitmapByteOrder32Host|kCGImageAlphaPremultipliedLast);
+    CGColorSpaceRelease(colorSpaceRGB);
+    
+    float backgroundAlpha = 1;
+    if  ([self hasTransparentLayers]) {
+        backgroundAlpha = 0;
+    }
+    
+    CGContextSetRGBFillColor(_flattenedContext, 1, 1, 1, backgroundAlpha);
+    CGContextFillRect(_flattenedContext, CGRectMake(0, 0, [self documentSize].width, [self documentSize].height));
+    
+    // Adding the image of each existing layer
+    if ([[self visibleLayers] count]) {
+        for (int i = 0; i < [[self visibleLayers] count]; i++) {
+            [[self.layers objectAtIndex:i] setDocumentSize:[self documentSize]];
+            
+            NSError *error = nil;
+            [self addLayerToFlattenedContext:[[self visibleLayers] objectAtIndex:i] error:&error];
+        }
+    }
+}
+
+- (BOOL)addLayerToFlattenedContext:(SFPSDLayer *)layer error:(NSError *__autoreleasing *)error {
+    
+    if ((self.documentSize.width <= 0) || (self.documentSize.height <= 0)) {
+        NSMutableDictionary *errorDetail = [NSMutableDictionary dictionary];
+        [errorDetail setValue:@"You must specify a non-zero documentSize before adding a layer" forKey:NSLocalizedDescriptionKey];
+        *error = [NSError errorWithDomain:@"net.shinyfrog.SFPSDWriter" code:1 userInfo:errorDetail];
+        return  NO;
+    }
+
+    CGRect drawRegion = [layer imageInDocumentRegion];
     drawRegion.origin.y = self.documentSize.height - (drawRegion.origin.y + drawRegion.size.height);
+
     CGContextSetAlpha(self.flattenedContext, [layer opacity]);
-    CGContextDrawImage(self.flattenedContext, drawRegion, [layer image]);
+    CGContextDrawImage(self.flattenedContext, drawRegion, [layer croppedImage]);
     CGContextSetAlpha(self.flattenedContext, [layer opacity]);
+    
+    return YES;
 }
 
 #pragma mark - Layer preprocessing
@@ -194,7 +243,7 @@
             return;
         }
         
-        NSData *d = [layer imageData];
+        NSData *d = [layer visibleImageData];
         
 		UInt8 *data = (UInt8 *)[d bytes];
 		unsigned long length = [d length];
@@ -232,11 +281,19 @@
 
 - (NSData *)createPSDData
 {
+    NSError *error = nil;
+    return [self createPSDDataWithError:&error];
+}
+
+- (NSData *)createPSDDataWithError:(NSError * __autoreleasing *)error
+{
 	NSMutableData *result = [NSMutableData data];
-	
-	// make sure the user has provided everything we need
-	if ((self.layerChannelCount < 3) || ([self.layers count] == 0)) {
-        @throw [NSException exceptionWithName:NSGenericException reason:@"Please provide layer data, flattened data and set layer channel count to at least 3." userInfo:nil];
+    
+    if ([[self visibleLayers] count] == 0) {
+        NSMutableDictionary *errorDetail = [NSMutableDictionary dictionary];
+        [errorDetail setValue:@"No visible layers in the document" forKey:NSLocalizedDescriptionKey];
+        *error = [NSError errorWithDomain:@"net.shinyfrog.SFPSDWriter" code:2 userInfo:errorDetail];
+        return  result;
     }
 	
 	// Modify the input data if necessary
@@ -274,7 +331,7 @@
 	[result sfAppendValue:0 length:6];
 	
 	// write number of channels
-	[result sfAppendValue:self.layerChannelCount length:2];
+    [result sfAppendValue:[self numberOfChannels] length:2];
 	
 	// write height then width of the image in pixels
 	[result sfAppendValue:self.documentSize.height length:4];
@@ -331,19 +388,31 @@
 	// create this.
 	
 	NSMutableData *layerInfo = [NSMutableData data];
-	NSUInteger layerCount = [self.layers count];
+	NSUInteger layerCount = [[self visibleLayers] count];
 	
 	// write the layer count
 	[layerInfo sfAppendValue:layerCount length:2];
     
     // Writing the layer information for each layer
     for (int i = 0; i < [self.layers count]; i++) {
-        [[self.layers objectAtIndex:i] writeLayerInformationOn:layerInfo];
+        SFPSDLayer *layer = [self.layers objectAtIndex:i];
+        
+        if (![layer hasValidSize]) {
+            continue;
+        }
+        
+        [layer writeLayerInformationOn:layerInfo];
     }
     
     // Writing the layer channels
     for (int i = 0; i < [self.layers count]; i++) {
-        [[self.layers objectAtIndex:i] writeLayerChannelsOn:layerInfo];
+        SFPSDLayer *layer = [self.layers objectAtIndex:i];
+        
+        if (![layer hasValidSize]) {
+            continue;
+        }
+        
+        [layer writeLayerChannelsOn:layerInfo];
     }
     
 	// round to length divisible by 2.
@@ -374,12 +443,12 @@
 	// in 512x512 image w/ no alpha, there are 3072 scan line bytes. At 2 bytes each, that means 1536 byte counts.
 	// 1536 = 512 rows * three channels.
 	
-	NSMutableData *byteCounts = [NSMutableData dataWithCapacity:self.documentSize.height * self.layerChannelCount * 2];
+	NSMutableData *byteCounts = [NSMutableData dataWithCapacity:self.documentSize.height * [self numberOfChannels] * 2];
 	NSMutableData *scanlines = [NSMutableData data];
 	
 	int imageRowBytes = self.documentSize.width * 4;
 	
-	for (int channel = 0; channel < self.layerChannelCount; channel++) {
+	for (int channel = 0; channel < [self numberOfChannels]; channel++) {
 		for (int row = 0; row < self.documentSize.height; row++) {
 			NSRange packRange = NSMakeRange(row * imageRowBytes + channel, imageRowBytes);
 			NSData * packed = [self.flattenedData sfPackedBitsForRange:packRange skip:4];

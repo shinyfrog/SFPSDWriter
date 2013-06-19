@@ -22,6 +22,12 @@
 - (IBAction)add10Layers:(id)sender;
 - (IBAction)add100Layers:(id)sender;
 - (IBAction)writePSD10Times:(id)sender;
-- (IBAction)chanceImageSize:(id)sender;
+- (IBAction)changeImageSize:(id)sender;
 
+- (IBAction)addTopEscapingLayer:(id)sender;
+- (IBAction)addBottomEscapingLayer:(id)sender;
+- (IBAction)addLeftEscapingLayer:(id)sender;
+- (IBAction)addRightEscapingLayer:(id)sender;
+
+- (IBAction)addAllEscapingLayers:(id)sender;
 @end

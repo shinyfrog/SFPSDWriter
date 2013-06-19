@@ -44,7 +44,7 @@
 {
     // Creating empty channels for the Group Layer with only compression formats
     NSMutableArray *layerChannels = [NSMutableArray array];
-    for (int channel = 0; channel < self.channelCount; channel++) {
+    for (int channel = 0; channel < [self numberOfChannels]; channel++) {
         NSMutableData *channelData = [NSMutableData data];
         // write channel compression format
         [channelData sfAppendValue:0 length:2];
@@ -52,6 +52,12 @@
         [layerChannels addObject:channelData];
     }
     return layerChannels;
+}
+
+- (BOOL)hasValidSize
+{
+    // The group layers has always valid size
+    return YES;
 }
 
 @end

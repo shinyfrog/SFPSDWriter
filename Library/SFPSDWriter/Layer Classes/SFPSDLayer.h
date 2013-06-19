@@ -34,7 +34,7 @@
  *
  * The data is kept as property because of the massive use in the PSD generation phase. The 
  * data is created on first usage and niled every time the image changes. */
-@property (nonatomic, strong) NSData *imageData;
+@property (nonatomic, strong) NSData *visibleImageData;
 
 //@property (nonatomic, assign) CGRect imageRegion;
 
@@ -45,7 +45,7 @@
 @property (nonatomic, assign) CGPoint offset;
 
 /** Number of channels of the layer. Defaults to 4. */
-@property (nonatomic, assign) NSInteger channelCount;
+@property (nonatomic, assign) NSInteger numberOfChannels;
 
 /** 
  * Allows you to automatically vertically flip the image data when it's being
@@ -64,10 +64,22 @@
 @property (nonatomic, strong) NSString *blendMode;
 
 /** Designed initializer. */
-- (id)initWithChannelCount:(int)channelCount andOpacity:(float)opacity andShouldFlipLayerData:(BOOL)shouldFlipLayerData andShouldUnpremultiplyLayerData:(BOOL)shouldUnpremultiplyLayerData andBlendMode:(NSString *)blendMode;
+- (id)initWithNumberOfChannels:(int)numberOfChannels andOpacity:(float)opacity andShouldFlipLayerData:(BOOL)shouldFlipLayerData andShouldUnpremultiplyLayerData:(BOOL)shouldUnpremultiplyLayerData andBlendMode:(NSString *)blendMode;
 
-/**  */
-- (CGRect) imageRegion;
+/** 
+ * Returns a Boolean value that indicates whether the layer has some printable content inside the document bounds.
+ * @return YES if the layer can be printed inside the document bounds. NO if the layer is entirely outside the document bounds. */
+- (BOOL)hasValidSize;
+
+/**  The part of the image to use in the layer depending on position. If some part of the layer is out of bounds the image is cropped. */
+- (CGRect)imageCropRegion;
+
+/** The portion of the document occupied by the image. */
+- (CGRect)imageInDocumentRegion;
+
+/**
+ * The CGImage cropped usign the CGRect provided by -imageCropRegion. */
+- (CGImageRef)croppedImage;
 
 /**
  * Writes the Layer Information Section inside the mutable data (the first part of the "Layer info"
@@ -89,9 +101,6 @@
 @end
 
 @interface SFPSDLayer (Protected)
-
-/**  */
-- (CGRect) screenRegion;
 
 /** Returns an array of the channels composing the layer. */
 - (NSArray *)layerChannels;

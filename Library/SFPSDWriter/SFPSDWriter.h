@@ -35,8 +35,8 @@
 
 /** 
  * The number of channels in each layer. Defaults to 4, unless layers
- * are not transparent. At the moment, this setting applies to all layers. */
-@property (nonatomic, assign) int layerChannelCount;
+ * are not transparent. This is the global  */
+@property (nonatomic, assign) BOOL hasTransparentLayers;
 
 /** Optional. The RGBA data for a flattened "preview" of the PSD. */
 @property (nonatomic, strong) NSData * flattenedData;
@@ -44,15 +44,15 @@
 /**
  * Initializes a new PSDWriter for creating a PSD document with the specified size.
  * @param size The document size. */
-- (id)initWithDocumentSize:(CGSize)size;
+- (id)initWithDocumentSize:(CGSize)documentSize;
 
 /**
  * Designed initializer.
  * 
  * @param size The document size.
- * @param layerChannelCount The layer's channel count. Default is 4.
+ * @param hasTransparentLayers tells if the layer has the alpha channel.
  * @param layers Initial layers. */
-- (id)initWithDocumentSize:(CGSize)size andLayerChannelCount:(int)layerChannelCount andLayers:(NSArray *)layers;
+- (id)initWithDocumentSize:(CGSize)documentSize andHasTransparentLayers:(BOOL)hasTransparentLayers andLayers:(NSArray *)layers;
 
 /**
  * Adds a new layer to the PSD image with a name. The opacity of the layer will be 1 and no offset will be applied.
@@ -117,16 +117,21 @@
  * @return The newly created group layer in order to customize it after the creation. */
 - (SFPSDGroupClosingLayer *)closeCurrentGroupLayer;
 
+/** The number of channels of the PSD document. If it has transparencies - 4, else 3. */
+- (int)numberOfChannels;
+
+/** An array with only visible layers inside the document bounds. */
+- (NSArray *)visibleLayers;
+
+/** Deprecated function. Use -createPSDDataWithError: instead */
+- (NSData *)createPSDData;
+
 /**
  * Generates an NSData object representing a PSD image with the width and height specified by documentSize
  * and the contents specified by the layers array. Note that this function can be (and really should be)
  * called on a separate thread.
  *
- * @return PSD data. Write this data to a file or attach it to an email, etc...
- *
- * Note: You cannot call this function multiple times. After calling createPSDData and getting the document data,
- * you should discard the PSDWriter object. This function is destructive and deletes the information you provided
- * in the layers array to conserve memory as it writes the PSD data. */
-- (NSData *)createPSDData;
+ * @return PSD data. This data has to be written on a file. */
+- (NSData *)createPSDDataWithError:(NSError * __autoreleasing *)error;
 
 @end
