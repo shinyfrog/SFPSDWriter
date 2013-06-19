@@ -145,6 +145,8 @@ and
 - (void)applicationDidBecomeActive:(UIApplication *)application // iOS
 ```
 
+There is also a debug project used to stress test the library. You can find it in *Example Projects/SFPSDWriter Stress Tester*.
+
 ## Status
 
 The library is functionally complete for our needs so there is no planning on working on it. Obviously there will be bugfixes or speedups if we'll found some while using it.
