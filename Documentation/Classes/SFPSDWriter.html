@@ -43,7 +43,7 @@
 	
 	<option value="//api/name/flattenedData">&nbsp;&nbsp;&nbsp;&nbsp;flattenedData</option>
 	
-	<option value="//api/name/layerChannelCount">&nbsp;&nbsp;&nbsp;&nbsp;layerChannelCount</option>
+	<option value="//api/name/hasTransparentLayers">&nbsp;&nbsp;&nbsp;&nbsp;hasTransparentLayers</option>
 	
 	<option value="//api/name/layers">&nbsp;&nbsp;&nbsp;&nbsp;layers</option>
 	
@@ -54,6 +54,8 @@
 	
 	<option value="instance_methods">Instance Methods</option>
 	
+	<option value="//api/name/addLayerToFlattenedContext:error:">&nbsp;&nbsp;&nbsp;&nbsp;- addLayerToFlattenedContext:error:</option>
+	
 	<option value="//api/name/addLayerWithCGImage:andName:">&nbsp;&nbsp;&nbsp;&nbsp;- addLayerWithCGImage:andName:</option>
 	
 	<option value="//api/name/addLayerWithCGImage:andName:andOpacity:andOffset:">&nbsp;&nbsp;&nbsp;&nbsp;- addLayerWithCGImage:andName:andOpacity:andOffset:</option>
@@ -62,19 +64,27 @@
 	
 	<option value="//api/name/createPSDData">&nbsp;&nbsp;&nbsp;&nbsp;- createPSDData</option>
 	
+	<option value="//api/name/createPSDDataWithError:">&nbsp;&nbsp;&nbsp;&nbsp;- createPSDDataWithError:</option>
+	
 	<option value="//api/name/dealloc">&nbsp;&nbsp;&nbsp;&nbsp;- dealloc</option>
 	
 	<option value="//api/name/init">&nbsp;&nbsp;&nbsp;&nbsp;- init</option>
 	
 	<option value="//api/name/initWithDocumentSize:">&nbsp;&nbsp;&nbsp;&nbsp;- initWithDocumentSize:</option>
 	
-	<option value="//api/name/initWithDocumentSize:andLayerChannelCount:andLayers:">&nbsp;&nbsp;&nbsp;&nbsp;- initWithDocumentSize:andLayerChannelCount:andLayers:</option>
+	<option value="//api/name/initWithDocumentSize:andHasTransparentLayers:andLayers:">&nbsp;&nbsp;&nbsp;&nbsp;- initWithDocumentSize:andHasTransparentLayers:andLayers:</option>
+	
+	<option value="//api/name/numberOfChannels">&nbsp;&nbsp;&nbsp;&nbsp;- numberOfChannels</option>
 	
 	<option value="//api/name/openGroupLayerWithName:">&nbsp;&nbsp;&nbsp;&nbsp;- openGroupLayerWithName:</option>
 	
 	<option value="//api/name/openGroupLayerWithName:andOpacity:andIsOpened:">&nbsp;&nbsp;&nbsp;&nbsp;- openGroupLayerWithName:andOpacity:andIsOpened:</option>
 	
 	<option value="//api/name/preprocess">&nbsp;&nbsp;&nbsp;&nbsp;- preprocess</option>
+	
+	<option value="//api/name/resetFlattenedContext">&nbsp;&nbsp;&nbsp;&nbsp;- resetFlattenedContext</option>
+	
+	<option value="//api/name/visibleLayers">&nbsp;&nbsp;&nbsp;&nbsp;- visibleLayers</option>
 	
 	<option value="//api/name/writeColorModeDataSectionOn:">&nbsp;&nbsp;&nbsp;&nbsp;- writeColorModeDataSectionOn:</option>
 	
@@ -114,7 +124,7 @@
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/flattenedData">flattenedData</a></span></li>
 	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/layerChannelCount">layerChannelCount</a></span></li>
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/hasTransparentLayers">hasTransparentLayers</a></span></li>
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/layers">layers</a></span></li>
 	
@@ -126,6 +136,8 @@
 
 <li role="treeitem" class="children"><span class="disclosure"></span><span class="sectionName"><a href="#instance_methods">Instance Methods</a></span><ul>
 	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/addLayerToFlattenedContext:error:">addLayerToFlattenedContext:error:</a></span></li>
+	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/addLayerWithCGImage:andName:">addLayerWithCGImage:andName:</a></span></li>
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/addLayerWithCGImage:andName:andOpacity:andOffset:">addLayerWithCGImage:andName:andOpacity:andOffset:</a></span></li>
@@ -134,19 +146,27 @@
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/createPSDData">createPSDData</a></span></li>
 	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/createPSDDataWithError:">createPSDDataWithError:</a></span></li>
+	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/dealloc">dealloc</a></span></li>
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/init">init</a></span></li>
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/initWithDocumentSize:">initWithDocumentSize:</a></span></li>
 	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/initWithDocumentSize:andLayerChannelCount:andLayers:">initWithDocumentSize:andLayerChannelCount:andLayers:</a></span></li>
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/initWithDocumentSize:andHasTransparentLayers:andLayers:">initWithDocumentSize:andHasTransparentLayers:andLayers:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/numberOfChannels">numberOfChannels</a></span></li>
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/openGroupLayerWithName:">openGroupLayerWithName:</a></span></li>
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/openGroupLayerWithName:andOpacity:andIsOpened:">openGroupLayerWithName:andOpacity:andIsOpened:</a></span></li>
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/preprocess">preprocess</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/resetFlattenedContext">resetFlattenedContext</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/visibleLayers">visibleLayers</a></span></li>
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/writeColorModeDataSectionOn:">writeColorModeDataSectionOn:</a></span></li>
 	
@@ -206,7 +226,7 @@
 							<li>
 	<span class="tooltip">
 		<code><a href="#//api/name/flattenedContext">&nbsp;&nbsp;flattenedContext</a></code>
-		
+		<span class="tooltip"><p>  Context used to hold the flattened image for the PSD preview</p></span>
 	</span>
 	<span class="task-item-suffix">property</span>
 	
@@ -228,9 +248,9 @@ from memory as it builds the PSD file.</p></span>
 	
 </li><li>
 	<span class="tooltip">
-		<code><a href="#//api/name/layerChannelCount">&nbsp;&nbsp;layerChannelCount</a></code>
+		<code><a href="#//api/name/hasTransparentLayers">&nbsp;&nbsp;hasTransparentLayers</a></code>
 		<span class="tooltip"><p>The number of channels in each layer. Defaults to 4, unless <a href="#//api/name/layers">layers</a>
-are not transparent. At the moment, this setting applies to all <a href="#//api/name/layers">layers</a>.</p></span>
+are not transparent. This is the global</p></span>
 	</span>
 	<span class="task-item-suffix">property</span>
 	
@@ -250,7 +270,7 @@ are not transparent. At the moment, this setting applies to all <a href="#//api/
 	
 </li><li>
 	<span class="tooltip">
-		<code><a href="#//api/name/initWithDocumentSize:andLayerChannelCount:andLayers:">&ndash;&nbsp;initWithDocumentSize:andLayerChannelCount:andLayers:</a></code>
+		<code><a href="#//api/name/initWithDocumentSize:andHasTransparentLayers:andLayers:">&ndash;&nbsp;initWithDocumentSize:andHasTransparentLayers:andLayers:</a></code>
 		<span class="tooltip"><p>Designed initializer.</p></span>
 	</span>
 	
@@ -292,7 +312,28 @@ are not transparent. At the moment, this setting applies to all <a href="#//api/
 	
 </li><li>
 	<span class="tooltip">
+		<code><a href="#//api/name/numberOfChannels">&ndash;&nbsp;numberOfChannels</a></code>
+		<span class="tooltip"><p>The number of channels of the PSD document. If it has transparencies &ndash; 4, else 3.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/visibleLayers">&ndash;&nbsp;visibleLayers</a></code>
+		<span class="tooltip"><p>An array with only visible <a href="#//api/name/layers">layers</a> inside the document bounds.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
 		<code><a href="#//api/name/createPSDData">&ndash;&nbsp;createPSDData</a></code>
+		<span class="tooltip"><p>Deprecated function. Use <a href="#//api/name/createPSDDataWithError:">createPSDDataWithError:</a> instead</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/createPSDDataWithError:">&ndash;&nbsp;createPSDDataWithError:</a></code>
 		<span class="tooltip"><p>Generates an NSData object representing a PSD image with the width and height specified by <a href="#//api/name/documentSize">documentSize</a>
 and the contents specified by the <a href="#//api/name/layers">layers</a> array. Note that this function can be (and really should be)
 called on a separate thread.</p></span>
@@ -317,6 +358,20 @@ called on a separate thread.</p></span>
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/dealloc">&ndash;&nbsp;dealloc</a></code>
+		
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/resetFlattenedContext">&ndash;&nbsp;resetFlattenedContext</a></code>
+		
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/addLayerToFlattenedContext:error:">&ndash;&nbsp;addLayerToFlattenedContext:error:</a></code>
 		
 	</span>
 	
@@ -422,10 +477,40 @@ called on a separate thread.</p></span>
 	<h3 class="subsubtitle method-title">flattenedContext</h3>
 	
 	
+	
+	<div class="method-subsection brief-description">
+		<p>  Context used to hold the flattened image for the PSD preview</p>
+	</div>		
+	
+    
 
 	<div class="method-subsection method-declaration"><code>@property (nonatomic, assign) CGContextRef flattenedContext</code></div>
 
     
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>  Context used to hold the flattened image for the PSD preview</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">SFPSDWriter.h</code><br />
+	</div>				
+	
+	
 </div>
 						
 						<div class="section-method">
@@ -470,19 +555,19 @@ called on a separate thread.</p></span>
 </div>
 						
 						<div class="section-method">
-	<a name="//api/name/layerChannelCount" title="layerChannelCount"></a>
-	<h3 class="subsubtitle method-title">layerChannelCount</h3>
+	<a name="//api/name/hasTransparentLayers" title="hasTransparentLayers"></a>
+	<h3 class="subsubtitle method-title">hasTransparentLayers</h3>
 	
 	
 	
 	<div class="method-subsection brief-description">
 		<p>The number of channels in each layer. Defaults to 4, unless <a href="#//api/name/layers">layers</a>
-are not transparent. At the moment, this setting applies to all <a href="#//api/name/layers">layers</a>.</p>
+are not transparent. This is the global</p>
 	</div>		
 	
     
 
-	<div class="method-subsection method-declaration"><code>@property (nonatomic, assign) int layerChannelCount</code></div>
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, assign) BOOL hasTransparentLayers</code></div>
 
     
 	
@@ -495,7 +580,7 @@ are not transparent. At the moment, this setting applies to all <a href="#//api/
 	<div class="method-subsection discussion-section">
 		<h4 class="method-subtitle">Discussion</h4>
 		<p>The number of channels in each layer. Defaults to 4, unless <a href="#//api/name/layers">layers</a>
-are not transparent. At the moment, this setting applies to all <a href="#//api/name/layers">layers</a>.</p>
+are not transparent. This is the global</p>
 	</div>
 	
 	
@@ -566,6 +651,17 @@ from memory as it builds the PSD file.</p>
 					<div class="section section-methods">
 						<a title="Instance Methods" name="instance_methods"></a>
 						<h2 class="subtitle subtitle-methods">Instance Methods</h2>
+						
+						<div class="section-method">
+	<a name="//api/name/addLayerToFlattenedContext:error:" title="addLayerToFlattenedContext:error:"></a>
+	<h3 class="subsubtitle method-title">addLayerToFlattenedContext:error:</h3>
+	
+	
+
+	<div class="method-subsection method-declaration"><code>- (BOOL)addLayerToFlattenedContext:(SFPSDLayer *)<em>layer</em> error:(NSError *__autoreleasing *)<em>error</em></code></div>
+
+    
+</div>
 						
 						<div class="section-method">
 	<a name="//api/name/addLayerWithCGImage:andName:" title="addLayerWithCGImage:andName:"></a>
@@ -767,9 +863,7 @@ you need to provide the flattened image data yourself.</p>
 	
 	
 	<div class="method-subsection brief-description">
-		<p>Generates an NSData object representing a PSD image with the width and height specified by <a href="#//api/name/documentSize">documentSize</a>
-and the contents specified by the <a href="#//api/name/layers">layers</a> array. Note that this function can be (and really should be)
-called on a separate thread.</p>
+		<p>Deprecated function. Use <a href="#//api/name/createPSDDataWithError:">createPSDDataWithError:</a> instead</p>
 	</div>		
 	
     
@@ -780,13 +874,52 @@ called on a separate thread.</p>
 	
 	
 	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Deprecated function. Use <a href="#//api/name/createPSDDataWithError:">createPSDDataWithError:</a> instead</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">SFPSDWriter.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/createPSDDataWithError:" title="createPSDDataWithError:"></a>
+	<h3 class="subsubtitle method-title">createPSDDataWithError:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Generates an NSData object representing a PSD image with the width and height specified by <a href="#//api/name/documentSize">documentSize</a>
+and the contents specified by the <a href="#//api/name/layers">layers</a> array. Note that this function can be (and really should be)
+called on a separate thread.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (NSData *)createPSDDataWithError:(NSError *__autoreleasing *)<em>error</em></code></div>
+
+    
+	
+	
+	
 	<div class="method-subsection return">
 		<h4 class="method-subtitle parameter-title">Return Value</h4>
-		<p>PSD data. Write this data to a file or attach it to an email, etc&hellip;</p>
-
-<p>Note: You cannot call this function multiple times. After calling createPSDData and getting the document data,
-you should discard the PSDWriter object. This function is destructive and deletes the information you provided
-in the <a href="#//api/name/layers">layers</a> array to conserve memory as it writes the PSD data.</p>
+		<p>PSD data. This data has to be written on a file.</p>
 	</div>
 	
 	
@@ -848,7 +981,7 @@ called on a separate thread.</p>
 	
     
 
-	<div class="method-subsection method-declaration"><code>- (id)initWithDocumentSize:(CGSize)<em>size</em></code></div>
+	<div class="method-subsection method-declaration"><code>- (id)initWithDocumentSize:(CGSize)<em>documentSize</em></code></div>
 
     
 	
@@ -888,8 +1021,8 @@ called on a separate thread.</p>
 </div>
 						
 						<div class="section-method">
-	<a name="//api/name/initWithDocumentSize:andLayerChannelCount:andLayers:" title="initWithDocumentSize:andLayerChannelCount:andLayers:"></a>
-	<h3 class="subsubtitle method-title">initWithDocumentSize:andLayerChannelCount:andLayers:</h3>
+	<a name="//api/name/initWithDocumentSize:andHasTransparentLayers:andLayers:" title="initWithDocumentSize:andHasTransparentLayers:andLayers:"></a>
+	<h3 class="subsubtitle method-title">initWithDocumentSize:andHasTransparentLayers:andLayers:</h3>
 	
 	
 	
@@ -899,7 +1032,7 @@ called on a separate thread.</p>
 	
     
 
-	<div class="method-subsection method-declaration"><code>- (id)initWithDocumentSize:(CGSize)<em>size</em> andLayerChannelCount:(int)<em>layerChannelCount</em> andLayers:(NSArray *)<em>layers</em></code></div>
+	<div class="method-subsection method-declaration"><code>- (id)initWithDocumentSize:(CGSize)<em>documentSize</em> andHasTransparentLayers:(BOOL)<em>hasTransparentLayers</em> andLayers:(NSArray *)<em>layers</em></code></div>
 
     
 	
@@ -907,18 +1040,18 @@ called on a separate thread.</p>
 		<h4 class="method-subtitle parameter-title">Parameters</h4>
 		
 		<dl class="argument-def parameter-def">
-			<dt><em>size</em></dt>
-			<dd><p>The document size.</p></dd>
-		</dl>
-		
-		<dl class="argument-def parameter-def">
-			<dt><em>layerChannelCount</em></dt>
-			<dd><p>The layer&rsquo;s channel count. Default is 4.</p></dd>
+			<dt><em>hasTransparentLayers</em></dt>
+			<dd><p>tells if the layer has the alpha channel.</p></dd>
 		</dl>
 		
 		<dl class="argument-def parameter-def">
 			<dt><em>layers</em></dt>
 			<dd><p>Initial <a href="#//api/name/layers">layers</a>.</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>size</em></dt>
+			<dd><p>The document size.</p></dd>
 		</dl>
 		
 	</div>
@@ -932,6 +1065,47 @@ called on a separate thread.</p>
 	<div class="method-subsection discussion-section">
 		<h4 class="method-subtitle">Discussion</h4>
 		<p>Designed initializer.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">SFPSDWriter.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/numberOfChannels" title="numberOfChannels"></a>
+	<h3 class="subsubtitle method-title">numberOfChannels</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>The number of channels of the PSD document. If it has transparencies &ndash; 4, else 3.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (int)numberOfChannels</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>The number of channels of the PSD document. If it has transparencies &ndash; 4, else 3.</p>
 	</div>
 	
 	
@@ -1086,6 +1260,58 @@ called on a separate thread.</p>
 </div>
 						
 						<div class="section-method">
+	<a name="//api/name/resetFlattenedContext" title="resetFlattenedContext"></a>
+	<h3 class="subsubtitle method-title">resetFlattenedContext</h3>
+	
+	
+
+	<div class="method-subsection method-declaration"><code>- (void)resetFlattenedContext</code></div>
+
+    
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/visibleLayers" title="visibleLayers"></a>
+	<h3 class="subsubtitle method-title">visibleLayers</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>An array with only visible <a href="#//api/name/layers">layers</a> inside the document bounds.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (NSArray *)visibleLayers</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>An array with only visible <a href="#//api/name/layers">layers</a> inside the document bounds.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">SFPSDWriter.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
 	<a name="//api/name/writeColorModeDataSectionOn:" title="writeColorModeDataSectionOn:"></a>
 	<h3 class="subsubtitle method-title">writeColorModeDataSectionOn:</h3>
 	
@@ -1153,7 +1379,7 @@ called on a separate thread.</p>
 				<div id="footer">
 					<hr />
 					<div class="footer-copyright">
-						<p><span class="copyright">&copy; 2013 Shiny Frog. All rights reserved. (Last updated: 2013-06-12)</span><br />
+						<p><span class="copyright">&copy; 2013 Shiny Frog. All rights reserved. (Last updated: 2013-06-19)</span><br />
 						
 						<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.1 (build 840)</a>.</span></p>
 						
