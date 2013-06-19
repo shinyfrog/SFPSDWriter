@@ -207,7 +207,7 @@
     }
 }
 
-- (BOOL)addLayerToFlattenedContext:(SFPSDLayer *)layer error:(NSError *__autoreleasing *)error {
+- (BOOL)addLayerToFlattenedContext:(SFPSDLayer *)layer error:(NSError * __autoreleasing *)error {
     
     if ((self.documentSize.width <= 0) || (self.documentSize.height <= 0)) {
         NSMutableDictionary *errorDetail = [NSMutableDictionary dictionary];

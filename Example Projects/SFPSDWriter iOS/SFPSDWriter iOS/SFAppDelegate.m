@@ -79,7 +79,14 @@
     NSString *fullFilePath = [documentsDirectory stringByAppendingPathComponent:@"SFPSDWriter Test File.psd"];
     
     // Retrieving the PSD data
-    NSData * psd = [psdWriter createPSDData];
+    NSError *error = nil;
+    NSData *psd = [psdWriter createPSDDataWithError:&error];
+    
+    // Checking for errors
+    if (nil != error) {
+        NSLog(@"There was an error writing the PSD: %@", [error description]);
+        return;
+    }
     
     // Writing the data on disk
     // When using the simulator we can find the file in

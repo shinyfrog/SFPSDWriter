@@ -54,7 +54,7 @@
     
     // Retrieving the PSD data
     NSError *error = nil;
-    NSData * psd = [self.writer createPSDDataWithError:&error];
+    NSData *psd = [self.writer createPSDDataWithError:&error];
     
     if (nil != error) {
         NSLog(@"ERROR? ERROR: %@", [error description]);
