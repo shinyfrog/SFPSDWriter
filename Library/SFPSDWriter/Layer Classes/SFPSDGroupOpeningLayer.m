@@ -23,8 +23,9 @@
     [extraDataStream sfAppendValue:0 length:4]; // Layer mask / adjustment layer data. Size of the data: 36, 20, or 0.
     [extraDataStream sfAppendValue:0 length:4]; // Layer blending ranges data. Length of layer blending ranges data
     
-    // Changing the name to the default PS group's ending marker name
-    self.name = @"</Layer group>";
+    // Temporally hanging the name to the default PS group's ending marker name
+    NSString *layerName = self.name;
+    [self setName:@"</Layer group>"];
     
     // Layer name: Pascal string, padded to a multiple of 4 bytes.
     [self writeNameOn:extraDataStream withPadding:4];
@@ -37,6 +38,9 @@
     
     // Unicode layer name (Photoshop 5.0). Unicode string (4 bytes length + string).
     [self writeUnicodeNameOn:extraDataStream];
+    
+    // Restoring the layer name
+    [self setName:layerName];
     
     return extraDataStream;
 }

@@ -14,11 +14,17 @@
 
 @implementation SFPSDGroupClosingLayer
 
+@synthesize groupOpeningLayer = _groupOpeningLayer;
+
 #pragma mark - Overrides of SFPSDLayer functions
 
 - (NSData *)extraLayerInformation
 {
     NSMutableData *extraDataStream = [[NSMutableData alloc] init];
+    
+    if (nil != [self groupOpeningLayer]) {
+        [self copyGroupInformationFrom:[self groupOpeningLayer]];
+    }
     
     [extraDataStream sfAppendValue:0 length:4]; // Layer mask / adjustment layer data. Size of the data: 36, 20, or 0.
     [extraDataStream sfAppendValue:0 length:4]; // Layer blending ranges data. Length of layer blending ranges data

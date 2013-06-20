@@ -19,7 +19,7 @@
 - (id)initWithName:(NSString *)name;
 
 /** Designed initializer. */
-- (id)initWithName:(NSString *)name andOpacity:(int)opacity andIsOpened:(BOOL)isOpened;
+- (id)initWithName:(NSString *)name andOpacity:(float)opacity andIsOpened:(BOOL)isOpened;
 
 /** 
  * Copies the Group layer information from another Group layer

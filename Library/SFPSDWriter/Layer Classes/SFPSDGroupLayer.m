@@ -16,10 +16,10 @@
 
 - (id)initWithName:(NSString *)name
 {
-    return [self initWithName:name andOpacity:1 andIsOpened:NO];
+    return [self initWithName:name andOpacity:1.0 andIsOpened:NO];
 }
 
-- (id)initWithName:(NSString *)name andOpacity:(int)opacity andIsOpened:(BOOL)isOpened
+- (id)initWithName:(NSString *)name andOpacity:(float)opacity andIsOpened:(BOOL)isOpened
 {
     self = [super init];
     if (!self) return nil;

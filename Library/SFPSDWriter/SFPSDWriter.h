@@ -57,7 +57,7 @@
 /**
  * Adds a new layer to the PSD image with a name. The opacity of the layer will be 1 and no offset will be applied.
  *
- * @param image The image to be added. Does not need to be the same size as the document, but it cannot be larger.
+ * @param image The image to be added. Does not need to be the same size as the document. If the image is larger than the document it will be cropped in the final result.
  * @param name The name you'd like to give the layer.
  *
  * @return The newly created layer in order to customize it after the creation. */
@@ -79,7 +79,7 @@
  *
  * Note: Having layers partially off the edge of the canvas is not currently supported.
  *
- * @param image The image to be added. Does not need to be the same size as the document, but it cannot be larger.
+ * @param image The image to be added. Does not need to be the same size as the document. If the image is larger than the document it will be cropped.
  * @param name The name you'd like to give the layer.
  * @param opacity The opacity of the layer, from [0-1]
  * @param offset The offset of the layer within the document. Use this to position layers within the PSD.
@@ -107,7 +107,10 @@
  * @param isOpened If the group should be opened inside the PSD
  *
  * @return The newly created Group in order to customize it after the creation. */
-- (SFPSDGroupOpeningLayer *)openGroupLayerWithName:(NSString *)name andOpacity:(int)opacity andIsOpened:(BOOL)isOpened;
+- (SFPSDGroupOpeningLayer *)openGroupLayerWithName:(NSString *)name andOpacity:(float)opacity andIsOpened:(BOOL)isOpened;
+
+/** Closes the corresponding opened PSD group without returning errors. The function will simply return nil if there is no opened group to close. */
+- (SFPSDGroupClosingLayer *)closeCurrentGroupLayer;
 
 /** 
  * Closes the corresponding opened PSD group.
@@ -115,7 +118,7 @@
  * The layer will have the name and other data of the SFPSDGroupOpeningLayer that it is closing
  *
  * @return The newly created group layer in order to customize it after the creation. */
-- (SFPSDGroupClosingLayer *)closeCurrentGroupLayer;
+- (SFPSDGroupClosingLayer *)closeCurrentGroupLayerWithError:(NSError * __autoreleasing *)error;
 
 /** The number of channels of the PSD document. If it has transparencies - 4, else 3. */
 - (int)numberOfChannels;

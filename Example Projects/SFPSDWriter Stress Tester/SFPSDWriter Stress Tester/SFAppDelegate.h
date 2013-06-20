@@ -24,6 +24,9 @@
 - (IBAction)writePSD10Times:(id)sender;
 - (IBAction)changeImageSize:(id)sender;
 
+- (IBAction)openGroupLayer:(id)sender;
+- (IBAction)closeGroupLayer:(id)sender;
+
 - (IBAction)addTopEscapingLayer:(id)sender;
 - (IBAction)addBottomEscapingLayer:(id)sender;
 - (IBAction)addLeftEscapingLayer:(id)sender;

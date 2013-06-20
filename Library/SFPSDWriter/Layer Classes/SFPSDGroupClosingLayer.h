@@ -9,7 +9,13 @@
 //
 
 #import "SFPSDGroupLayer.h"
+#import "SFPSDGroupOpeningLayer.h"
 
 @interface SFPSDGroupClosingLayer : SFPSDGroupLayer
+
+/** 
+ * If this property is set - the information from the group opening layer will be copied
+ * to the current layer before writing the extra layer information */
+@property (nonatomic, strong) SFPSDGroupOpeningLayer *groupOpeningLayer;
 
 @end

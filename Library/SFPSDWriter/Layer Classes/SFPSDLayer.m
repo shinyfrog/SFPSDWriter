@@ -25,7 +25,7 @@
 
 - (id)init
 {
-    return [self initWithNumberOfChannels:4 andOpacity:1 andShouldFlipLayerData:NO andShouldUnpremultiplyLayerData:NO andBlendMode:SFPSDLayerBlendModeNormal];
+    return [self initWithNumberOfChannels:4 andOpacity:1.0 andShouldFlipLayerData:NO andShouldUnpremultiplyLayerData:NO andBlendMode:SFPSDLayerBlendModeNormal];
 }
 
 - (id)initWithNumberOfChannels:(int)numberOfChannels andOpacity:(float)opacity andShouldFlipLayerData:(BOOL)shouldFlipLayerData andShouldUnpremultiplyLayerData:(BOOL)shouldUnpremultiplyLayerData andBlendMode:(NSString *)blendMode

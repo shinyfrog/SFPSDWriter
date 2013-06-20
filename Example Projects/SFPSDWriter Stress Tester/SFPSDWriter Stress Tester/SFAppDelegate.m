@@ -94,6 +94,24 @@
     [self.writer setDocumentSize:currentSize];
 }
 
+- (IBAction)openGroupLayer:(id)sender {
+    NSString *letters = @"abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+    NSMutableString *randomString = [NSMutableString stringWithCapacity:10];
+    for (int i=0; i < 10; i++) {
+        [randomString appendFormat: @"%C", [letters characterAtIndex: arc4random() % [letters length]]];
+    }
+    [self.writer openGroupLayerWithName:randomString andOpacity:1.0 andIsOpened:YES];
+}
+
+- (IBAction)closeGroupLayer:(id)sender {
+    NSError *error = nil;
+    [self.writer closeCurrentGroupLayerWithError:&error];
+    
+    if (nil != error) {
+        NSLog(@"Error in closing group layer: %@", [error debugDescription]);
+    }
+}
+
 - (IBAction)addTopEscapingLayer:(id)sender
 {
     [self addLayerWithOffset:CGPointMake(1000/2 - 250/2, -100) andOpacity:1.0];

@@ -105,7 +105,7 @@
 
 - (SFPSDLayer *)addLayerWithCGImage:(CGImageRef)image andName:(NSString*)name
 {
-    return [self addLayerWithCGImage:image andName:name andOpacity:1 andOffset:CGPointMake(0, 0)];
+    return [self addLayerWithCGImage:image andName:name andOpacity:1.0 andOffset:CGPointMake(0, 0)];
 }
 
 - (SFPSDLayer *)addLayerWithCGImage:(CGImageRef)image andName:(NSString*)name andOpacity:(float)opacity andOffset:(CGPoint)offset
@@ -130,10 +130,10 @@
 
 - (SFPSDGroupOpeningLayer *)openGroupLayerWithName:(NSString *)name
 {
-    return [self openGroupLayerWithName:name andOpacity:1 andIsOpened:NO];
+    return [self openGroupLayerWithName:name andOpacity:1.0 andIsOpened:NO];
 }
 
-- (SFPSDGroupOpeningLayer *)openGroupLayerWithName:(NSString *)name andOpacity:(int)opacity andIsOpened:(BOOL)isOpened
+- (SFPSDGroupOpeningLayer *)openGroupLayerWithName:(NSString *)name andOpacity:(float)opacity andIsOpened:(BOOL)isOpened
 {
     SFPSDGroupOpeningLayer *layer = [[SFPSDGroupOpeningLayer alloc] initWithName:name andOpacity:opacity andIsOpened:isOpened];
     layer.documentSize = self.documentSize;
@@ -142,6 +142,12 @@
 }
 
 - (SFPSDGroupClosingLayer *)closeCurrentGroupLayer
+{
+    NSError *error = nil;
+    return [self closeCurrentGroupLayerWithError:&error];
+}
+
+- (SFPSDGroupClosingLayer *)closeCurrentGroupLayerWithError:(NSError * __autoreleasing *)error
 {
     // Retrieving the last opened (and not closed) group
     SFPSDGroupOpeningLayer *lastOpenedGroup = nil;
@@ -161,10 +167,18 @@
         }
     }
     
+    if (nil == lastOpenedGroup) {
+        NSMutableDictionary *errorDetail = [NSMutableDictionary dictionary];
+        [errorDetail setValue:@"There is no opened layer to close" forKey:NSLocalizedDescriptionKey];
+        *error = [NSError errorWithDomain:@"net.shinyfrog.SFPSDWriter" code:3 userInfo:errorDetail];
+        return nil;
+    }
+    
     SFPSDGroupClosingLayer *layer = [[SFPSDGroupClosingLayer alloc] init];
-    layer.documentSize = self.documentSize;
-    [layer copyGroupInformationFrom:lastOpenedGroup];
-    [self.layers addObject: layer];
+    [layer setDocumentSize:self.documentSize];
+    [layer setGroupOpeningLayer:lastOpenedGroup];
+    
+    [[self layers] addObject:layer];
     
     return layer;
 }
@@ -237,10 +251,10 @@
         CGImageRelease(i);
     }
     
-    for (SFPSDLayer * layer in self.layers) {
+    for (SFPSDLayer *layer in self.layers) {
         
-        if ((layer.shouldFlipLayerData == NO) && (layer.shouldUnpremultiplyLayerData == NO)) {
-            return;
+        if (![layer shouldFlipLayerData] && ![layer shouldUnpremultiplyLayerData]) {
+            continue;
         }
         
         NSData *d = [layer visibleImageData];
@@ -275,6 +289,20 @@
 			}
 		}
 	}
+    
+    // Closing all the eventual groups opened and not closed
+    int groupsToClose = 0;
+    for (SFPSDLayer *layer in [self layers]) {
+        if ([layer isKindOfClass:[SFPSDGroupOpeningLayer class]]) {
+            ++groupsToClose;
+        }
+        else if ([layer isKindOfClass:[SFPSDGroupClosingLayer class]]) {
+            --groupsToClose;
+        }
+    }
+    for (int i = 0; i < groupsToClose; i++) {
+        [self closeCurrentGroupLayer];
+    }
 }
 
 #pragma mark - PSD Crating functions

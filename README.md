@@ -145,7 +145,7 @@ What SFPSDWriter **NOT** features:
     [psd writeToFile:fullFilePath atomically:NO];
 ```
 
-## Example Project
+## Example Projects
 
 The example projects are a copy and paste of the code in the [Usage](https://github.com/shinyfrog/SFPSDWriter#usage) section in:
 
