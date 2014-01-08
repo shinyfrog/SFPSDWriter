@@ -44,3 +44,6 @@ xcuserdata
 
 #Development folder
 /dev/
+
+# Xcode 5 VCS data
+*.xccheckout
