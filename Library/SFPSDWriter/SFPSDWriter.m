@@ -15,21 +15,57 @@
 
 @implementation SFPSDWriter
 
-@synthesize documentSize = _documentSize, layers = _layers, hasTransparentLayers = _hasTransparentLayers, flattenedData = _flattenedData, flattenedContext = _flattenedContext;
+@synthesize documentSize = _documentSize, documentResolution = _documentResolution, documentResolutionUnit = _documentResolutionUnit, layers = _layers, hasTransparentLayers = _hasTransparentLayers, flattenedData = _flattenedData, flattenedContext = _flattenedContext;
 
 #pragma mark - Init and dealloc
 
 - (id)init
 {
-    return [self initWithDocumentSize:CGSizeMake(0, 0) andHasTransparentLayers:YES andLayers:nil];
+    return [self initWithDocumentSize:CGSizeMake(0, 0)
+                        andResolution:72.0
+                    andResolutionUnit:SFPSDResolutionUnitPPI
+              andHasTransparentLayers:YES
+                            andLayers:nil];
 }
 
 - (id)initWithDocumentSize:(CGSize)documentSize
 {
-    return [self initWithDocumentSize:documentSize andHasTransparentLayers:YES andLayers:nil];
+    return [self initWithDocumentSize:documentSize
+                        andResolution:72.0
+                    andResolutionUnit:SFPSDResolutionUnitPPI
+              andHasTransparentLayers:YES
+                            andLayers:nil];
 }
 
-- (id)initWithDocumentSize:(CGSize)documentSize andHasTransparentLayers:(BOOL)hasTransparentLayers andLayers:(NSArray *)layers
+- (id)initWithDocumentSize:(CGSize)documentSize
+             andResolution:(float)resolution
+         andResolutionUnit:(SFPSDResolutionUnit)resolutionUnit
+{
+        return [self initWithDocumentSize:documentSize
+                            andResolution:resolution
+                        andResolutionUnit:resolutionUnit
+                  andHasTransparentLayers:YES
+                                andLayers:nil];
+}
+
+// Kept for backward compatibility - it is suggested to use the designed initializer with the resolution value
+// This initializer will be dismissed
+- (id)initWithDocumentSize:(CGSize)documentSize
+   andHasTransparentLayers:(BOOL)hasTransparentLayers
+                 andLayers:(NSArray *)layers
+{
+    return [self initWithDocumentSize:documentSize
+                        andResolution:72.0
+                    andResolutionUnit:SFPSDResolutionUnitPPI
+              andHasTransparentLayers:hasTransparentLayers
+                            andLayers:layers];
+}
+
+- (id)initWithDocumentSize:(CGSize)documentSize
+             andResolution:(float)resolution
+         andResolutionUnit:(SFPSDResolutionUnit)resolutionUnit
+   andHasTransparentLayers:(BOOL)hasTransparentLayers
+                 andLayers:(NSArray *)layers
 {
     self = [super init];
     if (!self) return nil;
@@ -40,7 +76,18 @@
 
     [self setHasTransparentLayers:hasTransparentLayers];    
     [self setDocumentSize:documentSize];
-
+    
+    if (resolutionUnit == SFPSDResolutionUnitPPC) {
+        // Converting the resolution to PPC
+        resolution = resolution * 2.54;
+    }
+    
+    SFPSDResolution currentDocumentResolution;
+    currentDocumentResolution.hResolution = resolution;
+    currentDocumentResolution.vResolution = resolution;
+    [self setDocumentResolution:currentDocumentResolution];
+    
+    [self setDocumentResolutionUnit:resolutionUnit];
     
     if (nil != layers) {
         self.layers = [[NSMutableArray alloc] initWithArray:layers];
@@ -393,8 +440,18 @@
 	[imageResources sfAppendValue:1005 length:2];
 	[imageResources sfAppendValue:0 length:2];
 	[imageResources sfAppendValue:16 length:4];
-	Byte resBytes[16] = {0x00, 0x48, 0x00, 0x00,0x00,0x01,0x00,0x01,0x00,0x48,0x00,0x00,0x00,0x01,0x00,0x01};
-	[imageResources appendBytes:&resBytes length:16];
+    
+    // Converting the resolution to a fixed point 16-binary digit number
+    UInt32 hResolution = self.documentResolution.hResolution * 65536.0 + 0.5;
+    UInt32 vResolution = self.documentResolution.vResolution * 65536.0 + 0.5;
+    
+    // write the current resolution info
+    [imageResources sfAppendValue:hResolution length:4];                    // hRes - Horizontal resolution in pixels per inch
+    [imageResources sfAppendValue:self.documentResolutionUnit length:2];    // hResUnit - 1 = display horitzontal resolution in pixels per inch; 2 = display horitzontal resolution in pixels per cm
+    [imageResources sfAppendValue:1 length:2];                              // widthUnit - Display width as 1=inches; 2=cm; 3=points; 4=picas; 5=columns
+    [imageResources sfAppendValue:vResolution length:4];                    // vRes -  Vertial resolution in pixels per inch
+    [imageResources sfAppendValue:self.documentResolutionUnit length:2];    // vResUnit - 1 = display horitzontal resolution in pixels per inch; 2 = display horitzontal resolution in pixels per cm
+    [imageResources sfAppendValue:1 length:2];                              // heightUnit - Display width as 1=inches; 2=cm; 3=points; 4=picas; 5=columns
 	
 	// write the current layer structure
 	[imageResources sfAppendUTF8String:@"8BIM" length:4];

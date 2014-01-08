@@ -33,7 +33,7 @@ What SFPSDWriter **NOT** features:
     NSImage *secondImage = [NSImage imageNamed:@"secondImage"];
     
     // SFPSDWriter instance
-    SFPSDWriter *psdWriter = [[SFPSDWriter alloc] initWithDocumentSize: NSSizeToCGSize(firstImage.size)];
+    SFPSDWriter *psdWriter = [[SFPSDWriter alloc] initWithDocumentSize:NSSizeToCGSize(firstImage.size) andResolution:300.0 andResolutionUnit:SFPSDResolutionUnitPPI];
     
     // We want all our layers to be included in a group...
     SFPSDGroupOpeningLayer *firstGroup = [psdWriter openGroupLayerWithName:@"We ♥ groups!"];
@@ -93,7 +93,7 @@ What SFPSDWriter **NOT** features:
     UIImage *secondImage = [UIImage imageNamed:@"secondImage"];
     
     // SFPSDWriter instance
-    SFPSDWriter *psdWriter = [[SFPSDWriter alloc] initWithDocumentSize:firstImage.size];
+    SFPSDWriter *psdWriter = [[SFPSDWriter alloc] initWithDocumentSize:firstImage.size andResolution:300.0 andResolutionUnit:SFPSDResolutionUnitPPI];
     
     // We want all our layers to be included in a group...
     SFPSDGroupOpeningLayer *firstGroup = [psdWriter openGroupLayerWithName:@"We ♥ groups!"];

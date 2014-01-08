@@ -436,8 +436,9 @@ NSData *CGImageGetData(CGImageRef image, CGRect region)
 	// specified here by CGBitmapContextCreate.
 	//	CGColorSpaceRef colorspace = CGColorSpaceCreateDeviceRGB();
 	CGColorSpaceRef colorspace = CGImageGetColorSpace(image);
+    CGBitmapInfo bitmapInfo = (CGBitmapInfo)kCGImageAlphaPremultipliedLast; // In order to suppress the warning (http://stackoverflow.com/a/18921840)
 	context = CGBitmapContextCreate(bitmapData, width, height, 8, bitmapBytesPerRow,
-									colorspace, kCGImageAlphaPremultipliedLast);
+									colorspace, bitmapInfo);
 	//	CGColorSpaceRelease(colorspace);
 	
 	if (context == NULL)

@@ -19,7 +19,7 @@
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
 {
     // Insert code here to initialize your application
-    self.writer = [[SFPSDWriter alloc] initWithDocumentSize:CGSizeMake(1000, 1000) andHasTransparentLayers:YES andLayers:nil];
+    self.writer = [[SFPSDWriter alloc] initWithDocumentSize:CGSizeMake(1000, 1000) andResolution:300.0 andResolutionUnit:SFPSDResolutionUnitPPI andHasTransparentLayers:YES andLayers:nil];
 }
 
 - (void)addLayerWithOffset:(CGPoint)offset andOpacity:(float)opacity

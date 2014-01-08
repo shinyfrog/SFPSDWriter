@@ -17,6 +17,18 @@
 #import "SFPSDGroupOpeningLayer.h"
 #import "SFPSDGroupClosingLayer.h"
 
+struct SFPSDResolution {
+    float hResolution;
+    float vResolution;
+};
+typedef struct SFPSDResolution SFPSDResolution;
+
+enum SFPSDResolutionUnit {
+    SFPSDResolutionUnitPPI = 1,
+    SFPSDResolutionUnitPPC = 2
+};
+typedef enum SFPSDResolutionUnit SFPSDResolutionUnit;
+
 @interface SFPSDWriter : NSObject
 {
 }
@@ -33,6 +45,14 @@
 /** The size of the PSD you're exporting. */
 @property (nonatomic, assign) CGSize documentSize;
 
+/**
+ * The pixel per inch property of the resulting document.
+ * It is a SFPSDResolution because the document can have different vertical and horizontal resolutions */
+@property (nonatomic, assign) SFPSDResolution documentResolution;
+
+/** The unit of the document resolution. */
+@property (nonatomic, assign) SFPSDResolutionUnit documentResolutionUnit;
+
 /** 
  * The number of channels in each layer. Defaults to 4, unless layers
  * are not transparent. This is the global  */
@@ -47,12 +67,20 @@
 - (id)initWithDocumentSize:(CGSize)documentSize;
 
 /**
+ * Initializes a new PSDWriter for creating a PSD document with the specified size and resolution value.
+ * @param documentSize The document size.
+ * @param resolution The resolution value of the document. */
+- (id)initWithDocumentSize:(CGSize)documentSize andResolution:(float)resolution andResolutionUnit:(SFPSDResolutionUnit)resolutionUnit;
+
+/**
  * Designed initializer.
  * 
- * @param size The document size.
+ * @param documentSize document size.
+ * @param resolution The resolution value of the document.
+ * @param resolutionUnit The unit of the document resolution.
  * @param hasTransparentLayers tells if the layer has the alpha channel.
  * @param layers Initial layers. */
-- (id)initWithDocumentSize:(CGSize)documentSize andHasTransparentLayers:(BOOL)hasTransparentLayers andLayers:(NSArray *)layers;
+- (id)initWithDocumentSize:(CGSize)documentSize andResolution:(float)resolution andResolutionUnit:(SFPSDResolutionUnit)resolutionUnit andHasTransparentLayers:(BOOL)hasTransparentLayers andLayers:(NSArray *)layers;
 
 /**
  * Adds a new layer to the PSD image with a name. The opacity of the layer will be 1 and no offset will be applied.
