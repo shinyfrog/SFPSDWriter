@@ -29,6 +29,14 @@ enum SFPSDResolutionUnit {
 };
 typedef enum SFPSDResolutionUnit SFPSDResolutionUnit;
 
+enum SFPSDColorProfile {
+    SFPSDNoColorProfile,
+    SFPSDGenericRGBColorProfile,
+    SFPSDSRGBColorProfile,
+    SFPSDAdobeRGB1998ColorProfile
+};
+typedef enum SFPSDColorProfile SFPSDColorProfile;
+
 @interface SFPSDWriter : NSObject
 {
 }
@@ -52,6 +60,9 @@ typedef enum SFPSDResolutionUnit SFPSDResolutionUnit;
 
 /** The unit of the document resolution. */
 @property (nonatomic, assign) SFPSDResolutionUnit documentResolutionUnit;
+
+/** The embedded color profile of the document. */
+@property (nonatomic, assign) SFPSDColorProfile colorProfile;
 
 /** 
  * The number of channels in each layer. Defaults to 4, unless layers

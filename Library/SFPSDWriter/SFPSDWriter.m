@@ -76,6 +76,9 @@
 
     [self setHasTransparentLayers:hasTransparentLayers];    
     [self setDocumentSize:documentSize];
+
+    // By default there is no embedded color profile
+    [self setColorProfile:SFPSDNoColorProfile];
     
     if (resolutionUnit == SFPSDResolutionUnitPPC) {
         // Converting the resolution to PPC
@@ -437,7 +440,7 @@
 	// write the resolutionInfo structure. Don't have the definition for this, so we
 	// have to just paste in the right bytes.
 	[imageResources sfAppendUTF8String:@"8BIM" length:4];
-	[imageResources sfAppendValue:1005 length:2];
+	[imageResources sfAppendValue:1005 length:2]; // 1005 - ResolutionInfo structure - See Appendix A in Photoshop API Guide.pdf
 	[imageResources sfAppendValue:0 length:2];
 	[imageResources sfAppendValue:16 length:4];
     
@@ -455,10 +458,38 @@
 	
 	// write the current layer structure
 	[imageResources sfAppendUTF8String:@"8BIM" length:4];
-	[imageResources sfAppendValue:1024 length:2];
+	[imageResources sfAppendValue:1024 length:2]; // 1024 - Layer state information - 2 bytes containing the index of target layer (0 = bottom layer)
 	[imageResources sfAppendValue:0 length:2];
 	[imageResources sfAppendValue:2 length:4];
 	[imageResources sfAppendValue:0 length:2]; // current layer = 0
+
+    // Embedded Color Profile data
+    // TODO: Ok - there is the need to create a plist with the NSData of the color spaces
+    if ([self colorProfile] != SFPSDNoColorProfile) {
+
+        NSColorSpace *colorSpace;
+        switch ([self colorProfile]) {
+            case SFPSDAdobeRGB1998ColorProfile:
+                colorSpace = [NSColorSpace adobeRGB1998ColorSpace];
+                break;
+            case SFPSDGenericRGBColorProfile:
+                colorSpace = [NSColorSpace genericRGBColorSpace];
+                break;
+            case SFPSDSRGBColorProfile:
+                colorSpace = [NSColorSpace sRGBColorSpace];
+                break;
+            default:
+                /* this is an unreachable case */
+                break;
+        }
+        NSData *colorSpaceData = [colorSpace ICCProfileData];
+
+        [imageResources sfAppendUTF8String:@"8BIM" length:4];
+        [imageResources sfAppendValue:1039 length:2]; // 1039 - The raw bytes of an ICC (International Color Consortium) format profile. See ICC34.pdf in the Documentation folder and ICC34.h in Sample Code\Common\Includes
+        [imageResources sfAppendValue:0 length:2];
+        [imageResources sfAppendValue:[colorSpaceData length] length:4];
+        [imageResources appendData:colorSpaceData];
+    }
 	
 	[result sfAppendValue:[imageResources length] length:4];
 	[result appendData:imageResources];

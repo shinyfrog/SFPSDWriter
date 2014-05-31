@@ -49,7 +49,10 @@
     // We have to close every group we've opened
     [psdWriter closeCurrentGroupLayer]; // second group
     [psdWriter closeCurrentGroupLayer]; // first group
-    
+
+//    // We can change the embedded color profile of the document
+//    [psdWriter setColorProfile:SFPSDAdobeRGB1998ColorProfile];
+
     // We'll write our test file to the Desktop
     NSString *basePath = [NSHomeDirectory() stringByAppendingPathComponent:@"Desktop"];
     NSString *fullFilePath = [basePath stringByAppendingPathComponent:@"SFPSDWriter Test File.psd"];
