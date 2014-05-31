@@ -26,13 +26,12 @@ Pod::Spec.new do |s|
 
   s.author       = { "Shiny Frog" => "shinyfrog@shinyfrog.net" }
 
-  s.source       = { :git => "https://github.com/shinyfrog/SFPSDWriter.git", :tag => "0.0.2"  }
+  s.source       = { :git => "https://github.com/shinyfrog/SFPSDWriter.git", :tag => s.version.to_s  }
 
-  s.platform     = :ios, "7.0"
-  s.platform     = :osx, "10.8"
+  s.platform     = :ios, :osx
 
-  # s.ios.deployment_target = "7.0"
-  # s.osx.deployment_target = "10.7"
+  s.ios.deployment_target = "7.0"
+  s.osx.deployment_target = "10.8"
 
   s.source_files    = "Library/SFPSDWriter/**/*.{h,m}"
 
