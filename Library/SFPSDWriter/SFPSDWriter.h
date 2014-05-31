@@ -30,10 +30,10 @@ enum SFPSDResolutionUnit {
 typedef enum SFPSDResolutionUnit SFPSDResolutionUnit;
 
 enum SFPSDColorProfile {
-    SFPSDNoColorProfile,
-    SFPSDGenericRGBColorProfile,
-    SFPSDSRGBColorProfile,
-    SFPSDAdobeRGB1998ColorProfile
+    SFPSDNoColorProfile,            // No color profile (Don't Color Manage This Document)
+    SFPSDGenericRGBColorProfile,    // Generic RGB
+    SFPSDSRGBColorProfile,          // sRGB IEC61966-2.1
+    SFPSDAdobeRGB1998ColorProfile   // Adobe RGB (1998)
 };
 typedef enum SFPSDColorProfile SFPSDColorProfile;
 
