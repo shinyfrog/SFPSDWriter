@@ -28,7 +28,7 @@
 
 @implementation SFPSDWriter
 
-@synthesize documentSize = _documentSize, documentResolution = _documentResolution, documentResolutionUnit = _documentResolutionUnit, layers = _layers, hasTransparentLayers = _hasTransparentLayers, flattenedData = _flattenedData, flattenedContext = _flattenedContext;
+@synthesize documentSize = _documentSize, documentResolution = _documentResolution, documentResolutionUnit = _documentResolutionUnit, layers = _layers, hasTransparentLayers = _hasTransparentLayers, flattenedData = _flattenedData, flattenedContext = _flattenedContext, colorProfile = _colorProfile;
 
 #pragma mark - Init and dealloc
 
