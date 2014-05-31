@@ -13,6 +13,19 @@
 #import "NSMutableData+SFAppendValue.h"
 #import "NSData+SFPackedBits.h"
 
+@interface SFPSDWriter()
+
+// Private methods declaration
+- (void)resetFlattenedContext;
+- (BOOL)addLayerToFlattenedContext:(SFPSDLayer *)layer error:(NSError * __autoreleasing *)error;
+- (void)writeFileHeaderSectionOn:(NSMutableData *)result;
+- (void)writeColorModeDataSectionOn:(NSMutableData *)result;
+- (void)writeImageResourceSectionOn:(NSMutableData *)result;
+- (void)writeLayerAndMaskInformationSectionOn:(NSMutableData *)result;
+- (void)writeImageDataSectionOn:(NSMutableData *)result;
+
+@end
+
 @implementation SFPSDWriter
 
 @synthesize documentSize = _documentSize, documentResolution = _documentResolution, documentResolutionUnit = _documentResolutionUnit, layers = _layers, hasTransparentLayers = _hasTransparentLayers, flattenedData = _flattenedData, flattenedContext = _flattenedContext;
@@ -268,8 +281,8 @@
     }
 }
 
-- (BOOL)addLayerToFlattenedContext:(SFPSDLayer *)layer error:(NSError * __autoreleasing *)error {
-    
+- (BOOL)addLayerToFlattenedContext:(SFPSDLayer *)layer error:(NSError * __autoreleasing *)error
+{
     if ((self.documentSize.width <= 0) || (self.documentSize.height <= 0)) {
         NSMutableDictionary *errorDetail = [NSMutableDictionary dictionary];
         [errorDetail setValue:@"You must specify a non-zero documentSize before adding a layer" forKey:NSLocalizedDescriptionKey];
