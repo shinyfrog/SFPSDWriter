@@ -18,7 +18,7 @@
 
 @implementation SFPSDLayer
 
-@synthesize image = _image, name = _name, opacity = _opacity, offset = _offset, documentSize = _documentSize, numberOfChannels = _numberOfChannels;
+@synthesize image = _image, name = _name, opacity = _opacity, offset = _offset, documentSize = _documentSize, numberOfChannels = _numberOfChannels, visibleImageData = _visibleImageData, blendMode = _blendMode;
 @synthesize shouldFlipLayerData = _shouldFlipLayerData, shouldUnpremultiplyLayerData = _shouldUnpremultiplyLayerData;
 
 #pragma mark - Init and dealloc
