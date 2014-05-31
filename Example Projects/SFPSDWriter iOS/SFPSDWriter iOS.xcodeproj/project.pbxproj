@@ -16,6 +16,9 @@
 		9F084ABE176F251300C5F37B /* SFPSDGroupOpeningLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F084AB3176F251300C5F37B /* SFPSDGroupOpeningLayer.m */; };
 		9F084ABF176F251300C5F37B /* SFPSDLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F084AB5176F251300C5F37B /* SFPSDLayer.m */; };
 		9F084AC0176F251300C5F37B /* SFPSDWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F084AB7176F251300C5F37B /* SFPSDWriter.m */; };
+		9F9689F0193A7A4400A7DBF7 /* AdobeRGB1998 in Resources */ = {isa = PBXBuildFile; fileRef = 9F9689ED193A7A4400A7DBF7 /* AdobeRGB1998 */; };
+		9F9689F1193A7A4400A7DBF7 /* GenericRGB in Resources */ = {isa = PBXBuildFile; fileRef = 9F9689EE193A7A4400A7DBF7 /* GenericRGB */; };
+		9F9689F2193A7A4400A7DBF7 /* sRGB in Resources */ = {isa = PBXBuildFile; fileRef = 9F9689EF193A7A4400A7DBF7 /* sRGB */; };
 		9FA4EC0D1767845D00B3CC9F /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9FA4EC0C1767845D00B3CC9F /* UIKit.framework */; };
 		9FA4EC0F1767845D00B3CC9F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9FA4EC0E1767845D00B3CC9F /* Foundation.framework */; };
 		9FA4EC111767845D00B3CC9F /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9FA4EC101767845D00B3CC9F /* CoreGraphics.framework */; };
@@ -51,6 +54,9 @@
 		9F084AB5176F251300C5F37B /* SFPSDLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFPSDLayer.m; sourceTree = "<group>"; };
 		9F084AB6176F251300C5F37B /* SFPSDWriter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFPSDWriter.h; sourceTree = "<group>"; };
 		9F084AB7176F251300C5F37B /* SFPSDWriter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFPSDWriter.m; sourceTree = "<group>"; };
+		9F9689ED193A7A4400A7DBF7 /* AdobeRGB1998 */ = {isa = PBXFileReference; lastKnownFileType = file; path = AdobeRGB1998; sourceTree = "<group>"; };
+		9F9689EE193A7A4400A7DBF7 /* GenericRGB */ = {isa = PBXFileReference; lastKnownFileType = file; path = GenericRGB; sourceTree = "<group>"; };
+		9F9689EF193A7A4400A7DBF7 /* sRGB */ = {isa = PBXFileReference; lastKnownFileType = file; path = sRGB; sourceTree = "<group>"; };
 		9FA4EC091767845D00B3CC9F /* SFPSDWriter iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "SFPSDWriter iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9FA4EC0C1767845D00B3CC9F /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		9FA4EC0E1767845D00B3CC9F /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -91,6 +97,7 @@
 			children = (
 				9F084AA3176F251300C5F37B /* Categories */,
 				9F084AAA176F251300C5F37B /* Layer Classes */,
+				9F9689EC193A7A4400A7DBF7 /* ICCProfileData */,
 				9F084AB6176F251300C5F37B /* SFPSDWriter.h */,
 				9F084AB7176F251300C5F37B /* SFPSDWriter.m */,
 			);
@@ -134,6 +141,16 @@
 				9F084AAD176F251300C5F37B /* SFPSDLayerBlendModes.m */,
 			);
 			path = Constants;
+			sourceTree = "<group>";
+		};
+		9F9689EC193A7A4400A7DBF7 /* ICCProfileData */ = {
+			isa = PBXGroup;
+			children = (
+				9F9689ED193A7A4400A7DBF7 /* AdobeRGB1998 */,
+				9F9689EE193A7A4400A7DBF7 /* GenericRGB */,
+				9F9689EF193A7A4400A7DBF7 /* sRGB */,
+			);
+			path = ICCProfileData;
 			sourceTree = "<group>";
 		};
 		9FA4EC001767845D00B3CC9F = {
@@ -255,6 +272,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9F9689F1193A7A4400A7DBF7 /* GenericRGB in Resources */,
 				9FA4EC171767845D00B3CC9F /* InfoPlist.strings in Resources */,
 				9FA4EC1F1767845D00B3CC9F /* Default.png in Resources */,
 				9FA4EC211767845D00B3CC9F /* Default@2x.png in Resources */,
@@ -262,7 +280,9 @@
 				9FA4EC261767845D00B3CC9F /* MainStoryboard_iPhone.storyboard in Resources */,
 				9FA4EC291767845D00B3CC9F /* MainStoryboard_iPad.storyboard in Resources */,
 				9FA4EC35176784CE00B3CC9F /* firstImage.png in Resources */,
+				9F9689F0193A7A4400A7DBF7 /* AdobeRGB1998 in Resources */,
 				9FA4EC36176784CE00B3CC9F /* secondImage.png in Resources */,
+				9F9689F2193A7A4400A7DBF7 /* sRGB in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

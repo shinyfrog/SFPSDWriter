@@ -24,6 +24,9 @@
 		9F1ED4B117686ABF00DECCDC /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9F1ED4AF17686ABF00DECCDC /* MainMenu.xib */; };
 		9F1ED4D917686BD800DECCDC /* firstImage.png in Resources */ = {isa = PBXBuildFile; fileRef = 9F1ED4D717686BD800DECCDC /* firstImage.png */; };
 		9F1ED4DA17686BD800DECCDC /* secondImage.png in Resources */ = {isa = PBXBuildFile; fileRef = 9F1ED4D817686BD800DECCDC /* secondImage.png */; };
+		9F4C8F10193A74C1006C3CBE /* AdobeRGB1998 in Resources */ = {isa = PBXBuildFile; fileRef = 9F4C8F0D193A74C1006C3CBE /* AdobeRGB1998 */; };
+		9F4C8F11193A74C1006C3CBE /* GenericRGB in Resources */ = {isa = PBXBuildFile; fileRef = 9F4C8F0E193A74C1006C3CBE /* GenericRGB */; };
+		9F4C8F12193A74C1006C3CBE /* sRGB in Resources */ = {isa = PBXBuildFile; fileRef = 9F4C8F0F193A74C1006C3CBE /* sRGB */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -60,6 +63,9 @@
 		9F1ED4B017686ABF00DECCDC /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		9F1ED4D717686BD800DECCDC /* firstImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = firstImage.png; sourceTree = "<group>"; };
 		9F1ED4D817686BD800DECCDC /* secondImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = secondImage.png; sourceTree = "<group>"; };
+		9F4C8F0D193A74C1006C3CBE /* AdobeRGB1998 */ = {isa = PBXFileReference; lastKnownFileType = file; path = AdobeRGB1998; sourceTree = "<group>"; };
+		9F4C8F0E193A74C1006C3CBE /* GenericRGB */ = {isa = PBXFileReference; lastKnownFileType = file; path = GenericRGB; sourceTree = "<group>"; };
+		9F4C8F0F193A74C1006C3CBE /* sRGB */ = {isa = PBXFileReference; lastKnownFileType = file; path = sRGB; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,6 +85,7 @@
 			children = (
 				9F084AC2176F25A000C5F37B /* Categories */,
 				9F084AC9176F25A000C5F37B /* Layer Classes */,
+				9F4C8F0C193A74C1006C3CBE /* ICCProfileData */,
 				9F084AD5176F25A000C5F37B /* SFPSDWriter.h */,
 				9F084AD6176F25A000C5F37B /* SFPSDWriter.m */,
 			);
@@ -195,6 +202,16 @@
 			path = "SFPSDWriter Mac OS X/Resources";
 			sourceTree = "<group>";
 		};
+		9F4C8F0C193A74C1006C3CBE /* ICCProfileData */ = {
+			isa = PBXGroup;
+			children = (
+				9F4C8F0D193A74C1006C3CBE /* AdobeRGB1998 */,
+				9F4C8F0E193A74C1006C3CBE /* GenericRGB */,
+				9F4C8F0F193A74C1006C3CBE /* sRGB */,
+			);
+			path = ICCProfileData;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -248,8 +265,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				9F1ED4A517686ABE00DECCDC /* InfoPlist.strings in Resources */,
+				9F4C8F10193A74C1006C3CBE /* AdobeRGB1998 in Resources */,
+				9F4C8F12193A74C1006C3CBE /* sRGB in Resources */,
 				9F1ED4AB17686ABE00DECCDC /* Credits.rtf in Resources */,
 				9F1ED4B117686ABF00DECCDC /* MainMenu.xib in Resources */,
+				9F4C8F11193A74C1006C3CBE /* GenericRGB in Resources */,
 				9F1ED4D917686BD800DECCDC /* firstImage.png in Resources */,
 				9F1ED4DA17686BD800DECCDC /* secondImage.png in Resources */,
 			);

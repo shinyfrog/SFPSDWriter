@@ -50,8 +50,8 @@
     [psdWriter closeCurrentGroupLayer]; // second group
     [psdWriter closeCurrentGroupLayer]; // first group
 
-//    // We can change the embedded color profile of the document
-//    [psdWriter setColorProfile:SFPSDAdobeRGB1998ColorProfile];
+    // We can change the embedded color profile of the document (for example with an "sRGB IEC61966-2.1")
+    [psdWriter setColorProfile:SFPSDSRGBColorProfile];
 
     // We'll write our test file to the Desktop
     NSString *basePath = [NSHomeDirectory() stringByAppendingPathComponent:@"Desktop"];

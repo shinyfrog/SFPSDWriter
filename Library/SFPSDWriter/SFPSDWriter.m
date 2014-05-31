@@ -477,31 +477,32 @@
 	[imageResources sfAppendValue:0 length:2]; // current layer = 0
 
     // Embedded Color Profile data
-    // TODO: Ok - there is the need to create a plist with the NSData of the color spaces
     if ([self colorProfile] != SFPSDNoColorProfile) {
 
-        NSColorSpace *colorSpace;
+        NSString *ICCProfileDataFilePath;
+
         switch ([self colorProfile]) {
             case SFPSDAdobeRGB1998ColorProfile:
-                colorSpace = [NSColorSpace adobeRGB1998ColorSpace];
+                ICCProfileDataFilePath = [[NSBundle mainBundle] pathForResource:@"AdobeRGB1998" ofType:@""];
                 break;
             case SFPSDGenericRGBColorProfile:
-                colorSpace = [NSColorSpace genericRGBColorSpace];
+                ICCProfileDataFilePath = [[NSBundle mainBundle] pathForResource:@"GenericRGB" ofType:@""];
                 break;
             case SFPSDSRGBColorProfile:
-                colorSpace = [NSColorSpace sRGBColorSpace];
+                ICCProfileDataFilePath = [[NSBundle mainBundle] pathForResource:@"sRGB" ofType:@""];
                 break;
             default:
                 /* this is an unreachable case */
                 break;
         }
-        NSData *colorSpaceData = [colorSpace ICCProfileData];
+
+        NSData *ICCProfileData = [NSData dataWithContentsOfFile:ICCProfileDataFilePath];
 
         [imageResources sfAppendUTF8String:@"8BIM" length:4];
         [imageResources sfAppendValue:1039 length:2]; // 1039 - The raw bytes of an ICC (International Color Consortium) format profile. See ICC34.pdf in the Documentation folder and ICC34.h in Sample Code\Common\Includes
         [imageResources sfAppendValue:0 length:2];
-        [imageResources sfAppendValue:[colorSpaceData length] length:4];
-        [imageResources appendData:colorSpaceData];
+        [imageResources sfAppendValue:[ICCProfileData length] length:4];
+        [imageResources appendData:ICCProfileData];
     }
 	
 	[result sfAppendValue:[imageResources length] length:4];
