@@ -479,6 +479,8 @@
     // Embedded Color Profile data
     if ([self colorProfile] != SFPSDNoColorProfile) {
 
+        // We have to use the NSData of the [NSColorSpace ICCProfileData] saved to the files
+        // because iOS does not have NSColorProfile
         NSString *ICCProfileDataFilePath;
 
         switch ([self colorProfile]) {
