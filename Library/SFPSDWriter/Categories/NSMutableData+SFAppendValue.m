@@ -31,4 +31,25 @@
     [self appendData:data];
 }
 
+- (void)sfAppendCGColorRef:(CGColorRef)color length:(int)length
+{
+    const CGFloat *colorComponents = CGColorGetComponents(color);
+    size_t numberOfComponents = CGColorGetNumberOfComponents(color);
+
+    NSAssert(numberOfComponents == 4, @"The color components should always be 4 (RGBA color)");
+
+    UInt32 redComponent = colorComponents[0] * 65536.0 - 0.5;
+    UInt32 greenComponent = colorComponents[1] * 65536.0 - 0.5;
+    UInt32 blueComponent = colorComponents[2] * 65536.0 - 0.5;
+    //UInt32 alphaComponent = colorComponents[3] * 65536.0 - 0.5;
+
+    // NSLog(@"RGBA(%d, %d, %d, %d)", redComponent, greenComponent, blueComponent, alphaComponent);
+
+    [self sfAppendValue:0 length:2]; //  2 bytes for space
+    [self sfAppendValue:redComponent length:2]; // followed by 4 * 2 byte color component
+    [self sfAppendValue:greenComponent length:2];
+    [self sfAppendValue:blueComponent length:2];
+    [self sfAppendValue:0 length:2];
+}
+
 @end

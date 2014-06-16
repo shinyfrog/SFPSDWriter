@@ -45,8 +45,11 @@
     }
     
     [extraDataStream sfAppendUTF8String:@"8BIM" length:4];
-    [extraDataStream sfAppendUTF8String:@"pass" length:4]; // Blend mode: pass
-    
+    [extraDataStream sfAppendUTF8String:SFPSDLayerBlendModePassThrough length:4]; // Blend mode: pass
+
+    // Writing the Effects Layer containing information about Drop Shadow, Inner Shadow, Outer Glow, Inner Glow, Bevel, Solid Fill
+    [self writeEffectsLayerOn:extraDataStream];
+
     // Unicode layer name (Photoshop 5.0). Unicode string (4 bytes length + string).
     [self writeUnicodeNameOn:extraDataStream];
     

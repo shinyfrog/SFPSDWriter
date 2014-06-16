@@ -68,7 +68,28 @@
     
     // ... and with "Darken" blend mode
     [secondLayer setBlendMode:SFPSDLayerBlendModeDarken];
-    
+
+    // We'll prepare the Drop Shadow Effect Layer information
+    SFPSDDropShadowEffectLayerInformation *dropShadowInformation = [[SFPSDDropShadowEffectLayerInformation alloc] init];
+    dropShadowInformation.enabled = YES;
+    dropShadowInformation.size = 100;
+    dropShadowInformation.angle = 90;
+    dropShadowInformation.distance = 5;
+    dropShadowInformation.color = [[UIColor redColor] CGColor];
+    dropShadowInformation.blendMode = SFPSDLayerBlendModeNormal;
+    dropShadowInformation.useGlobalLight = NO;
+    dropShadowInformation.opacity = 100;
+
+    // We'll set the Drop Sahdow on the second layer (we can add it to the SFPSDGroupOpeningLayer too)
+    [secondLayer setDropShadowEffectLayerInformation:dropShadowInformation];
+
+    // Other available Effect Layers are:
+    // - Inner Shadow (SFPSDInnerShadowEffectLayerInformation)
+    // - Outer Glow (SFPSDOuterGlowEffectLayerInformation)
+    // - Inner Glow (SFPSDInnerGlowEffectLayerInformation)
+    // - Bevel (SFPSDBevelEffectLayerInformation)
+    // - Solid Fill (SFPSDSolidFillEffectLayerInformation)
+
     // We have to close every group we've opened
     [psdWriter closeCurrentGroupLayer]; // second group
     [psdWriter closeCurrentGroupLayer]; // first group

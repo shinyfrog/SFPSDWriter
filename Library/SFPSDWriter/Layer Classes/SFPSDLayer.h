@@ -15,6 +15,9 @@
 #endif
 
 #import "SFPSDLayerBlendModes.h"
+#import "SFPSDEffectsLayerEffectSignatures.h"
+
+#import "SFPSDEffectLayerInformations.h"
 
 @interface SFPSDLayer : NSObject
 {
@@ -63,6 +66,34 @@
 /** Layer blend mode. */
 @property (nonatomic, strong) NSString *blendMode;
 
+#pragma mark - Effects Layer Informations
+
+/** Effects Layer information for the Drop Shafow Effect 
+  * Can be found in the "Layer -> Layer Style" menu in Photoshop */
+@property (nonatomic, strong) SFPSDDropShadowEffectLayerInformation *dropShadowEffectLayerInformation;
+
+/** Effects Layer information for the Inner Shafow Effect
+ * Can be found in the "Layer -> Layer Style" menu in Photoshop */
+@property (nonatomic, assign) SFPSDInnerShadowEffectLayerInformation *innerShadowEffectLayerInformation;
+
+/** Effects Layer information for the Outer Glow Effect
+ * Can be found in the "Layer -> Layer Style" menu in Photoshop */
+@property (nonatomic, assign) SFPSDOuterGlowEffectLayerInformation *outerGlowEffectLayerInformation;
+
+/** Effects Layer information for the Inner Glow Effect
+ * Can be found in the "Layer -> Layer Style" menu in Photoshop */
+@property (nonatomic, assign) SFPSDInnerGlowEffectLayerInformation *innerGlowEffectLayerInformation;
+
+/** Effects Layer information for the Bevel Effect
+ * Can be found in the "Layer -> Layer Style" menu in Photoshop */
+@property (nonatomic, assign) SFPSDBevelEffectLayerInformation *bevelEffectLayerInformation;
+
+/** Effects Layer information for the Solid Fill Effect
+ * Can be found in the "Layer -> Layer Style" menu in Photoshop */
+@property (nonatomic, assign) SFPSDSolidFillEffectLayerInformation *solidFillEffectLayerInformation;
+
+#pragma mark - Initializers
+
 /** Designed initializer. */
 - (id)initWithNumberOfChannels:(int)numberOfChannels andOpacity:(float)opacity andShouldFlipLayerData:(BOOL)shouldFlipLayerData andShouldUnpremultiplyLayerData:(BOOL)shouldUnpremultiplyLayerData andBlendMode:(NSString *)blendMode;
 
@@ -107,6 +138,10 @@
 
 /** Writes the name on data. Tipically used in the "extra data field". */
 - (void)writeNameOn:(NSMutableData *)data withPadding:(int)padding;
+
+/** Writes the Effects Layer containing information about Drop Shadow, Inner Shadow, 
+  * Outer Glow, Inner Glow, Bevel, Solid Fill. Tipically used in the "extra data field". */
+- (void)writeEffectsLayerOn:(NSMutableData *)data;
 
 /** Writes the unicode name on data. Tipically used in the "extra data field". */
 - (void)writeUnicodeNameOn:(NSMutableData *)data;

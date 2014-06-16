@@ -33,9 +33,18 @@
 
 - (void)copyGroupInformationFrom:(SFPSDGroupLayer *)layer
 {
+    // Copying later informations
     [self setName:layer.name];
     [self setOpacity:layer.opacity];
     [self setIsOpened:layer.isOpened];
+
+    // Copying Effect Layers
+    [self setDropShadowEffectLayerInformation:layer.dropShadowEffectLayerInformation];
+    [self setInnerShadowEffectLayerInformation:layer.innerShadowEffectLayerInformation];
+    [self setOuterGlowEffectLayerInformation:layer.outerGlowEffectLayerInformation];
+    [self setInnerGlowEffectLayerInformation:layer.innerGlowEffectLayerInformation];
+    [self setBevelEffectLayerInformation:layer.bevelEffectLayerInformation];
+    [self setSolidFillEffectLayerInformation:layer.solidFillEffectLayerInformation];
 }
 
 #pragma mark - Overrides of SFPSDLayer functions

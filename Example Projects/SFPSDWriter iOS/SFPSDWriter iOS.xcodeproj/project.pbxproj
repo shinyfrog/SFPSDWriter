@@ -16,6 +16,13 @@
 		9F084ABE176F251300C5F37B /* SFPSDGroupOpeningLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F084AB3176F251300C5F37B /* SFPSDGroupOpeningLayer.m */; };
 		9F084ABF176F251300C5F37B /* SFPSDLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F084AB5176F251300C5F37B /* SFPSDLayer.m */; };
 		9F084AC0176F251300C5F37B /* SFPSDWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F084AB7176F251300C5F37B /* SFPSDWriter.m */; };
+		9F7D2495194E007400C82547 /* SFPSDEffectsLayerEffectSignatures.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F7D2494194E007400C82547 /* SFPSDEffectsLayerEffectSignatures.m */; };
+		9F7D24B3194E4EB200C82547 /* SFPSDBevelEffectLayerInformation.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F7D24A7194E4EB200C82547 /* SFPSDBevelEffectLayerInformation.m */; };
+		9F7D24B4194E4EB200C82547 /* SFPSDDropShadowEffectLayerInformation.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F7D24A9194E4EB200C82547 /* SFPSDDropShadowEffectLayerInformation.m */; };
+		9F7D24B5194E4EB200C82547 /* SFPSDInnerGlowEffectLayerInformation.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F7D24AC194E4EB200C82547 /* SFPSDInnerGlowEffectLayerInformation.m */; };
+		9F7D24B6194E4EB200C82547 /* SFPSDInnerShadowEffectLayerInformation.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F7D24AE194E4EB200C82547 /* SFPSDInnerShadowEffectLayerInformation.m */; };
+		9F7D24B7194E4EB200C82547 /* SFPSDOuterGlowEffectLayerInformation.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F7D24B0194E4EB200C82547 /* SFPSDOuterGlowEffectLayerInformation.m */; };
+		9F7D24B8194E4EB200C82547 /* SFPSDSolidFillEffectLayerInformation.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F7D24B2194E4EB200C82547 /* SFPSDSolidFillEffectLayerInformation.m */; };
 		9F9689F0193A7A4400A7DBF7 /* AdobeRGB1998 in Resources */ = {isa = PBXBuildFile; fileRef = 9F9689ED193A7A4400A7DBF7 /* AdobeRGB1998 */; };
 		9F9689F1193A7A4400A7DBF7 /* GenericRGB in Resources */ = {isa = PBXBuildFile; fileRef = 9F9689EE193A7A4400A7DBF7 /* GenericRGB */; };
 		9F9689F2193A7A4400A7DBF7 /* sRGB in Resources */ = {isa = PBXBuildFile; fileRef = 9F9689EF193A7A4400A7DBF7 /* sRGB */; };
@@ -54,6 +61,21 @@
 		9F084AB5176F251300C5F37B /* SFPSDLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFPSDLayer.m; sourceTree = "<group>"; };
 		9F084AB6176F251300C5F37B /* SFPSDWriter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFPSDWriter.h; sourceTree = "<group>"; };
 		9F084AB7176F251300C5F37B /* SFPSDWriter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFPSDWriter.m; sourceTree = "<group>"; };
+		9F7D2493194E007400C82547 /* SFPSDEffectsLayerEffectSignatures.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFPSDEffectsLayerEffectSignatures.h; sourceTree = "<group>"; };
+		9F7D2494194E007400C82547 /* SFPSDEffectsLayerEffectSignatures.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFPSDEffectsLayerEffectSignatures.m; sourceTree = "<group>"; };
+		9F7D24A6194E4EB200C82547 /* SFPSDBevelEffectLayerInformation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFPSDBevelEffectLayerInformation.h; sourceTree = "<group>"; };
+		9F7D24A7194E4EB200C82547 /* SFPSDBevelEffectLayerInformation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFPSDBevelEffectLayerInformation.m; sourceTree = "<group>"; };
+		9F7D24A8194E4EB200C82547 /* SFPSDDropShadowEffectLayerInformation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFPSDDropShadowEffectLayerInformation.h; sourceTree = "<group>"; };
+		9F7D24A9194E4EB200C82547 /* SFPSDDropShadowEffectLayerInformation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFPSDDropShadowEffectLayerInformation.m; sourceTree = "<group>"; };
+		9F7D24AA194E4EB200C82547 /* SFPSDEffectLayerInformations.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFPSDEffectLayerInformations.h; sourceTree = "<group>"; };
+		9F7D24AB194E4EB200C82547 /* SFPSDInnerGlowEffectLayerInformation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFPSDInnerGlowEffectLayerInformation.h; sourceTree = "<group>"; };
+		9F7D24AC194E4EB200C82547 /* SFPSDInnerGlowEffectLayerInformation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFPSDInnerGlowEffectLayerInformation.m; sourceTree = "<group>"; };
+		9F7D24AD194E4EB200C82547 /* SFPSDInnerShadowEffectLayerInformation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFPSDInnerShadowEffectLayerInformation.h; sourceTree = "<group>"; };
+		9F7D24AE194E4EB200C82547 /* SFPSDInnerShadowEffectLayerInformation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFPSDInnerShadowEffectLayerInformation.m; sourceTree = "<group>"; };
+		9F7D24AF194E4EB200C82547 /* SFPSDOuterGlowEffectLayerInformation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFPSDOuterGlowEffectLayerInformation.h; sourceTree = "<group>"; };
+		9F7D24B0194E4EB200C82547 /* SFPSDOuterGlowEffectLayerInformation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFPSDOuterGlowEffectLayerInformation.m; sourceTree = "<group>"; };
+		9F7D24B1194E4EB200C82547 /* SFPSDSolidFillEffectLayerInformation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFPSDSolidFillEffectLayerInformation.h; sourceTree = "<group>"; };
+		9F7D24B2194E4EB200C82547 /* SFPSDSolidFillEffectLayerInformation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFPSDSolidFillEffectLayerInformation.m; sourceTree = "<group>"; };
 		9F9689ED193A7A4400A7DBF7 /* AdobeRGB1998 */ = {isa = PBXFileReference; lastKnownFileType = file; path = AdobeRGB1998; sourceTree = "<group>"; };
 		9F9689EE193A7A4400A7DBF7 /* GenericRGB */ = {isa = PBXFileReference; lastKnownFileType = file; path = GenericRGB; sourceTree = "<group>"; };
 		9F9689EF193A7A4400A7DBF7 /* sRGB */ = {isa = PBXFileReference; lastKnownFileType = file; path = sRGB; sourceTree = "<group>"; };
@@ -121,6 +143,7 @@
 		9F084AAA176F251300C5F37B /* Layer Classes */ = {
 			isa = PBXGroup;
 			children = (
+				9F7D248F194E005900C82547 /* Effect Layer Information Classes */,
 				9F084AAB176F251300C5F37B /* Constants */,
 				9F084AAE176F251300C5F37B /* SFPSDGroupClosingLayer.h */,
 				9F084AAF176F251300C5F37B /* SFPSDGroupClosingLayer.m */,
@@ -139,8 +162,30 @@
 			children = (
 				9F084AAC176F251300C5F37B /* SFPSDLayerBlendModes.h */,
 				9F084AAD176F251300C5F37B /* SFPSDLayerBlendModes.m */,
+				9F7D2493194E007400C82547 /* SFPSDEffectsLayerEffectSignatures.h */,
+				9F7D2494194E007400C82547 /* SFPSDEffectsLayerEffectSignatures.m */,
 			);
 			path = Constants;
+			sourceTree = "<group>";
+		};
+		9F7D248F194E005900C82547 /* Effect Layer Information Classes */ = {
+			isa = PBXGroup;
+			children = (
+				9F7D24A6194E4EB200C82547 /* SFPSDBevelEffectLayerInformation.h */,
+				9F7D24A7194E4EB200C82547 /* SFPSDBevelEffectLayerInformation.m */,
+				9F7D24A8194E4EB200C82547 /* SFPSDDropShadowEffectLayerInformation.h */,
+				9F7D24A9194E4EB200C82547 /* SFPSDDropShadowEffectLayerInformation.m */,
+				9F7D24AA194E4EB200C82547 /* SFPSDEffectLayerInformations.h */,
+				9F7D24AB194E4EB200C82547 /* SFPSDInnerGlowEffectLayerInformation.h */,
+				9F7D24AC194E4EB200C82547 /* SFPSDInnerGlowEffectLayerInformation.m */,
+				9F7D24AD194E4EB200C82547 /* SFPSDInnerShadowEffectLayerInformation.h */,
+				9F7D24AE194E4EB200C82547 /* SFPSDInnerShadowEffectLayerInformation.m */,
+				9F7D24AF194E4EB200C82547 /* SFPSDOuterGlowEffectLayerInformation.h */,
+				9F7D24B0194E4EB200C82547 /* SFPSDOuterGlowEffectLayerInformation.m */,
+				9F7D24B1194E4EB200C82547 /* SFPSDSolidFillEffectLayerInformation.h */,
+				9F7D24B2194E4EB200C82547 /* SFPSDSolidFillEffectLayerInformation.m */,
+			);
+			path = "Effect Layer Information Classes";
 			sourceTree = "<group>";
 		};
 		9F9689EC193A7A4400A7DBF7 /* ICCProfileData */ = {
@@ -294,17 +339,24 @@
 			buildActionMask = 2147483647;
 			files = (
 				9FA4EC191767845D00B3CC9F /* main.m in Sources */,
+				9F7D24B7194E4EB200C82547 /* SFPSDOuterGlowEffectLayerInformation.m in Sources */,
 				9FA4EC1D1767845D00B3CC9F /* SFAppDelegate.m in Sources */,
 				9FA4EC2C1767845D00B3CC9F /* SFViewController.m in Sources */,
 				9F084AB8176F251300C5F37B /* NSData+SFPackedBits.m in Sources */,
 				9F084AB9176F251300C5F37B /* NSMutableData+SFAppendValue.m in Sources */,
+				9F7D24B8194E4EB200C82547 /* SFPSDSolidFillEffectLayerInformation.m in Sources */,
+				9F7D24B3194E4EB200C82547 /* SFPSDBevelEffectLayerInformation.m in Sources */,
+				9F7D24B5194E4EB200C82547 /* SFPSDInnerGlowEffectLayerInformation.m in Sources */,
 				9F084ABA176F251300C5F37B /* NSString+SFPascalString.m in Sources */,
 				9F084ABB176F251300C5F37B /* SFPSDLayerBlendModes.m in Sources */,
+				9F7D24B6194E4EB200C82547 /* SFPSDInnerShadowEffectLayerInformation.m in Sources */,
 				9F084ABC176F251300C5F37B /* SFPSDGroupClosingLayer.m in Sources */,
 				9F084ABD176F251300C5F37B /* SFPSDGroupLayer.m in Sources */,
 				9F084ABE176F251300C5F37B /* SFPSDGroupOpeningLayer.m in Sources */,
 				9F084ABF176F251300C5F37B /* SFPSDLayer.m in Sources */,
 				9F084AC0176F251300C5F37B /* SFPSDWriter.m in Sources */,
+				9F7D24B4194E4EB200C82547 /* SFPSDDropShadowEffectLayerInformation.m in Sources */,
+				9F7D2495194E007400C82547 /* SFPSDEffectsLayerEffectSignatures.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

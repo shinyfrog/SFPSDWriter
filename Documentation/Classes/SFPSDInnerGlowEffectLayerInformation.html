@@ -2,7 +2,7 @@
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="html/html; charset=utf-8" />
-		<title>SFPSDGroupLayer Class Reference</title>
+		<title>SFPSDInnerGlowEffectLayerInformation Class Reference</title>
 		<meta id="xcode-display" name="xcode-display" content="render"/>
 		<link rel="stylesheet" type="text/css" href="../css/styles.css" media="all" />
 		<link rel="stylesheet" type="text/css" media="print" href="../css/stylesPrint.css" />
@@ -16,7 +16,7 @@
 			</div>
 			
 			<div id="title" role="banner">
-				<h1 class="hideInXcode">SFPSDGroupLayer Class Reference</h1>
+				<h1 class="hideInXcode">SFPSDInnerGlowEffectLayerInformation Class Reference</h1>
 			</div>
 			<ul id="headerButtons" role="toolbar">
 				<li id="toc_button">
@@ -37,7 +37,17 @@
 	
 	<option value="properties">Properties</option>
 	
-	<option value="//api/name/isOpened">&nbsp;&nbsp;&nbsp;&nbsp;isOpened</option>
+	<option value="//api/name/blendMode">&nbsp;&nbsp;&nbsp;&nbsp;blendMode</option>
+	
+	<option value="//api/name/color">&nbsp;&nbsp;&nbsp;&nbsp;color</option>
+	
+	<option value="//api/name/enabled">&nbsp;&nbsp;&nbsp;&nbsp;enabled</option>
+	
+	<option value="//api/name/opacity">&nbsp;&nbsp;&nbsp;&nbsp;opacity</option>
+	
+	<option value="//api/name/size">&nbsp;&nbsp;&nbsp;&nbsp;size</option>
+	
+	<option value="//api/name/source">&nbsp;&nbsp;&nbsp;&nbsp;source</option>
 	
 	
 	
@@ -46,15 +56,9 @@
 	
 	<option value="instance_methods">Instance Methods</option>
 	
-	<option value="//api/name/copyGroupInformationFrom:">&nbsp;&nbsp;&nbsp;&nbsp;- copyGroupInformationFrom:</option>
+	<option value="//api/name/init">&nbsp;&nbsp;&nbsp;&nbsp;- init</option>
 	
-	<option value="//api/name/hasValidSize">&nbsp;&nbsp;&nbsp;&nbsp;- hasValidSize</option>
-	
-	<option value="//api/name/initWithName:">&nbsp;&nbsp;&nbsp;&nbsp;- initWithName:</option>
-	
-	<option value="//api/name/initWithName:andOpacity:andIsOpened:">&nbsp;&nbsp;&nbsp;&nbsp;- initWithName:andOpacity:andIsOpened:</option>
-	
-	<option value="//api/name/layerChannels">&nbsp;&nbsp;&nbsp;&nbsp;- layerChannels</option>
+	<option value="//api/name/opacity255">&nbsp;&nbsp;&nbsp;&nbsp;- opacity255</option>
 	
 	
 	
@@ -78,7 +82,17 @@
 
 <li role="treeitem" class="children"><span class="disclosure"></span><span class="sectionName"><a href="#properties">Properties</a></span><ul>
 	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/isOpened">isOpened</a></span></li>
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/blendMode">blendMode</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/color">color</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/enabled">enabled</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/opacity">opacity</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/size">size</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/source">source</a></span></li>
 	
 </ul></li>
 
@@ -88,15 +102,9 @@
 
 <li role="treeitem" class="children"><span class="disclosure"></span><span class="sectionName"><a href="#instance_methods">Instance Methods</a></span><ul>
 	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/copyGroupInformationFrom:">copyGroupInformationFrom:</a></span></li>
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/init">init</a></span></li>
 	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/hasValidSize">hasValidSize</a></span></li>
-	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/initWithName:">initWithName:</a></span></li>
-	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/initWithName:andOpacity:andIsOpened:">initWithName:andOpacity:andIsOpened:</a></span></li>
-	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/layerChannels">layerChannels</a></span></li>
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/opacity255">opacity255</a></span></li>
 	
 </ul></li>
 
@@ -105,7 +113,7 @@
 		</nav>
 		<article>
 			<div id="contents" class="isShowingTOC" role="main">
-				<a title="SFPSDGroupLayer Class Reference" name="top"></a>
+				<a title="SFPSDInnerGlowEffectLayerInformation Class Reference" name="top"></a>
 				<div class="main-navigation navigation-top">
 					<ul>
 	<li><a href="../index.html">Index</a></li>
@@ -114,7 +122,7 @@
 				</div>
 				<div id="header">
 					<div class="section-header">
-						<h1 class="title title-header">SFPSDGroupLayer Class Reference</h1>
+						<h1 class="title title-header">SFPSDInnerGlowEffectLayerInformation Class Reference</h1>
 					</div>		
 				</div>
 				<div id="container">	
@@ -122,10 +130,10 @@
 					<div class="section section-specification"><table cellspacing="0"><tbody>
 						<tr>
 	<td class="specification-title">Inherits from</td>
-	<td class="specification-value"><a href="../Classes/SFPSDLayer.html">SFPSDLayer</a> : NSObject</td>
+	<td class="specification-value">NSObject</td>
 </tr><tr>
 	<td class="specification-title">Declared in</td>
-	<td class="specification-value">SFPSDGroupLayer.h<br />SFPSDGroupLayer.m</td>
+	<td class="specification-value">SFPSDInnerGlowEffectLayerInformation.h<br />SFPSDInnerGlowEffectLayerInformation.m</td>
 </tr>
 						</tbody></table></div>
 					
@@ -145,31 +153,50 @@
 						<ul class="task-list">
 							<li>
 	<span class="tooltip">
-		<code><a href="#//api/name/isOpened">&nbsp;&nbsp;isOpened</a></code>
-		<span class="tooltip"><p>If the group layer is shown opened or closed. Default is NO</p></span>
+		<code><a href="#//api/name/size">&nbsp;&nbsp;size</a></code>
+		<span class="tooltip"><p>&ldquo;Size&rdquo; Inner Glow effect configuration inside Photoshop (0&hellip;250)</p></span>
 	</span>
 	<span class="task-item-suffix">property</span>
 	
 </li><li>
 	<span class="tooltip">
-		<code><a href="#//api/name/initWithName:">&ndash;&nbsp;initWithName:</a></code>
-		<span class="tooltip"><p>Simple initializer.</p></span>
+		<code><a href="#//api/name/color">&nbsp;&nbsp;color</a></code>
+		<span class="tooltip"><p>Color Inner Glow effect configuration inside Photoshop</p></span>
 	</span>
-	
+	<span class="task-item-suffix">property</span>
 	
 </li><li>
 	<span class="tooltip">
-		<code><a href="#//api/name/initWithName:andOpacity:andIsOpened:">&ndash;&nbsp;initWithName:andOpacity:andIsOpened:</a></code>
-		<span class="tooltip"><p>Designed initializer.</p></span>
+		<code><a href="#//api/name/blendMode">&nbsp;&nbsp;blendMode</a></code>
+		<span class="tooltip"><p>&ldquo;Blend Mode&rdquo; Inner Glow effect configuration inside Photoshop</p></span>
 	</span>
-	
+	<span class="task-item-suffix">property</span>
 	
 </li><li>
 	<span class="tooltip">
-		<code><a href="#//api/name/copyGroupInformationFrom:">&ndash;&nbsp;copyGroupInformationFrom:</a></code>
-		<span class="tooltip"><p>Copies the Group layer information from another Group layer
-Useful if you want to setup the information on the Closing Group Layer and don&rsquo;t remember
-the information you&rsquo;ve put in the Opening one</p></span>
+		<code><a href="#//api/name/enabled">&nbsp;&nbsp;enabled</a></code>
+		<span class="tooltip"><p>Set to YES in order to enable the effect</p></span>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/opacity">&nbsp;&nbsp;opacity</a></code>
+		<span class="tooltip"><p>&ldquo;Opacity&rdquo; Inner Glow effect configuration inside Photoshop (0&hellip;100)</p></span>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/source">&nbsp;&nbsp;source</a></code>
+		<span class="tooltip"><p>&ldquo;Source&rdquo; Inner Glow effect configuration inside Photoshop</p></span>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/opacity255">&ndash;&nbsp;opacity255</a></code>
+		<span class="tooltip"><p>Return a (0&hellip;255) value for the <a href="#//api/name/opacity">opacity</a></p></span>
 	</span>
 	
 	
@@ -183,15 +210,8 @@ the information you&rsquo;ve put in the Opening one</p></span>
 						<ul class="task-list">
 							<li>
 	<span class="tooltip">
-		<code><a href="#//api/name/layerChannels">&ndash;&nbsp;layerChannels</a></code>
-		<span class="tooltip"><p>Returns an array of the channels composing the layer.</p></span>
-	</span>
-	
-	
-</li><li>
-	<span class="tooltip">
-		<code><a href="#//api/name/hasValidSize">&ndash;&nbsp;hasValidSize</a></code>
-		<span class="tooltip"><p>Returns a Boolean value that indicates whether the layer has some printable content inside the document bounds.</p></span>
+		<code><a href="#//api/name/init">&ndash;&nbsp;init</a></code>
+		
 	</span>
 	
 	
@@ -209,18 +229,18 @@ the information you&rsquo;ve put in the Opening one</p></span>
 						<h2 class="subtitle subtitle-methods">Properties</h2>
 						
 						<div class="section-method">
-	<a name="//api/name/isOpened" title="isOpened"></a>
-	<h3 class="subsubtitle method-title">isOpened</h3>
+	<a name="//api/name/blendMode" title="blendMode"></a>
+	<h3 class="subsubtitle method-title">blendMode</h3>
 	
 	
 	
 	<div class="method-subsection brief-description">
-		<p>If the group layer is shown opened or closed. Default is NO</p>
+		<p>&ldquo;Blend Mode&rdquo; Inner Glow effect configuration inside Photoshop</p>
 	</div>		
 	
     
 
-	<div class="method-subsection method-declaration"><code>@property (nonatomic, assign) BOOL isOpened</code></div>
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, strong) NSString *blendMode</code></div>
 
     
 	
@@ -232,7 +252,7 @@ the information you&rsquo;ve put in the Opening one</p></span>
 	
 	<div class="method-subsection discussion-section">
 		<h4 class="method-subtitle">Discussion</h4>
-		<p>If the group layer is shown opened or closed. Default is NO</p>
+		<p>&ldquo;Blend Mode&rdquo; Inner Glow effect configuration inside Photoshop</p>
 	</div>
 	
 	
@@ -243,7 +263,212 @@ the information you&rsquo;ve put in the Opening one</p></span>
 	
 	<div class="method-subsection declared-in-section">
 		<h4 class="method-subtitle">Declared In</h4>
-		<code class="declared-in-ref">SFPSDGroupLayer.h</code><br />
+		<code class="declared-in-ref">SFPSDInnerGlowEffectLayerInformation.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/color" title="color"></a>
+	<h3 class="subsubtitle method-title">color</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Color Inner Glow effect configuration inside Photoshop</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, assign) CGColorRef color</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Color Inner Glow effect configuration inside Photoshop</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">SFPSDInnerGlowEffectLayerInformation.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/enabled" title="enabled"></a>
+	<h3 class="subsubtitle method-title">enabled</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Set to YES in order to enable the effect</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, assign) BOOL enabled</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Set to YES in order to enable the effect</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">SFPSDInnerGlowEffectLayerInformation.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/opacity" title="opacity"></a>
+	<h3 class="subsubtitle method-title">opacity</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>&ldquo;Opacity&rdquo; Inner Glow effect configuration inside Photoshop (0&hellip;100)</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, assign) long opacity</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>&ldquo;Opacity&rdquo; Inner Glow effect configuration inside Photoshop (0&hellip;100)</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">SFPSDInnerGlowEffectLayerInformation.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/size" title="size"></a>
+	<h3 class="subsubtitle method-title">size</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>&ldquo;Size&rdquo; Inner Glow effect configuration inside Photoshop (0&hellip;250)</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, assign) long size</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>&ldquo;Size&rdquo; Inner Glow effect configuration inside Photoshop (0&hellip;250)</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">SFPSDInnerGlowEffectLayerInformation.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/source" title="source"></a>
+	<h3 class="subsubtitle method-title">source</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>&ldquo;Source&rdquo; Inner Glow effect configuration inside Photoshop</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, assign) SFPSDInnerGlowEffectLayerInformationSource source</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>&ldquo;Source&rdquo; Inner Glow effect configuration inside Photoshop</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">SFPSDInnerGlowEffectLayerInformation.h</code><br />
 	</div>				
 	
 	
@@ -260,109 +485,29 @@ the information you&rsquo;ve put in the Opening one</p></span>
 						<h2 class="subtitle subtitle-methods">Instance Methods</h2>
 						
 						<div class="section-method">
-	<a name="//api/name/copyGroupInformationFrom:" title="copyGroupInformationFrom:"></a>
-	<h3 class="subsubtitle method-title">copyGroupInformationFrom:</h3>
+	<a name="//api/name/init" title="init"></a>
+	<h3 class="subsubtitle method-title">init</h3>
 	
 	
-	
-	<div class="method-subsection brief-description">
-		<p>Copies the Group layer information from another Group layer
-Useful if you want to setup the information on the Closing Group Layer and don&rsquo;t remember
-the information you&rsquo;ve put in the Opening one</p>
-	</div>		
-	
-    
 
-	<div class="method-subsection method-declaration"><code>- (void)copyGroupInformationFrom:(SFPSDGroupLayer *)<em>layer</em></code></div>
+	<div class="method-subsection method-declaration"><code>- (id)init</code></div>
 
     
-	
-	
-	
-	
-	
-	
-	
-	<div class="method-subsection discussion-section">
-		<h4 class="method-subtitle">Discussion</h4>
-		<p>Copies the Group layer information from another Group layer
-Useful if you want to setup the information on the Closing Group Layer and don&rsquo;t remember
-the information you&rsquo;ve put in the Opening one</p>
-	</div>
-	
-	
-	
-	
-	
-	
-	
-	<div class="method-subsection declared-in-section">
-		<h4 class="method-subtitle">Declared In</h4>
-		<code class="declared-in-ref">SFPSDGroupLayer.h</code><br />
-	</div>				
-	
-	
 </div>
 						
 						<div class="section-method">
-	<a name="//api/name/hasValidSize" title="hasValidSize"></a>
-	<h3 class="subsubtitle method-title">hasValidSize</h3>
+	<a name="//api/name/opacity255" title="opacity255"></a>
+	<h3 class="subsubtitle method-title">opacity255</h3>
 	
 	
 	
 	<div class="method-subsection brief-description">
-		<p>Returns a Boolean value that indicates whether the layer has some printable content inside the document bounds.</p>
+		<p>Return a (0&hellip;255) value for the <a href="#//api/name/opacity">opacity</a></p>
 	</div>		
 	
     
 
-	<div class="method-subsection method-declaration"><code>- (BOOL)hasValidSize</code></div>
-
-    
-	
-	
-	
-	<div class="method-subsection return">
-		<h4 class="method-subtitle parameter-title">Return Value</h4>
-		<p>YES if the layer can be printed inside the document bounds. NO if the layer is entirely outside the document bounds.</p>
-	</div>
-	
-	
-	
-	
-	
-	<div class="method-subsection discussion-section">
-		<h4 class="method-subtitle">Discussion</h4>
-		<p>Returns a Boolean value that indicates whether the layer has some printable content inside the document bounds.</p>
-	</div>
-	
-	
-	
-	
-	
-	
-	
-	<div class="method-subsection declared-in-section">
-		<h4 class="method-subtitle">Declared In</h4>
-		<code class="declared-in-ref">SFPSDLayer.h</code><br />
-	</div>				
-	
-	
-</div>
-						
-						<div class="section-method">
-	<a name="//api/name/initWithName:" title="initWithName:"></a>
-	<h3 class="subsubtitle method-title">initWithName:</h3>
-	
-	
-	
-	<div class="method-subsection brief-description">
-		<p>Simple initializer.</p>
-	</div>		
-	
-    
-
-	<div class="method-subsection method-declaration"><code>- (id)initWithName:(NSString *)<em>name</em></code></div>
+	<div class="method-subsection method-declaration"><code>- (long)opacity255</code></div>
 
     
 	
@@ -374,7 +519,7 @@ the information you&rsquo;ve put in the Opening one</p>
 	
 	<div class="method-subsection discussion-section">
 		<h4 class="method-subtitle">Discussion</h4>
-		<p>Simple initializer.</p>
+		<p>Return a (0&hellip;255) value for the <a href="#//api/name/opacity">opacity</a></p>
 	</div>
 	
 	
@@ -385,89 +530,7 @@ the information you&rsquo;ve put in the Opening one</p>
 	
 	<div class="method-subsection declared-in-section">
 		<h4 class="method-subtitle">Declared In</h4>
-		<code class="declared-in-ref">SFPSDGroupLayer.h</code><br />
-	</div>				
-	
-	
-</div>
-						
-						<div class="section-method">
-	<a name="//api/name/initWithName:andOpacity:andIsOpened:" title="initWithName:andOpacity:andIsOpened:"></a>
-	<h3 class="subsubtitle method-title">initWithName:andOpacity:andIsOpened:</h3>
-	
-	
-	
-	<div class="method-subsection brief-description">
-		<p>Designed initializer.</p>
-	</div>		
-	
-    
-
-	<div class="method-subsection method-declaration"><code>- (id)initWithName:(NSString *)<em>name</em> andOpacity:(float)<em>opacity</em> andIsOpened:(BOOL)<em>isOpened</em></code></div>
-
-    
-	
-	
-	
-	
-	
-	
-	
-	<div class="method-subsection discussion-section">
-		<h4 class="method-subtitle">Discussion</h4>
-		<p>Designed initializer.</p>
-	</div>
-	
-	
-	
-	
-	
-	
-	
-	<div class="method-subsection declared-in-section">
-		<h4 class="method-subtitle">Declared In</h4>
-		<code class="declared-in-ref">SFPSDGroupLayer.h</code><br />
-	</div>				
-	
-	
-</div>
-						
-						<div class="section-method">
-	<a name="//api/name/layerChannels" title="layerChannels"></a>
-	<h3 class="subsubtitle method-title">layerChannels</h3>
-	
-	
-	
-	<div class="method-subsection brief-description">
-		<p>Returns an array of the channels composing the layer.</p>
-	</div>		
-	
-    
-
-	<div class="method-subsection method-declaration"><code>- (NSArray *)layerChannels</code></div>
-
-    
-	
-	
-	
-	
-	
-	
-	
-	<div class="method-subsection discussion-section">
-		<h4 class="method-subtitle">Discussion</h4>
-		<p>Returns an array of the channels composing the layer.</p>
-	</div>
-	
-	
-	
-	
-	
-	
-	
-	<div class="method-subsection declared-in-section">
-		<h4 class="method-subtitle">Declared In</h4>
-		<code class="declared-in-ref">SFPSDLayer.h</code><br />
+		<code class="declared-in-ref">SFPSDInnerGlowEffectLayerInformation.h</code><br />
 	</div>				
 	
 	

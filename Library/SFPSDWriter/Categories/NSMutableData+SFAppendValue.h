@@ -28,4 +28,9 @@
 /** Allows you to append a NSString to the NSMutableData object. */
 - (void)sfAppendUTF8String:(NSString *)value length:(int)length;
 
+/** Allows you to append a "Native" CGColorRef to the NSMutableData object.
+ * For example it is used in the Effects Layer in the Additional Layer Information to write the
+ * layer effect color */
+- (void)sfAppendCGColorRef:(CGColorRef)color length:(int)length;
+
 @end
