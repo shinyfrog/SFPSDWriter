@@ -1,7 +1,7 @@
 Pod::Spec.new do |s|
 
   s.name         = "SFPSDWriter"
-  s.version      = "0.3"
+  s.version      = "0.3.1"
   s.summary      = "A simple Objective C (Mac and iOS) writer for .psd files with multiple layers and groups."
 
   s.description  = <<-DESC

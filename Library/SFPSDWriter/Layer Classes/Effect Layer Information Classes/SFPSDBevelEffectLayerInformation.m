@@ -10,6 +10,8 @@
 
 @implementation SFPSDBevelEffectLayerInformation
 
+@synthesize angle = _angle, size = _size, highlightBlendMode = _highlightBlendMode, shadowBlendMode = _shadowBlendMode, highlightColor = _highlightColor, shadowColor = _shadowColor, style = _style, highlightOpacity = _highlightOpacity, shadowOpacity = _shadowOpacity, enabled = _enabled, useGlobalLight = _useGlobalLight, direction = _direction;
+
 - (id)init
 {
     self = [super init];

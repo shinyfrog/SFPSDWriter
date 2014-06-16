@@ -10,6 +10,8 @@
 
 @implementation SFPSDDropShadowEffectLayerInformation
 
+@synthesize size = _size, angle = _angle, distance = _distance, color = _color, blendMode = _blendMode, enabled = _enabled, useGlobalLight = _useGlobalLight, opacity = _opacity;
+
 - (id)init
 {
     self = [super init];

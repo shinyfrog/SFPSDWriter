@@ -10,6 +10,8 @@
 
 @implementation SFPSDSolidFillEffectLayerInformation
 
+@synthesize blendMode = _blendMode, color = _color, opacity = _opacity, enabled = _enabled;
+
 - (id)init
 {
     self = [super init];

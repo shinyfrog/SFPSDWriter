@@ -10,6 +10,8 @@
 
 @implementation SFPSDInnerGlowEffectLayerInformation
 
+@synthesize size = _size, color = _color, blendMode = _blendMode, enabled = _enabled, opacity = _opacity, source = _source;
+
 - (id)init
 {
     self = [super init];
